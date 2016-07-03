@@ -12,6 +12,7 @@ class CharacterTemplatesController < ApplicationController
 
   def new
     @character_template = CharacterTemplate.new
+    @character_template.images.build
   end
 
   def edit

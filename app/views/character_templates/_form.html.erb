@@ -1,18 +1,29 @@
-<%= simple_form_for @character_template, :html => { :class => 'form-horizontal' } do |f| %>
-  <%= f.input :name %>
+<div>
+ <%= f.input :name %>
+</div>
+<div>
   <%#= error_span(@character_template[:name]) %>
   <%= f.input :description %>
+</div>
+<div>
   <%#= error_span(@character_template[:description]) %>
   <%= f.input :hp %>
+</div>
+<div>
   <%#= error_span(@character_template[:hp]) %>
   <%= f.input :strength %>
+</div>
+<div>
   <%#= error_span(@character_template[:strength]) %>
   <%= f.input :intellect %>
+</div>
+<div>
   <%#= error_span(@character_template[:intellect]) %>
   <%= f.input :agility %>
   <%#= error_span(@character_template[:agility]) %>
+</div>
 
-  <%= f.button :submit, :class => 'btn-primary' %>
-  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                character_templates_path, :class => 'btn btn-default' %>
-<% end %>
+
+
+
+
