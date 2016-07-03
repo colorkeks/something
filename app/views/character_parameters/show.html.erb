@@ -1,0 +1,31 @@
+<%- model_class = CharacterParameter -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:level) %>:</strong></dt>
+  <dd><%= @character_parameter.level %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:experience) %>:</strong></dt>
+  <dd><%= @character_parameter.experience %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:hp) %>:</strong></dt>
+  <dd><%= @character_parameter.hp %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:strength) %>:</strong></dt>
+  <dd><%= @character_parameter.strength %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:intellect) %>:</strong></dt>
+  <dd><%= @character_parameter.intellect %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:agility) %>:</strong></dt>
+  <dd><%= @character_parameter.agility %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:character_id) %>:</strong></dt>
+  <dd><%= @character_parameter.character_id %></dd>
+</dl>
+
+<%= link_to t('.back', :default => t("helpers.links.back")),
+              character_parameters_path, :class => 'btn btn-default'  %>
+<%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_character_parameter_path(@character_parameter), :class => 'btn btn-default' %>
+<%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              character_parameter_path(@character_parameter),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>

@@ -1,0 +1,20 @@
+<%= simple_form_for @character_parameter, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :level %>
+  <%= error_span(@character_parameter[:level]) %>
+  <%= f.input :experience %>
+  <%= error_span(@character_parameter[:experience]) %>
+  <%= f.input :hp %>
+  <%= error_span(@character_parameter[:hp]) %>
+  <%= f.input :strength %>
+  <%= error_span(@character_parameter[:strength]) %>
+  <%= f.input :intellect %>
+  <%= error_span(@character_parameter[:intellect]) %>
+  <%= f.input :agility %>
+  <%= error_span(@character_parameter[:agility]) %>
+  <%= f.input :character_id %>
+  <%= error_span(@character_parameter[:character_id]) %>
+
+  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                character_parameters_path, :class => 'btn btn-default' %>
+<% end %>

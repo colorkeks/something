@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @weekness.type %>
+</p>
+
+<p>
+  <strong>Percent:</strong>
+  <%= @weekness.percent %>
+</p>
+
+<%= link_to 'Edit', edit_weekness_path(@weekness) %> |
+<%= link_to 'Back', weeknesses_path %>

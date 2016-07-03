@@ -1,0 +1,23 @@
+<div class="row vertical-center-row">
+  <div class="loginpanel orange-gray bit-border">
+
+
+    <div class="panelheader">
+      <h2><%= t('.forgot_your_password', :default => 'Forgot your password?') %></h2>
+    </div>
+
+    <div class="contentpanel ">
+      <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
+          <%= devise_error_messages! %>
+
+          <%= f.label :email, :class => 'control-label'  %>
+          <%= f.email_field :email, :class => 'form-control'  %>
+          <br />
+
+          <%= f.submit t('.send_me_reset_password_instructions', :default => "Send me reset password instructions"), class: 'btn btn-bit btn-lg outline' %>
+      <% end %>
+    </div>
+    <%= render "devise/shared/links" %>
+  </div>
+
+</div>

@@ -1,0 +1,322 @@
+@import url(http://fonts.googleapis.com/css?family=Press+Start+2P);
+
+html, body, .container-table {
+  height: 90%;
+  color: orange;
+}
+
+html {
+  background: url("pixelart.jpg") no-repeat;
+}
+
+.navbar-brand{
+  color: orange !important;
+}
+
+.navbar-brand:hover{
+  color: #3dc2eb !important;
+}
+
+body {
+  font: 18px "Press start 2P";
+  background: transparent;
+
+  background-size: 100%;
+}
+
+.container-table {
+  display: table;
+}
+.vertical-center-row {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+
+/***********************
+  RAILS FLASH
+************************/
+
+.rails-flash{
+  position: absolute;
+  right: -300px;
+  width: 300px;
+  font-size: 12px;
+  z-index: 100000;
+}
+
+.alert-danger, .alert-success, .alert-warning, .alert-info{
+  background: #343434;
+  font: 1.4em "Press start 2P";
+}
+
+
+/***********************
+  LOGIN FRAME AND BIT BORDER
+************************/
+
+.bit-border {
+  margin: 0 auto;
+  text-align: center;
+}
+
+@mixin other( $width, $color, $bgcolor ) {
+  box-shadow:
+          4*$width 0 $bgcolor,
+          -4*$width 0 $bgcolor,
+          0 (-4*$width) $bgcolor,
+          0 4*$width $bgcolor,
+          $width 0 0 2*$width $bgcolor,
+          -$width 0 0 2*$width $bgcolor,
+          0 (-$width) 0 2*$width $bgcolor,
+          0 $width 0 2*$width $bgcolor,
+          5*$width 0 $color,
+          -5*$width 0 $color,
+          0 (-5*$width) $color,
+          0 5*$width $color,
+          0 0 0 3*$width $color,
+          0 2*$width 0 2*$width $color,
+          0 (-2*$width) 0 2*$width $color,
+          2*$width 0 0 2*$width $color,
+                  (-2*$width) 0 0 2*$width $color;
+  margin: 5*$width auto;
+}
+.orange-gray {
+  @include other( 6px, orange, #343434 );
+}
+
+
+.loginpanel {
+  background: #343434;
+  min-width: 300px;
+  width: 30%;
+
+  .control-label{
+    display: block;
+    text-align: left;
+  }
+
+  .panelheader {
+    padding: 15px;
+    border-bottom: 1px solid #343434;
+    border-top: 1px solid #343434;
+    background: #343434;
+    position: relative;
+  }
+
+  .panelheader h2 {
+    font-size: 28px;
+    color: orange;
+    letter-spacing: -0.5px;
+    margin: 0;
+  }
+
+  .panelheader .glyphicon,
+  .panelheader .fa {
+    font-size: 20px;
+    margin-right: 5px;
+    padding: 9px 6px;
+    border: 2px solid #1D2939;
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+    border-radius: 50px;
+  }
+
+  .panelheader .fa.fa-pencil {
+    padding: 6px 9px;
+  }
+
+  .panelheader .fa.fa-hand-o-up {
+    padding: 6px 9px 6px 7px;
+  }
+
+  .panelheader .fa-file-o {
+    padding: 6px 10px;
+  }
+
+  .panelheader .fa-user {
+    padding: 6px 10px;
+  }
+
+  .panelheader .fa-file-text {
+    padding: 6px 10px;
+  }
+
+  .panelheader .fa-map-marker {
+    padding: 6px 12px;
+  }
+
+  .panelheader .fa-dollar {
+    padding: 6px 12px;
+  }
+
+  .panelheader .fa-clock-o {
+    padding: 6px 8px;
+  }
+
+  .panelheader h2 span {
+    font-size: 13px;
+    text-transform: none;
+    color: #999;
+    font-style: italic;
+    vertical-align: middle;
+    letter-spacing: 0;
+  }
+
+  .panelheader h2 span::before {
+    content: '/';
+    margin: 0 10px 0 5px;
+    color: #ccc;
+  }
+
+  .panelheader .breadcrumb-wrapper {
+    position: absolute;
+    top: 23px;
+    right: 25px;
+  }
+
+  .panelheader .breadcrumb-wrapper .label {
+    color: #999;
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: normal;
+    display: inline-block;
+  }
+
+  .panelheader .breadcrumb {
+    background: none;
+    display: inline-block;
+    padding: 0;
+  }
+
+  .panelheader .breadcrumb li {
+    font-size: 12px;
+  }
+
+  .panelheader .breadcrumb li.active {
+    color: #333;
+  }
+
+  .contentpanel {
+    padding: 20px;
+    position: relative;
+  }
+
+  .contentpanel::after {
+    clear: both;
+    display: block;
+    content: '';
+  }
+
+}
+
+
+
+/***********************
+  LOGIN FIRE
+************************/
+
+.fire {
+  margin-bottom:15px;
+}
+
+.fire:before {
+  content:"";
+  position: absolute;     background:url('zelda_fire_render.gif');
+  height:50px;
+  width:50px;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  margin-left:-120px;
+}
+
+.fire:after {
+  content:"";
+  position:absolute;      background:url('zelda_fire_render.gif');
+  height:50px;
+  width:50px;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  margin-left: 70px;
+
+}
+
+
+/***********************
+  CUSTOM BTN VALUES
+************************/
+
+.btn-file input[type=file] {
+  position: absolute;
+  top: 15px;
+  left: 0;
+  margin: 0 auto;
+  width: 100%;
+  height: 50px;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  outline: none;
+  cursor: inherit;
+  display: block;
+}
+
+.btn, .btn-file {
+  padding: 14px 24px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.btn:focus, .btn:active:focus, .btn.active:focus {
+  outline: 0 none;
+}
+
+.btn-lg {
+  margin: 5px;
+  font-size: 14px;
+  line-height: 1.33;
+  border-radius: 6px;
+  padding: 12px 22px;
+}
+
+.btn-tn {
+  margin: 5px;
+  font-size: 14px;
+  line-height: 1.33;
+  border-radius: 6px;
+  padding: 1px;
+}
+
+.btn.outline, .btn-file {
+  background: #343434;
+}
+
+.btn.green{
+  background: #165a3a;
+}
+
+.btn.red {
+  background: #7c0f16;
+}
+
+.btn.trans {
+  background: transparent;
+}
+
+.btn-bit.red, .btn-bit.green, .btn-bit.outline, .btn-file {
+  border: 2px solid #ffa500;
+  color: orange;
+}
+.btn-bit:hover, .btn-bit:focus, .btn-bit:active, .open > .dropdown-toggle.btn-bit,
+.btn-file:hover, .btn-file:focus, .btn-file:active, .open > .dropdown-toggle.btn-file {
+  color: #3dc2eb;
+  border-color: #3dc2eb;
+}
+.btn-bit:active, .btn-bit.active {
+  border-color: orange;
+  color: orange;
+  box-shadow: none;
+}
