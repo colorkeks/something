@@ -6,7 +6,7 @@ html, body, .container-table {
 }
 
 html {
-  background: url("pixelart.jpg") no-repeat;
+  background: url("pixelart.jpg");
 }
 
 .navbar-brand{
@@ -250,21 +250,7 @@ body {
   CUSTOM BTN VALUES
 ************************/
 
-.btn-file input[type=file] {
-  position: absolute;
-  top: 15px;
-  left: 0;
-  margin: 0 auto;
-  width: 100%;
-  height: 50px;
-  filter: alpha(opacity=0);
-  opacity: 0;
-  outline: none;
-  cursor: inherit;
-  display: block;
-}
-
-.btn, .btn-file {
+.btn {
   padding: 14px 24px;
   font-weight: 700;
   letter-spacing: 1px;
@@ -290,7 +276,7 @@ body {
   padding: 1px;
 }
 
-.btn.outline, .btn-file {
+.btn.outline {
   background: #343434;
 }
 
@@ -306,12 +292,11 @@ body {
   background: transparent;
 }
 
-.btn-bit.red, .btn-bit.green, .btn-bit.outline, .btn-file {
+.btn-bit.red, .btn-bit.green, .btn-bit.outline {
   border: 2px solid #ffa500;
   color: orange;
 }
-.btn-bit:hover, .btn-bit:focus, .btn-bit:active, .open > .dropdown-toggle.btn-bit,
-.btn-file:hover, .btn-file:focus, .btn-file:active, .open > .dropdown-toggle.btn-file {
+.btn-bit:hover, .btn-bit:focus, .btn-bit:active, .open > .dropdown-toggle.btn-bit {
   color: #3dc2eb;
   border-color: #3dc2eb;
 }

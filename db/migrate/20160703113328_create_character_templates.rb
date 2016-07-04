@@ -4,9 +4,9 @@ class CreateCharacterTemplates < ActiveRecord::Migration
       t.string :name
       t.text :description
       t.integer :hp
-      t.integer :strength
-      t.integer :intellect
-      t.integer :agility
+      t.float :strength
+      t.float :intellect
+      t.float :agility
 
       t.timestamps null: false
     end

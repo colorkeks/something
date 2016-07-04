@@ -4,9 +4,9 @@ class CreateCharacterParameters < ActiveRecord::Migration
       t.integer :level
       t.integer :experience
       t.integer :hp
-      t.integer :strength
-      t.integer :intellect
-      t.integer :agility
+      t.float :strength
+      t.float :intellect
+      t.float :agility
       t.integer :character_id
 
       t.timestamps null: false

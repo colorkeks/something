@@ -1,26 +1,26 @@
-<div>
- <%= f.input :name %>
+<%= f.error_notification %>
+<div class="col-md-6">
+  <div class="floating-placeholder">
+    <%= f.input :name, autocomplete: false %>
+  </div>
+  <div class="floating-placeholder">
+
+    <%= f.input :description, label: 'Desc', input_html: {:cols => 19, :rows => 5} %>
+  </div>
 </div>
-<div>
-  <%#= error_span(@character_template[:name]) %>
-  <%= f.input :description %>
-</div>
-<div>
-  <%#= error_span(@character_template[:description]) %>
-  <%= f.input :hp %>
-</div>
-<div>
-  <%#= error_span(@character_template[:hp]) %>
-  <%= f.input :strength %>
-</div>
-<div>
-  <%#= error_span(@character_template[:strength]) %>
-  <%= f.input :intellect %>
-</div>
-<div>
-  <%#= error_span(@character_template[:intellect]) %>
-  <%= f.input :agility %>
-  <%#= error_span(@character_template[:agility]) %>
+<div class="col-md-6">
+  <div class="floating-placeholder">
+    <%= f.input :hp, input_html: {min: '1', step: 'any'} %>
+  </div>
+  <div class="floating-placeholder">
+    <%= f.input :strength, input_html: {min: '0', step: 'any'} %>
+  </div>
+  <div class="floating-placeholder">
+    <%= f.input :intellect, input_html: {min: '0', step: 'any'} %>
+  </div>
+  <div class="floating-placeholder">
+    <%= f.input :agility, input_html: {min: '0', step: 'any'} %>
+  </div>
 </div>
 
 

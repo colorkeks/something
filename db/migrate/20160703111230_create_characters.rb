@@ -4,10 +4,11 @@ class CreateCharacters < ActiveRecord::Migration
       t.string :name
       t.text :description
       t.integer :hp
-      t.integer :strength
-      t.integer :intellect
-      t.integer :agility
+      t.float :strength
+      t.float :intellect
+      t.float :agility
       t.integer :user_id
+      t.integer :character_template_id
 
       t.timestamps null: false
     end

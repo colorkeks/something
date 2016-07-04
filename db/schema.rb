@@ -68,13 +68,6 @@ ActiveRecord::Schema.define(version: 20160703123825) do
     t.datetime "updated_at",   null: false
   end
 
-  create_table "character_template_characters", force: :cascade do |t|
-    t.integer  "character_id"
-    t.integer  "character_template_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "character_templates", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
@@ -94,8 +87,9 @@ ActiveRecord::Schema.define(version: 20160703123825) do
     t.integer  "intellect"
     t.integer  "agility"
     t.integer  "user_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "character_template_id"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
   end
 
   create_table "images", force: :cascade do |t|

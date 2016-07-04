@@ -1,0 +1,11 @@
+<%= f.error_notification %>
+
+<div class="file-upload-wrapper btn btn-bit btn-lg green">
+  dsf
+  <% if f.object.new_record? %>
+      <%= f.input :image, as: :file, label: false, input_html: {name:'character_template[image_attributes][image]', type: 'file',
+                                                                class: 'file-upload-native', accept: 'image/*'} %>
+      <input type="text" disabled placeholder="загрузить" class="file-upload-text" />
+      <%= f.input :character_template_id, as: :hidden %>
+  <% end %>
+</div>

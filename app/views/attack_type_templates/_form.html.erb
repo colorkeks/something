@@ -1,14 +1,8 @@
-<%= simple_form_for(@attack_type_template) do |f| %>
-  <%= f.error_notification %>
-
+<%= f.error_notification %>
   <div class="form-inputs">
     <%= f.input :name %>
-    <%= f.input :description %>
+    <%= f.input :description, label: 'Desc', input_html: { :cols => 19, :rows => 5 } %>
     <%= f.input :attack %>
     <%= f.input :attack_type %>
+    <%= f.input :character_template_id, as: :hidden%>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
-<% end %>

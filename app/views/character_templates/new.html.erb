@@ -1,22 +1,56 @@
 <%- model_class = CharacterTemplate -%>
-<div class="row">
-  <div class="profile-bg bit-border orange-gray">
-    <div class="page-header">
-      <h1><%= t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => model_class.model_name.human.titleize %></h1>
-    </div>
-    <%= simple_form_for @character_template, :html => {:class => 'form-horizontal'} do |f| %>
-        <%= render :partial => 'form', locals: {:f => f} %>
 
-        <%= f.simple_fields_for :image do |p| %>
-            <%= p.input :image, as: :file, label: false %>
-        <% end %>
-
-
-        <%= f.button :submit, :class => 'btn-primary' %>
-        <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                    character_templates_path, :class => 'btn btn-default' %>
-    <% end %>
-
+<div class="profile-bg bit-border orange-gray">
+  <div class="page-header">
+    <h1><%= t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => model_class.model_name.human.titleize %></h1>
   </div>
 
+    <%= simple_form_for @character_template, :html => {:class => 'form-horizontal', autocomplete: 'off'} do |f| %>
+      <div class="row">
+        <div class="col-md-4">
+          <%= f.simple_fields_for :image do |ff| %>
+              <div class="avatar">
+                <div class="preview img-wrapper"></div>
+                <%= render partial: 'images/form', locals: {f: ff} %>
+              </div>
+          <% end %>
+        </div>
+        <div class="col-md-8">
+          <div style="margin: 20px">
+            <%= render partial: 'form', locals: {f: f} %>
+          </div>
+        </div>
+      </div>
+
+      <!--TODO сделать таблицу, с возможность добалвять/удалять пачку полей-->
+      <!--TODO сделать список типов атак/брони/уязвимостей-->
+      <!--TODO стилизировать счетчики, сейчас отстой-->
+      <!--TODO возможно стоит разделить все по табам-->
+      <div class="row">
+        <div class="col-md-6">
+          <div style="margin: 20px">
+            <h2>Защита</h2>
+            <%= f.simple_fields_for :armor_templates do |ff| %>
+                <%= render partial: 'armor_templates/form', locals: {f: ff} %>
+            <% end %>
+            <h2>Уязвимости</h2>
+            <%= f.simple_fields_for :weekness_templates do |ff| %>
+                <%= render partial: 'weekness_templates/form', locals: {f: ff} %>
+            <% end %>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div style="margin: 20px">
+            <h2>Типы атак</h2>
+            <%= f.simple_fields_for :attack_type_templates do |ff| %>
+                <%= render partial: 'attack_type_templates/form', locals: {f: ff} %>
+            <% end %>
+          </div>
+        </div>
+        </div>
+
+        <%= f.button :submit, :class => 'btn btn-bit btn-lg green' %>
+        <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                    character_templates_path, :class => 'btn btn-bit btn-lg outline' %>
+    <% end %>
 </div>
