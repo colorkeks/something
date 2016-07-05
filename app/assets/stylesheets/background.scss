@@ -5,6 +5,7 @@
   bottom: 0;
   left: 0;
   margin: auto;
+  min-height: 300px;
   height: 30%;
   overflow: hidden;
   -webkit-animation: FadeIn 3s ease-out;
@@ -259,8 +260,8 @@
   height: 7.84090909%;
 }
 .Cloud {
-  background-image: url(cloud3.png);
+  background-image: url(cloud6.png);
 }
 .Cloud.Background {
-  background-image: url(cloud1.png);
+  background-image: url(cloud7.png);
 }

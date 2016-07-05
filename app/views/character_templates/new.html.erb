@@ -1,52 +1,77 @@
 <%- model_class = CharacterTemplate -%>
 
 <div class="profile-bg bit-border orange-gray">
-  <div class="page-header">
-    <h1><%= t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => model_class.model_name.human.titleize %></h1>
-  </div>
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#hero" data-toggle="tab">Герой</a></li>
+    <li><a href="#resists" data-toggle="tab">Сопротивления</a></li>
+    <li><a href="#attacks" data-toggle="tab">Типы атак</a></li>
+    <li><a href="#items" data-toggle="tab">Предметы</a></li>
+  </ul>
 
-    <%= simple_form_for @character_template, :html => {:class => 'form-horizontal', autocomplete: 'off'} do |f| %>
-      <div class="row">
-        <div class="col-md-4">
-          <%= f.simple_fields_for :image do |ff| %>
-              <div class="avatar">
-                <div class="preview img-wrapper"></div>
-                <%= render partial: 'images/form', locals: {f: ff} %>
+  <%= simple_form_for @character_template, :html => {:class => 'form-horizontal', autocomplete: 'off'} do |f| %>
+
+        <div class="tab-content">
+          <div class="tab-pane active" id="hero">
+            <div class="row">
+            <div class="col-md-4">
+              <%= f.simple_fields_for :image do |ff| %>
+                  <div class="avatar">
+                    <div class="preview img-wrapper"></div>
+                    <%= render partial: 'images/form', locals: {f: ff} %>
+                  </div>
+              <% end %>
+            </div>
+            <div class="col-md-8">
+              <div style="margin: 20px">
+                <%= render partial: 'form', locals: {f: f} %>
               </div>
-          <% end %>
-        </div>
-        <div class="col-md-8">
-          <div style="margin: 20px">
-            <%= render partial: 'form', locals: {f: f} %>
+            </div>
+            </div>
+          </div>
+          <div class="tab-pane" id="resists">
+            <div class="row">
+              <div class="col-md-12">
+                <div style="margin: 20px">
+                  <h2>Сопротивление</h2>
+                  <%= f.simple_fields_for :resist_templates do |ff| %>
+                      <%= render partial: 'resist_templates/form', locals: {f: ff} %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane" id="attacks">
+            <div class="row">
+              <div class="col-md-12">
+                <div style="margin: 20px">
+                  <h2>Типы атак</h2>
+                  <%= f.simple_fields_for :attack_type_templates do |ff| %>
+                      <%= render partial: 'attack_type_templates/form', locals: {f: ff} %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane" id="items">
+            <div style="margin: 20px">
+              <h2>Предметы</h2>
+              <%= f.simple_fields_for :item_templates do |ff| %>
+                  <%= render partial: 'item_templates/form', locals: {f: ff} %>
+              <% end %>
+            </div>
           </div>
         </div>
-      </div>
+
+
+
 
       <!--TODO сделать таблицу, с возможность добалвять/удалять пачку полей-->
       <!--TODO сделать список типов атак/брони/уязвимостей-->
       <!--TODO стилизировать счетчики, сейчас отстой-->
-      <!--TODO возможно стоит разделить все по табам-->
-      <div class="row">
-        <div class="col-md-6">
-          <div style="margin: 20px">
-            <h2>Сопротивление</h2>
-            <%= f.simple_fields_for :resist_templates do |ff| %>
-                <%= render partial: 'resist_templates/form', locals: {f: ff} %>
-            <% end %>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div style="margin: 20px">
-            <h2>Типы атак</h2>
-            <%= f.simple_fields_for :attack_type_templates do |ff| %>
-                <%= render partial: 'attack_type_templates/form', locals: {f: ff} %>
-            <% end %>
-          </div>
-        </div>
-        </div>
 
-        <%= f.button :submit, :class => 'btn btn-bit btn-lg green' %>
-        <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                    character_templates_path, :class => 'btn btn-bit btn-lg outline' %>
-    <% end %>
+
+      <%= f.button :submit, :class => 'btn btn-bit btn-lg green' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                  character_templates_path, :class => 'btn btn-bit btn-lg outline' %>
+  <% end %>
 </div>

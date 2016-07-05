@@ -17,14 +17,13 @@ $(function() {
         },
         setPreviewImg: function(fileInput) {
             var path = $(fileInput).val();
-            var uploadText = $(fileInput).siblings('.file-upload-text');
+            var uploadText = $(fileInput).parents('.file').siblings('.file-upload-text'); /* из за обертки simple_form */
 
             if (!path) {
                 $(uploadText).val('');
             } else {
                 path = path.replace(/^C:\\fakepath\\/, "");
                 $(uploadText).val(path);
-                $('.file-upload-text').val(path);
 
                 preview.showPreview(fileInput, path, uploadText);
             }

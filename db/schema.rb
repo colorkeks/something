@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 20160705070049) do
     t.integer  "attack"
     t.string   "attack_type"
     t.integer  "character_template_id"
+    t.integer  "item_template_id"
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
   end
@@ -100,6 +101,7 @@ ActiveRecord::Schema.define(version: 20160705070049) do
     t.string   "type"
     t.float    "percent"
     t.integer  "character_template_id"
+    t.integer  "item_template_id"
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
   end

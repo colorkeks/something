@@ -59,6 +59,6 @@ class ResistTemplatesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def resist_template_params
-      params.require(:resist_template).permit(:type, :percent, :character_template_id)
+      params.require(:resist_template).permit(:type, :percent, :character_template_id, :item_template_id)
     end
 end

@@ -10,8 +10,8 @@ $green_btn: #165a3a;
 html {
   height: 100%;
   background-color: #1d6c7b;
-  background-image: -webkit-radial-gradient(circle, #a0deec 0%, #1d6c7b 50%, #0e2d74 100%);
-  background-image: radial-gradient(circle, #a0deec 0%, #1d6c7b 50%, #0e2d74 100%);
+  background-image: -webkit-radial-gradient(circle, #78a4b0 0%, #195c6a 50%, #0d2253 100%);
+  background-image: radial-gradient(circle, #78a4b0 0%, #195c6a 50%, #0d2253 100%);
 }
 
 body {
@@ -20,7 +20,7 @@ body {
 }
 
 .container-table{
-  height: 90%;
+  height: 85%;
   z-index: 10;
 }
 
@@ -417,6 +417,7 @@ body {
 
 .profile-bg{
   background: $background_panel_color;
+  height: 90%;
 }
 
 .page-header {

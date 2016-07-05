@@ -7,4 +7,5 @@ class CharacterTemplate < ActiveRecord::Base
   accepts_nested_attributes_for :image
   accepts_nested_attributes_for :resist_templates
   accepts_nested_attributes_for :attack_type_templates
+  accepts_nested_attributes_for :item_templates
 end

@@ -4,6 +4,7 @@ class CreateResistTemplates < ActiveRecord::Migration
       t.string :type
       t.float :percent
       t.integer :character_template_id
+      t.integer :item_template_id
 
       t.timestamps null: false
     end
