@@ -1,7 +1,4 @@
 class Image < ActiveRecord::Base
-  has_and_belongs_to_many :characters
-  has_many :character_images
-  has_many :characters, through: :character_images
   belongs_to :character_template
   has_attached_file :image,
                     styles: lambda { |a| a.instance.check_file_type}

@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
 
-
   get 'table/index'
   root to: 'table#index', as: 'table'
 
-  devise_for :users,  :controllers => { :registrations => "users/registrations" }
+  devise_for :users, :controllers => {:registrations => "users/registrations"}
 
   resources :users
 
@@ -16,17 +15,17 @@ Rails.application.routes.draw do
 
   resources :attack_type_templates
 
-  resources :weekness_templates
-
-  resources :armor_templates
+  resources :resist_templates
 
   resources :character_templates
 
   resources :attack_types
 
-  resources :weeknesses
+  resources :resists
 
-  resources :armors
+  resources :items
+
+  resources :item_templates
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

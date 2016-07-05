@@ -3,52 +3,10 @@
 
 
     <div class="avatar">
-      <% if @avatar %>
-          <%= image_tag @avatar.file_content.url(:medium) %>
-          <% else %>
-      <%= image_tag('missing.png', size: '250x250') %>
-      <% end %>
-      <div class="avatar-bar">
-        <div class="btn btn-bit btn-lg green" data-toggle="modal" data-target="#imagesModal">
-          <span class="glyphicon glyphicon-floppy-save" aria-hidden="true"></span>
-        </div>
-      </div>
+      <%= link_to t('.show', :default => t("helpers.links.show")),
+                  character_templates_path, :class => 'btn btn-default btn-xs' %>
     </div>
 
   </div>
 
-</div>
-
-
-<div class="modal fade" id="imagesModal" role="dialog" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content bit-border orange-gray">
-      <div class="modal-header">
-        <ul class="nav nav-tabs">
-          <li class="active"><a href="#deleteTab" data-toggle="tab">Каталог</a></li>
-        </ul>
-      </div>
-      <div class="tabbable"> <!-- Only required for left/right tabs -->
-        <div class="tab-content">
-          <div class="tab-pane active" id="deleteTab">
-            <div class="modal-body">
-              <%# @images.each do |content| %>
-                  <div class="image">
-                    <%#= image_tag content.file_content.url(:small) %>
-                    <div class="delete">
-                      <%#= button_to 'x', {:controller => :images,
-                                          :action => 'destroy', :id => content.id}, :method => :delete, class: 'btn btn-tn btn-bit trans' %>
-                    </div>
-                  </div>
-              <%# end %>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-bit btn-lg outline" data-dismiss="modal">Отмена</button>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-  </div>
 </div>

@@ -1,0 +1,18 @@
+<%= simple_form_for(@item_template) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :name %>
+    <%= f.input :description %>
+    <%= f.input :item_type %>
+    <%= f.input :equiped %>
+    <%= f.input :strength %>
+    <%= f.input :intellect %>
+    <%= f.input :agility %>
+    <%= f.input :character_template_id %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

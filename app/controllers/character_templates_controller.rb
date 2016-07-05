@@ -13,8 +13,7 @@ class CharacterTemplatesController < ApplicationController
   def new
     @character_template = CharacterTemplate.new
     @character_template.build_image
-    @character_template.armor_templates.build
-    @character_template.weekness_templates.build
+    @character_template.resist_templates.build
     @character_template.attack_type_templates.build
   end
 
@@ -63,10 +62,9 @@ class CharacterTemplatesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def character_template_params
-      params.require(:character_template).permit(:name, :description, :hp, :strength, :intellect, :agility, :user_id,
+      params.require(:character_template).permit(:name, :description, :hp, :strength, :intellect, :agility, :main_param,
                                                   image_attributes:[:image, :character_template_id],
-                                                  armor_templates_attributes:[:type, :percent, :character_template_id],
-                                                  weekness_templates_attributes:[:type, :percent, :character_template_id],
+                                                  resist_templates_attributes:[:type, :percent, :character_template_id],
                                                   attack_type_templates_attributes:[:name, :description, :attack, :attack_type,:character_template_id])
     end
 end

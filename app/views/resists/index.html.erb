@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Resists</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Percent</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @resist.each do |resist| %>
+      <tr>
+        <td><%= resist.type %></td>
+        <td><%= resist.percent %></td>
+        <td><%= link_to 'Show', resist %></td>
+        <td><%= link_to 'Edit', edit_resist_path(resist) %></td>
+        <td><%= link_to 'Destroy', resist, method: :delete, data: {confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Resists', new_resist_path %>

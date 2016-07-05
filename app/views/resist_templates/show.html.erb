@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @resist_template.type %>
+</p>
+
+<p>
+  <strong>Percent:</strong>
+  <%= @resist_template.percent %>
+</p>
+
+<%= link_to 'Edit', edit_resist_template_path(@resist_template) %> |
+<%= link_to 'Back', resist_templates_path %>

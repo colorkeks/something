@@ -11,27 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160703123825) do
-
-  create_table "armor_templates", force: :cascade do |t|
-    t.string   "type"
-    t.integer  "percent"
-    t.integer  "character_template_id"
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
-  end
-
-  create_table "armors", force: :cascade do |t|
-    t.string   "type"
-    t.integer  "percent"
-    t.integer  "character_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-  end
+ActiveRecord::Schema.define(version: 20160705070049) do
 
   create_table "attack_type_templates", force: :cascade do |t|
     t.string   "name"
-    t.text     "description"
     t.integer  "attack"
     t.string   "attack_type"
     t.integer  "character_template_id"
@@ -40,29 +23,21 @@ ActiveRecord::Schema.define(version: 20160703123825) do
   end
 
   create_table "attack_types", force: :cascade do |t|
-    t.string   "name"
-    t.text     "description"
     t.integer  "attack"
-    t.string   "attack_type"
     t.integer  "character_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-  end
-
-  create_table "character_images", force: :cascade do |t|
-    t.integer  "character_id"
-    t.integer  "image_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer  "attack_type_template_id"
+    t.integer  "item_id"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   create_table "character_parameters", force: :cascade do |t|
     t.integer  "level"
     t.integer  "experience"
     t.integer  "hp"
-    t.integer  "strength"
-    t.integer  "intellect"
-    t.integer  "agility"
+    t.float    "strength"
+    t.float    "intellect"
+    t.float    "agility"
     t.integer  "character_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
@@ -72,20 +47,15 @@ ActiveRecord::Schema.define(version: 20160703123825) do
     t.string   "name"
     t.text     "description"
     t.integer  "hp"
-    t.integer  "strength"
-    t.integer  "intellect"
-    t.integer  "agility"
+    t.float    "strength"
+    t.float    "intellect"
+    t.float    "agility"
+    t.string   "main_param"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
 
   create_table "characters", force: :cascade do |t|
-    t.string   "name"
-    t.text     "description"
-    t.integer  "hp"
-    t.integer  "strength"
-    t.integer  "intellect"
-    t.integer  "agility"
     t.integer  "user_id"
     t.integer  "character_template_id"
     t.datetime "created_at",            null: false
@@ -100,6 +70,44 @@ ActiveRecord::Schema.define(version: 20160703123825) do
     t.integer  "character_template_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "item_templates", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "item_type"
+    t.boolean  "equipped"
+    t.integer  "strength"
+    t.integer  "intellect"
+    t.integer  "agility"
+    t.integer  "character_template_id"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.boolean  "equipped"
+    t.integer  "item_template_id"
+    t.integer  "character_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  create_table "resist_templates", force: :cascade do |t|
+    t.string   "type"
+    t.float    "percent"
+    t.integer  "character_template_id"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
+  create_table "resists", force: :cascade do |t|
+    t.float    "percent"
+    t.integer  "character_id"
+    t.integer  "resist_template_id"
+    t.integer  "item_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
   end
 
   create_table "roles", force: :cascade do |t|
@@ -139,21 +147,5 @@ ActiveRecord::Schema.define(version: 20160703123825) do
   end
 
   add_index "users_roles", ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id"
-
-  create_table "weekness_templates", force: :cascade do |t|
-    t.string   "type"
-    t.integer  "percent"
-    t.integer  "character_template_id"
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
-  end
-
-  create_table "weeknesses", force: :cascade do |t|
-    t.string   "type"
-    t.integer  "percent"
-    t.integer  "character_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-  end
 
 end

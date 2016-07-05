@@ -7,6 +7,7 @@ class CreateCharacterTemplates < ActiveRecord::Migration
       t.float :strength
       t.float :intellect
       t.float :agility
+      t.string :main_param
 
       t.timestamps null: false
     end

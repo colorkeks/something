@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @item_template.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @item_template.description %>
+</p>
+
+<p>
+  <strong>Item type:</strong>
+  <%= @item_template.item_type %>
+</p>
+
+<p>
+  <strong>Equiped:</strong>
+  <%= @item_template.equiped %>
+</p>
+
+<p>
+  <strong>Strength:</strong>
+  <%= @item_template.strength %>
+</p>
+
+<p>
+  <strong>Intellect:</strong>
+  <%= @item_template.intellect %>
+</p>
+
+<p>
+  <strong>Agility:</strong>
+  <%= @item_template.agility %>
+</p>
+
+<p>
+  <strong>Character template:</strong>
+  <%= @item_template.character_template_id %>
+</p>
+
+<%= link_to 'Edit', edit_item_template_path(@item_template) %> |
+<%= link_to 'Back', item_templates_path %>

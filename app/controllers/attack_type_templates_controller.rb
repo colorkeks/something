@@ -71,6 +71,6 @@ class AttackTypeTemplatesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def attack_type_template_params
-      params.require(:attack_type_template).permit(:name, :description, :attack, :attack_type)
+      params.require(:attack_type_template).permit(:name, :attack, :attack_type, :character_template_id)
     end
 end

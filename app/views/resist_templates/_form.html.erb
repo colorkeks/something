@@ -1,0 +1,5 @@
+<%= f.error_notification %>
+
+  <%= f.input :type %>
+  <%= f.input :percent, input_html: { min: '0', step: 'any' } %>
+  <%= f.input :character_template_id, as: :hidden, input_html: { value: f.object_id}%>

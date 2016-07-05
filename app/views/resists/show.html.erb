@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @resist.type %>
+</p>
+
+<p>
+  <strong>Percent:</strong>
+  <%= @resist.percent %>
+</p>
+
+<%= link_to 'Edit', edit_resist_path(@resist) %> |
+<%= link_to 'Back', resist_path %>
