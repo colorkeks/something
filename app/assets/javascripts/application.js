@@ -18,7 +18,7 @@
 
 
 
-$(document).ready(function(){
+$(function() {
     $(".rails-flash").animate({right: '0px'}).delay(1000).fadeOut(2000);
 
 

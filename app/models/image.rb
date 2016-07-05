@@ -1,5 +1,5 @@
 class Image < ActiveRecord::Base
-  belongs_to :character_template
+  belongs_to :imageable, polymorphic: true
   has_attached_file :image,
                     styles: lambda { |a| a.instance.check_file_type}
   validates_attachment_content_type :image, :content_type => [/\Aimage\/.*\Z/]

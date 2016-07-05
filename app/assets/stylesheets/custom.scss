@@ -1,20 +1,35 @@
 @import url(http://fonts.googleapis.com/css?family=Press+Start+2P);
 
-html, body, .container-table {
-  height: 90%;
-  color: orange;
-}
+$main_color: orange;
+//#20899a
+$hover_color: #3dc2eb;
+$background_panel_color: #343434;
+$green_btn: #165a3a;
+
 
 html {
-  background: url("pixelart.jpg");
+  height: 100%;
+  background-color: #1d6c7b;
+  background-image: -webkit-radial-gradient(circle, #a0deec 0%, #1d6c7b 50%, #0e2d74 100%);
+  background-image: radial-gradient(circle, #a0deec 0%, #1d6c7b 50%, #0e2d74 100%);
+}
+
+body {
+  height: inherit;
+  color: $main_color;
+}
+
+.container-table{
+  height: 90%;
+  z-index: 10;
 }
 
 .navbar-brand{
-  color: orange !important;
+  color: $main_color !important;
 }
 
 .navbar-brand:hover{
-  color: #3dc2eb !important;
+  color: $hover_color !important;
 }
 
 body {
@@ -46,7 +61,7 @@ body {
 }
 
 .alert-danger, .alert-success, .alert-warning, .alert-info{
-  background: #343434;
+  background: $background_panel_color;
   font: 1.4em "Press start 2P";
 }
 
@@ -82,12 +97,12 @@ body {
   margin: 5*$width auto;
 }
 .orange-gray {
-  @include other( 6px, orange, #343434 );
+  @include other( 6px, $main_color, $background_panel_color );
 }
 
 
 .loginpanel {
-  background: #343434;
+  background: $background_panel_color;
   min-width: 300px;
   width: 30%;
 
@@ -98,15 +113,15 @@ body {
 
   .panelheader {
     padding: 15px;
-    border-bottom: 1px solid #343434;
-    border-top: 1px solid #343434;
-    background: #343434;
+    border-bottom: 1px solid $background_panel_color;
+    border-top: 1px solid $background_panel_color;
+    background: $background_panel_color;
     position: relative;
   }
 
   .panelheader h2 {
     font-size: 28px;
-    color: orange;
+    color: $main_color;
     letter-spacing: -0.5px;
     margin: 0;
   }
@@ -277,11 +292,11 @@ body {
 }
 
 .btn.outline {
-  background: #343434;
+  background: $background_panel_color;
 }
 
 .btn.green{
-  background: #165a3a;
+  background: $green_btn;
 }
 
 .btn.red {
@@ -293,15 +308,183 @@ body {
 }
 
 .btn-bit.red, .btn-bit.green, .btn-bit.outline {
-  border: 2px solid #ffa500;
-  color: orange;
+  border: 2px solid $main_color;
+  color: $main_color;
 }
 .btn-bit:hover, .btn-bit:focus, .btn-bit:active, .open > .dropdown-toggle.btn-bit {
-  color: #3dc2eb;
-  border-color: #3dc2eb;
+  color: $hover_color;
+  border-color: $hover_color;
 }
 .btn-bit:active, .btn-bit.active {
-  border-color: orange;
-  color: orange;
+  border-color: $main_color;
+  color: $main_color;
   box-shadow: none;
+}
+
+
+/***********************
+    UPLOAD STYLE
+************************/
+
+
+.avatar {
+  .preview {
+    display: block;
+    width: 250px;
+    height: 250px;
+    margin: 20px auto;
+    border: 2px solid $main_color;
+    overflow: hidden;
+  }
+
+  .file-upload-wrapper {
+    position: relative;
+    width: 250px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    z-index: 5;
+    display: block;
+  }
+
+  .file-upload-native,
+  .file-upload-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+  }
+
+  input[type="file"]::-webkit-file-upload-button {
+    cursor: pointer;
+  }
+
+  .file-upload-native:focus,
+  .file-upload-text:focus {
+    outline: none;
+  }
+
+  .file-upload-text {
+    z-index: 10;
+    padding: 5px 15px 8px;
+    overflow: hidden;
+    font-size: 14px;
+    line-height: 1.4;
+    cursor: pointer;
+    text-align: center;
+    letter-spacing: 1px;
+    text-overflow: ellipsis;
+    color: $main_color;
+    background-color: $green_btn;
+    border: 0;
+
+  }
+
+  .file-upload-native {
+    z-index: 15;
+    opacity: 0;
+  }
+
+  textarea, input {
+    border: none;
+    background-color: transparent;
+    resize: none;
+  }
+}
+
+
+/***********************
+  ПОЛОВИНУ НАДО УБРАТь
+************************/
+
+.image{
+  display: inline-block;
+  position: relative;
+  margin: 5px;
+}
+
+.delete {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.close{
+  display: none;
+}
+
+.profile-bg{
+  background: $background_panel_color;
+}
+
+.page-header {
+  border-bottom: 2px solid $main_color;
+}
+
+.modal {
+  text-align: center;
+  padding: 0!important;
+}
+
+.modal:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -4px;
+}
+
+.modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.modal-content{
+  background: $background_panel_color;
+  border: none;
+}
+
+.table>tbody>tr>td {
+  border: none;
+}
+
+
+.modal-header{
+  border-bottom: none;
+}
+
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus {
+  background: $background_panel_color;
+  color: $main_color;
+  border: 2px solid $main_color;
+}
+
+.nav-tabs>li>a, .nav-tabs>li>a:focus {
+  color: $main_color;
+}
+
+.nav-tabs>li>a:hover,.nav-tabs>li>a:hover, .nav-tabs>li>a:focus {
+  background: $background_panel_color;
+  color: $hover_color;
+  border-color: transparent;
+}
+
+.nav-tabs {
+  border-bottom: 2px solid $main_color;
+}
+
+.modal-footer{
+  border-top: 2px solid $main_color;
+}
+
+.close {
+  color: $main_color;
+  opacity: 1;
+}
+
+.close:hover{
+  color: $hover_color;
 }
