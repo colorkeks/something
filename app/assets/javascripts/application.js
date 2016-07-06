@@ -13,29 +13,11 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
-//= require turbolinks
 //= require_tree .
 
 
 
 $(function() {
     $(".rails-flash").animate({right: '0px'}).delay(1000).fadeOut(2000);
-
-
-
-    function updateText(event){
-        var input=$(this);
-        setTimeout(function(){
-            var val=input.val();
-            if(val!="")
-                input.parent().addClass("floating-placeholder-float");
-            else
-                input.parent().removeClass("floating-placeholder-float");
-        },1)
-    }
-    $(".floating-placeholder input").keydown(updateText);
-    $(".floating-placeholder input").change(updateText);
-    $(".floating-placeholder textarea").keydown(updateText);
-    $(".floating-placeholder textarea").change(updateText);
 });
 

@@ -71,6 +71,7 @@ body {
 ************************/
 
 .bit-border {
+  position: relative;
   margin: 0 auto;
   text-align: center;
 }
@@ -424,6 +425,13 @@ body {
   border-bottom: 2px solid $main_color;
 }
 
+
+.footer{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
 .modal {
   text-align: center;
   padding: 0!important;
@@ -488,4 +496,31 @@ body {
 
 .close:hover{
   color: $hover_color;
+}
+
+/***********************
+ TABLE
+************************/
+.table-bordered {
+  border: 2px solid orange;
+}
+
+.table {
+
+  .item {
+    div {
+      margin: 3px;
+      display: inline-block !important
+    }
+  }
+
+  .fields {
+    background-color: #343434 !important;
+  }
+
+  .remove{
+    width: 50px;
+    text-align: center;
+    vertical-align: middle;
+  }
 }

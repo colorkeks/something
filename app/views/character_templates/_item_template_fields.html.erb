@@ -12,19 +12,19 @@
         <%= f.simple_fields_for :image, f.object.build_image do |ff| %>
             <div class="avatar">
               <div class="preview img-wrapper"></div>
-              <%= render partial: 'images/form', locals: {f: ff} %>
+              <%= render partial: 'images/image_fields', locals: {f: ff} %>
             </div>
         <% end %>
       </div>
       <div class="col-md-8">
         <div style="margin: 20px">
-          <%= f.input :name %>
-          <%= f.input :description %>
-          <%= f.input :item_type %>
-          <%= f.input :equipped %>
-          <%= f.input :strength %>
-          <%= f.input :intellect %>
-          <%= f.input :agility %>
+          <%= f.input :name, input_html: {class: 'form-control'} %>
+          <%= f.input :description, input_html: {class: 'form-control'} %>
+          <%= f.input :item_type, labe: 'Item_type', input_html: {class: 'form-control'} %>
+          <%= f.input :equipped, input_html: {class: 'form-control'} %>
+          <%= f.input :strength, input_html: {min: '0', step: 'any', class: 'form-control'} %>
+          <%= f.input :intellect, input_html: {min: '0', step: 'any', class: 'form-control'} %>
+          <%= f.input :agility, input_html: {min: '0', step: 'any', class: 'form-control'} %>
           <%= f.input :character_template_id, as: :hidden %>
         </div>
       </div>
@@ -36,7 +36,7 @@
         <div style="margin: 20px">
           <h2>Сопротивление</h2>
           <%= f.simple_fields_for :resist_templates, f.object.resist_templates.build do |ff| %>
-              <%= render partial: 'resist_templates/form', locals: {f: ff} %>
+              <%= render partial: 'resist_template_fields', locals: {f: ff} %>
           <% end %>
         </div>
       </div>
@@ -48,7 +48,7 @@
         <div style="margin: 20px">
           <h2>Типы атак</h2>
           <%= f.simple_fields_for :attack_type_template, f.object.build_attack_type_template do |ff| %>
-              <%= render partial: 'attack_type_templates/form', locals: {f: ff} %>
+              <%= render partial: 'attack_type_template_fields', locals: {f: ff} %>
           <% end %>
         </div>
       </div>

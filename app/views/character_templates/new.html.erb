@@ -10,68 +10,75 @@
 
   <%= simple_form_for @character_template, :html => {:class => 'form-horizontal', autocomplete: 'off'} do |f| %>
 
-        <div class="tab-content">
-          <div class="tab-pane active" id="hero">
-            <div class="row">
+      <div class="tab-content">
+        <div class="tab-pane active" id="hero">
+          <div class="row">
             <div class="col-md-4">
               <%= f.simple_fields_for :image do |ff| %>
                   <div class="avatar">
                     <div class="preview img-wrapper"></div>
-                    <%= render partial: 'images/form', locals: {f: ff} %>
+                    <%= render partial: 'images/image_fields', locals: {f: ff} %>
                   </div>
               <% end %>
             </div>
             <div class="col-md-8">
               <div style="margin: 20px">
-                <%= render partial: 'form', locals: {f: f} %>
+                <%= render partial: 'character_template_fields', locals: {f: f} %>
               </div>
-            </div>
-            </div>
-          </div>
-          <div class="tab-pane" id="resists">
-            <div class="row">
-              <div class="col-md-12">
-                <div style="margin: 20px">
-                  <h2>Сопротивление</h2>
-                  <%= f.simple_fields_for :resist_templates do |ff| %>
-                      <%= render partial: 'resist_templates/form', locals: {f: ff} %>
-                  <% end %>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="tab-pane" id="attacks">
-            <div class="row">
-              <div class="col-md-12">
-                <div style="margin: 20px">
-                  <h2>Типы атак</h2>
-                  <%= f.simple_fields_for :attack_type_templates do |ff| %>
-                      <%= render partial: 'attack_type_templates/form', locals: {f: ff} %>
-                  <% end %>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="tab-pane" id="items">
-            <div style="margin: 20px">
-              <h2>Предметы</h2>
-              <%= f.simple_fields_for :item_templates do |ff| %>
-                  <%= render partial: 'item_templates/form', locals: {f: ff} %>
-              <% end %>
             </div>
           </div>
         </div>
-
-
+        <div class="tab-pane" id="resists">
+          <div class="row">
+            <div class="col-md-12">
+              <div style="margin: 20px">
+                <h4>Сопротивления <%= link_to_add_fields '<i class="glyphicon glyphicon-plus" aria-hidden="true"></i>', f, :resist_templates, 'resist_table', id: 'add-resists-btn', class: 'btn btn-bit btn-lg green' %></h4>
+                <table id="resist_table" class="table resist_table table-bordered">
+                  <tbody id="resist_table_body">
+                  <%= f.simple_fields_for :resist_templates do |ff| %>
+                      <%= render partial: 'resist_template_fields', locals: {f: ff} %>
+                  <% end %>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane" id="attacks">
+          <div class="row">
+            <div class="col-md-12">
+              <div style="margin: 20px">
+                <h4>Типы Атак <%= link_to_add_fields '<i class="glyphicon glyphicon-plus" aria-hidden="true"></i>', f, :attack_type_templates, 'attack_type_table', id: 'add-attack_types-btn', class: 'btn btn-bit btn-lg green' %></h4>
+                <table id="attack_type_table" class="table attack_type_table table-bordered">
+                  <tbody id="attack_type_table_body">
+                  <%= f.simple_fields_for :attack_type_templates do |ff| %>
+                      <%= render partial: 'attack_type_template_fields', locals: {f: ff} %>
+                  <% end %>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane" id="items">
+          <div style="margin: 20px">
+            <h2>Предметы</h2>
+            <%= f.simple_fields_for :item_templates do |ff| %>
+                <%= render partial: 'item_template_fields', locals: {f: ff} %>
+            <% end %>
+          </div>
+        </div>
+      </div>
 
 
       <!--TODO сделать таблицу, с возможность добалвять/удалять пачку полей-->
       <!--TODO сделать список типов атак/брони/уязвимостей-->
       <!--TODO стилизировать счетчики, сейчас отстой-->
 
-
-      <%= f.button :submit, :class => 'btn btn-bit btn-lg green' %>
-      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                  character_templates_path, :class => 'btn btn-bit btn-lg outline' %>
+      <div class="footer">
+        <%= f.button :submit, :class => 'btn btn-bit btn-lg green' %>
+        <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                    character_templates_path, :class => 'btn btn-bit btn-lg outline' %>
+      </div>
   <% end %>
 </div>

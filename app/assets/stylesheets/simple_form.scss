@@ -76,58 +76,10 @@
   $padding-horizontal:20px;
   $highlight-color:#16abf0;
 
-
-  .floating-placeholder, .floating-placeholder>input{
-    font-size:20pt;
-    line-height:1em;
-    height:2.4em;
-    padding:0;
-    width:100%;
-  }
-  .floating-placeholder input:focus+label,.floating-placeholder textarea:focus+label {
-    color:$highlight-color;
-  }
-  .floating-placeholder textarea[value]+label, .floating-placeholder textarea[value]+label{
-    color:red;
-  }
-  .floating-placeholder{
-    position:relative;
-  }
-
-  .floating-placeholder input,.floating-placeholder textarea{
-    font-size:20pt;
-    border:none;
-    outline:none;
-    position:absolute;
-    top:0;
-    left:0;
-    display:block;
-    background:transparent;
-    z-index:2;
-    border-bottom:1px solid orange;
-    text-indent:$padding-horizontal;
-    width: 300px;
-  }
-
-  .floating-placeholder:last-child input .floating-placeholder:last-child textarea{
-    border-bottom:none;
-  }
-  .floating-placeholder label{
-    display:block;
-    position:absolute;
-    top:0;
-    left:$padding-horizontal;
-    font-size:20pt;
-    z-index:1;
-    @include transform-origin(0,0.0em);
-    @include transition(transform 160ms, color 200ms);
-    @include transform(scale(1,1) rotateY(0));
-  }
-  .floating-placeholder-float label{
-    @include transform(scale(0.55,0.55) rotateY(0));
-  }
-  .floating-placeholder-float input,  .floating-placeholder-float textarea{
-    padding-top: 25px;
+  .form-control{
+    background: #faffbd ;
+    border: 2px solid orange;
+    color: black;
   }
 
 }
