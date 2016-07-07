@@ -14,10 +14,20 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require_tree .
+//= require bootstrap-slider
 
 
 
 $(function() {
     $(".rails-flash").animate({right: '0px'}).delay(1000).fadeOut(2000);
+    
+    
+    $(".slider").slider({
+        min: 1,
+        max: 50,
+        step: 1,
+        value: [5,10]
+    });
 });
+
 
