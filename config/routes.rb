@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  resources :attack_types
+  resources :resists
+  resources :attack_type_templates
+  resources :resist_templates
   get 'table/index'
   root to: 'table#index', as: 'table'
 
@@ -13,15 +17,11 @@ Rails.application.routes.draw do
 
   resources :character_parameters
 
-  resources :attack_type_templates
 
-  resources :resist_templates
 
   resources :character_templates
 
-  resources :attack_types
 
-  resources :resists
 
   resources :items
 

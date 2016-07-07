@@ -6,11 +6,6 @@
 </p>
 
 <p>
-  <strong>Description:</strong>
-  <%= @attack_type_template.description %>
-</p>
-
-<p>
   <strong>Attack:</strong>
   <%= @attack_type_template.attack %>
 </p>
@@ -18,6 +13,31 @@
 <p>
   <strong>Attack type:</strong>
   <%= @attack_type_template.attack_type %>
+</p>
+
+<p>
+  <strong>Crit chance:</strong>
+  <%= @attack_type_template.crit_chance %>
+</p>
+
+<p>
+  <strong>Crit dmg:</strong>
+  <%= @attack_type_template.crit_dmg %>
+</p>
+
+<p>
+  <strong>Character template:</strong>
+  <%= @attack_type_template.character_template_id %>
+</p>
+
+<p>
+  <strong>Item template:</strong>
+  <%= @attack_type_template.item_template_id %>
+</p>
+
+<p>
+  <strong>Monster:</strong>
+  <%= @attack_type_template.monster_id %>
 </p>
 
 <%= link_to 'Edit', edit_attack_type_template_path(@attack_type_template) %> |

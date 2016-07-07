@@ -12,14 +12,16 @@ class CharacterTemplatesController < ApplicationController
 
   def new
     @character_template = CharacterTemplate.new
+    @bag_template = BagTemplate.new
     @item_template = ItemTemplate.new
     @character_template.build_image
-    @character_template.resist_templates.build
+    @character_template.build_resist_template
     @character_template.attack_type_templates.build
-    @character_template.item_templates.build
+    @character_template.build_bag_template
+    @bag_template.item_templates.build
     @item_template.build_image
     @item_template.build_attack_type_template
-    @item_template.resist_templates.build
+    @item_template.build_resist_template
   end
 
   def edit
@@ -69,8 +71,8 @@ class CharacterTemplatesController < ApplicationController
     def character_template_params
       params.require(:character_template).permit(:name, :description, :hp, :strength, :intellect, :agility, :main_param,
                                                   image_attributes:[:image, :character_template_id],
-                                                  resist_templates_attributes:[:type, :percent, :character_template_id, :item_template_id],
-                                                  attack_type_templates_attributes:[:name, :description, :attack, :attack_type,:character_template_id, :item_template_id],
-                                                  item_templates_attribtes:[:name, :description, :item_type, :equipped, :strength, :intellect, :agility, :character_template_id])
+                                                  resist_templates_attributes:[:physical, :fire, :water, :earth, :holy, :necrotic, :nature, :item_template_id, :character_template_id],
+                                                  attack_type_templates_attributes:[:name, :attack, :attack_type, :crit_chance, :crit_dmg, :character_template_id, :item_template_id],
+                                                  item_templates_attribtes:[:name, :description, :item_type, :strength, :intellect, :agility, :sell_cost, :buy_cost, :purchasable, :bag_template_id, :reward_template_id])
     end
 end

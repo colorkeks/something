@@ -5,10 +5,12 @@
 <table>
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Description</th>
       <th>Attack</th>
-      <th>Attack type</th>
+      <th>Crit chance</th>
+      <th>Crit dmg</th>
+      <th>Character</th>
+      <th>Item</th>
+      <th>Attack type template</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,10 +18,12 @@
   <tbody>
     <% @attack_types.each do |attack_type| %>
       <tr>
-        <td><%= attack_type.name %></td>
-        <td><%= attack_type.description %></td>
         <td><%= attack_type.attack %></td>
-        <td><%= attack_type.attack_type %></td>
+        <td><%= attack_type.crit_chance %></td>
+        <td><%= attack_type.crit_dmg %></td>
+        <td><%= attack_type.character_id %></td>
+        <td><%= attack_type.item_id %></td>
+        <td><%= attack_type.attack_type_template_id %></td>
         <td><%= link_to 'Show', attack_type %></td>
         <td><%= link_to 'Edit', edit_attack_type_path(attack_type) %></td>
         <td><%= link_to 'Destroy', attack_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>

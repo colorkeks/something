@@ -1,0 +1,5 @@
+<!--TODO СТИЛИЗОВАТЬ-->
+<%= f.input :gold, input_html: {min: '0', step: 'any', class: 'form-control'} %>
+<%= f.simple_fields_for :item_templates, f.object.item_templates.build  do |ff| %>
+    <%= render partial: 'item_template_fields', locals: {f: ff} %>
+<% end %>

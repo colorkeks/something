@@ -1,22 +1,28 @@
 class ResistTemplatesController < ApplicationController
-  delegate :can?, :cannot?, :to => :ability
-  load_and_authorize_resource
   before_action :set_resist_template, only: [:show, :edit, :update, :destroy]
 
+  # GET /resist_templates
+  # GET /resist_templates.json
   def index
     @resist_templates = ResistTemplate.all
   end
 
+  # GET /resist_templates/1
+  # GET /resist_templates/1.json
   def show
   end
 
+  # GET /resist_templates/new
   def new
     @resist_template = ResistTemplate.new
   end
 
+  # GET /resist_templates/1/edit
   def edit
   end
 
+  # POST /resist_templates
+  # POST /resist_templates.json
   def create
     @resist_template = ResistTemplate.new(resist_template_params)
 
@@ -31,6 +37,8 @@ class ResistTemplatesController < ApplicationController
     end
   end
 
+  # PATCH/PUT /resist_templates/1
+  # PATCH/PUT /resist_templates/1.json
   def update
     respond_to do |format|
       if @resist_template.update(resist_template_params)
@@ -43,6 +51,8 @@ class ResistTemplatesController < ApplicationController
     end
   end
 
+  # DELETE /resist_templates/1
+  # DELETE /resist_templates/1.json
   def destroy
     @resist_template.destroy
     respond_to do |format|
@@ -59,6 +69,6 @@ class ResistTemplatesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def resist_template_params
-      params.require(:resist_template).permit(:type, :percent, :character_template_id, :item_template_id)
+      params.require(:resist_template).permit(:physical, :fire, :water, :earth, :holy, :necrotic, :nature, :item_template_id, :character_template_id, :monster_id)
     end
 end

@@ -5,7 +5,7 @@
     <li class="active"><a href="#hero" data-toggle="tab">Герой</a></li>
     <li><a href="#resists" data-toggle="tab">Сопротивления</a></li>
     <li><a href="#attacks" data-toggle="tab">Типы атак</a></li>
-    <li><a href="#items" data-toggle="tab">Предметы</a></li>
+    <li><a href="#bag" data-toggle="tab">Предметы</a></li>
   </ul>
 
   <%= simple_form_for @character_template, :html => {:class => 'form-horizontal', autocomplete: 'off'} do |f| %>
@@ -32,10 +32,10 @@
           <div class="row">
             <div class="col-md-12">
               <div style="margin: 20px">
-                <h4>Сопротивления <%= link_to_add_fields '<i class="glyphicon glyphicon-plus" aria-hidden="true"></i>', f, :resist_templates, 'resist_table', id: 'add-resists-btn', class: 'btn btn-bit btn-lg green' %></h4>
+                <h4>Сопротивления <%= link_to_add_fields '<i class="glyphicon glyphicon-plus" aria-hidden="true"></i>', f, :resist_template, 'resist_table', id: 'add-resists-btn', class: 'btn btn-bit btn-lg green' %></h4>
                 <table id="resist_table" class="table resist_table table-bordered">
                   <tbody id="resist_table_body">
-                  <%= f.simple_fields_for :resist_templates do |ff| %>
+                  <%= f.simple_fields_for :resist_template do |ff| %>
                       <%= render partial: 'resist_template_fields', locals: {f: ff} %>
                   <% end %>
                   </tbody>
@@ -60,11 +60,11 @@
             </div>
           </div>
         </div>
-        <div class="tab-pane" id="items">
+        <div class="tab-pane" id="bag">
           <div style="margin: 20px">
-            <h2>Предметы</h2>
-            <%= f.simple_fields_for :item_templates do |ff| %>
-                <%= render partial: 'item_template_fields', locals: {f: ff} %>
+            <h2>Сумка</h2>
+            <%= f.simple_fields_for :bag_template do |ff| %>
+                <%= render partial: 'bag_template_fields', locals: {f: ff} %>
             <% end %>
           </div>
         </div>

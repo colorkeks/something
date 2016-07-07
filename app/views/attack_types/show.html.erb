@@ -1,23 +1,33 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
-  <%= @attack_type.name %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @attack_type.description %>
-</p>
-
-<p>
   <strong>Attack:</strong>
   <%= @attack_type.attack %>
 </p>
 
 <p>
-  <strong>Attack type:</strong>
-  <%= @attack_type.attack_type %>
+  <strong>Crit chance:</strong>
+  <%= @attack_type.crit_chance %>
+</p>
+
+<p>
+  <strong>Crit dmg:</strong>
+  <%= @attack_type.crit_dmg %>
+</p>
+
+<p>
+  <strong>Character:</strong>
+  <%= @attack_type.character_id %>
+</p>
+
+<p>
+  <strong>Item:</strong>
+  <%= @attack_type.item_id %>
+</p>
+
+<p>
+  <strong>Attack type template:</strong>
+  <%= @attack_type.attack_type_template_id %>
 </p>
 
 <%= link_to 'Edit', edit_attack_type_path(@attack_type) %> |

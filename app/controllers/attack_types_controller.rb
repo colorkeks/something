@@ -1,6 +1,4 @@
 class AttackTypesController < ApplicationController
-  delegate :can?, :cannot?, :to => :ability
-  load_and_authorize_resource
   before_action :set_attack_type, only: [:show, :edit, :update, :destroy]
 
   # GET /attack_types
@@ -12,6 +10,15 @@ class AttackTypesController < ApplicationController
   # GET /attack_types/1
   # GET /attack_types/1.json
   def show
+  end
+
+  # GET /attack_types/new
+  def new
+    @attack_type = AttackType.new
+  end
+
+  # GET /attack_types/1/edit
+  def edit
   end
 
   # POST /attack_types
@@ -62,6 +69,6 @@ class AttackTypesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def attack_type_params
-      params.require(:attack_type).permit(:attack, :character_id, :attack_type_template_id, :item_id)
+      params.require(:attack_type).permit(:attack, :crit_chance, :crit_dmg, :character_id, :item_id, :attack_type_template_id)
     end
 end

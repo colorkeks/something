@@ -3,7 +3,7 @@ class CreateItems < ActiveRecord::Migration
     create_table :items do |t|
       t.boolean :equipped
       t.integer :item_template_id
-      t.integer :character_id
+      t.integer :bag_id
 
       t.timestamps null: false
     end

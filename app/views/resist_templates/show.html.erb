@@ -1,13 +1,53 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Type:</strong>
-  <%= @resist_template.type %>
+  <strong>Physical:</strong>
+  <%= @resist_template.physical %>
 </p>
 
 <p>
-  <strong>Percent:</strong>
-  <%= @resist_template.percent %>
+  <strong>Fire:</strong>
+  <%= @resist_template.fire %>
+</p>
+
+<p>
+  <strong>Water:</strong>
+  <%= @resist_template.water %>
+</p>
+
+<p>
+  <strong>Earth:</strong>
+  <%= @resist_template.earth %>
+</p>
+
+<p>
+  <strong>Holy:</strong>
+  <%= @resist_template.holy %>
+</p>
+
+<p>
+  <strong>Necrotic:</strong>
+  <%= @resist_template.necrotic %>
+</p>
+
+<p>
+  <strong>Nature:</strong>
+  <%= @resist_template.nature %>
+</p>
+
+<p>
+  <strong>Item template:</strong>
+  <%= @resist_template.item_template_id %>
+</p>
+
+<p>
+  <strong>Character template:</strong>
+  <%= @resist_template.character_template_id %>
+</p>
+
+<p>
+  <strong>Monster:</strong>
+  <%= @resist_template.monster_id %>
 </p>
 
 <%= link_to 'Edit', edit_resist_template_path(@resist_template) %> |

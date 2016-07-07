@@ -1,6 +1,4 @@
 class AttackTypeTemplatesController < ApplicationController
-  delegate :can?, :cannot?, :to => :ability
-  load_and_authorize_resource
   before_action :set_attack_type_template, only: [:show, :edit, :update, :destroy]
 
   # GET /attack_type_templates
@@ -71,6 +69,6 @@ class AttackTypeTemplatesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def attack_type_template_params
-      params.require(:attack_type_template).permit(:name, :attack, :attack_type, :character_template_id, :item_template_id)
+      params.require(:attack_type_template).permit(:name, :attack, :attack_type, :crit_chance, :crit_dmg, :character_template_id, :item_template_id, :monster_id)
     end
 end

@@ -4,11 +4,14 @@ class CreateItemTemplates < ActiveRecord::Migration
       t.string :name
       t.text :description
       t.string :item_type
-      t.boolean :equipped
       t.integer :strength
       t.integer :intellect
       t.integer :agility
-      t.integer :character_template_id
+      t.integer :sell_cost
+      t.integer :buy_cost
+      t.boolean :purchasable
+      t.integer :bag_template_id
+      t.integer :reward_template_id
 
       t.timestamps null: false
     end

@@ -6,6 +6,9 @@
 </ul>
 
 <div class="tab-content">
+  <!--TODO СДЕЛАТЬ ИЗ ЭТОГО ТАБЛИЦУ ДОБАВИТЬ КНОПКИ ДОБАВЛЕНИЯ/УДАЛЕНИЯ ПОЛЕЙ-->
+  <!--TODO МБ ПРИСОБАЧИТЬ СКРОЛЛ ЧТОБЫ СТРАНИЦА НЕ РАСТЯГИВАЛАСЬ ДО БЕСКОНЕЧНОСТИ-->
+  <!--TODO ПОДУМАТЬ НАД ТАБАМИ, ТК ТЕПЕРЬ ITEM ИМЕЕТ ОДИН! RESIST И ATTACK_TYPE-->
   <div class="tab-pane active" id="items_t">
     <div class="row">
       <div class="col-md-4">
@@ -21,11 +24,14 @@
           <%= f.input :name, input_html: {class: 'form-control'} %>
           <%= f.input :description, input_html: {class: 'form-control'} %>
           <%= f.input :item_type, labe: 'Item_type', input_html: {class: 'form-control'} %>
-          <%= f.input :equipped, input_html: {class: 'form-control'} %>
           <%= f.input :strength, input_html: {min: '0', step: 'any', class: 'form-control'} %>
           <%= f.input :intellect, input_html: {min: '0', step: 'any', class: 'form-control'} %>
           <%= f.input :agility, input_html: {min: '0', step: 'any', class: 'form-control'} %>
-          <%= f.input :character_template_id, as: :hidden %>
+          <!--TODO ЕСЛИ НЕ МОЖЕТ БЫТЬ КУПЛЕН ТО НЕ УКАЗЫВАТЬ BUY_COST-->
+          <%= f.input :purchasable, input_html: { class: 'form-control'} %>
+          <%= f.input :sell_cost, input_html: {min: '1', step: 'any', class: 'form-control'} %>
+          <%= f.input :buy_cost, input_html: {min: '1', step: 'any', class: 'form-control'} %>
+          <%= f.input :bag_template_id, as: :hidden %>
         </div>
       </div>
     </div>
@@ -35,7 +41,7 @@
       <div class="col-md-12">
         <div style="margin: 20px">
           <h2>Сопротивление</h2>
-          <%= f.simple_fields_for :resist_templates, f.object.resist_templates.build do |ff| %>
+          <%= f.simple_fields_for :resist_template, f.object.build_resist_template do |ff| %>
               <%= render partial: 'resist_template_fields', locals: {f: ff} %>
           <% end %>
         </div>

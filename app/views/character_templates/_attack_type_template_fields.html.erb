@@ -1,8 +1,11 @@
 <%= f.error_notification %>
 <tr class="fields item">
+  <!--TODO ADD ICON TO ATTACK_TYPE-->
   <td><%= f.input :name, input_html: {class: 'form-control'} %></td>
-  <td><%= f.input :attack, input_html: {class: 'form-control'} %></td>
+  <td><%= f.input :attack, as: :range, input_html: {class: 'form-control'} %></td>
   <td><%= f.input :attack_type, label: 'Attack_type', input_html: {class: 'form-control'} %></td>
+  <td><%= f.input :crit_chance, label: 'Crit_chance', input_html: {class: 'form-control'} %></td>
+  <td><%= f.input :crit_dmg, as: :range, label: 'Crit_damage', input_html: {class: 'form-control'} %></td>
   <td class="remove">
     <%= link_to_remove_fields '<i class="glyphicon glyphicon-remove"></i>', f, 'btn btn-bit btn-lg red' %>
   </td>

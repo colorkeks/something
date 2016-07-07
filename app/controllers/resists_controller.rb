@@ -1,15 +1,28 @@
 class ResistsController < ApplicationController
-  delegate :can?, :cannot?, :to => :ability
-  load_and_authorize_resource
   before_action :set_resist, only: [:show, :edit, :update, :destroy]
 
+  # GET /resists
+  # GET /resists.json
   def index
-    @resist = Resist.all
+    @resists = Resist.all
   end
 
+  # GET /resists/1
+  # GET /resists/1.json
   def show
   end
 
+  # GET /resists/new
+  def new
+    @resist = Resist.new
+  end
+
+  # GET /resists/1/edit
+  def edit
+  end
+
+  # POST /resists
+  # POST /resists.json
   def create
     @resist = Resist.new(resist_params)
 
@@ -24,6 +37,8 @@ class ResistsController < ApplicationController
     end
   end
 
+  # PATCH/PUT /resists/1
+  # PATCH/PUT /resists/1.json
   def update
     respond_to do |format|
       if @resist.update(resist_params)
@@ -36,7 +51,8 @@ class ResistsController < ApplicationController
     end
   end
 
-
+  # DELETE /resists/1
+  # DELETE /resists/1.json
   def destroy
     @resist.destroy
     respond_to do |format|
@@ -53,6 +69,6 @@ class ResistsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def resist_params
-      params.require(:resist).permit(:percent , :character_id, :resist_template_id, :item_id)
+      params.require(:resist).permit(:physical, :fire, :water, :earth, :holy, :necrotic, :nature, :character_id, :resist_template_id)
     end
 end

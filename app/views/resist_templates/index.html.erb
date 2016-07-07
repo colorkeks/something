@@ -5,8 +5,16 @@
 <table>
   <thead>
     <tr>
-      <th>Type</th>
-      <th>Percent</th>
+      <th>Physical</th>
+      <th>Fire</th>
+      <th>Water</th>
+      <th>Earth</th>
+      <th>Holy</th>
+      <th>Necrotic</th>
+      <th>Nature</th>
+      <th>Item template</th>
+      <th>Character template</th>
+      <th>Monster</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -14,11 +22,19 @@
   <tbody>
     <% @resist_templates.each do |resist_template| %>
       <tr>
-        <td><%= resist_template.type %></td>
-        <td><%= resist_template.percent %></td>
+        <td><%= resist_template.physical %></td>
+        <td><%= resist_template.fire %></td>
+        <td><%= resist_template.water %></td>
+        <td><%= resist_template.earth %></td>
+        <td><%= resist_template.holy %></td>
+        <td><%= resist_template.necrotic %></td>
+        <td><%= resist_template.nature %></td>
+        <td><%= resist_template.item_template_id %></td>
+        <td><%= resist_template.character_template_id %></td>
+        <td><%= resist_template.monster_id %></td>
         <td><%= link_to 'Show', resist_template %></td>
         <td><%= link_to 'Edit', edit_resist_template_path(resist_template) %></td>
-        <td><%= link_to 'Destroy', resist_template, method: :delete, data: {confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', resist_template, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +42,4 @@
 
 <br>
 
-<%= link_to 'New Resists template', new_resist_template_path %>
+<%= link_to 'New Resist template', new_resist_template_path %>
