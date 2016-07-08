@@ -8,8 +8,5 @@
   <td><%= f.input :holy, input_html: {min: '-100', max: '100', step: 'any', class: 'form-control'} %></td>
   <td><%= f.input :necrotic, input_html: {min: '-100', max: '100', step: 'any', class: 'form-control'} %></td>
   <td><%= f.input :nature, input_html: {min: '-100', max: '100', step: 'any', class: 'form-control'} %></td>
-  <td class="remove">
-    <%= link_to_remove_fields '<i class="glyphicon glyphicon-remove"></i>', f, 'btn btn-bit btn-lg red' %>
-  </td>
   <%= f.input :character_template_id, as: :hidden%>
 </tr>

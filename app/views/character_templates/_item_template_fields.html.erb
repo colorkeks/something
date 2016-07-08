@@ -1,63 +1,56 @@
-<%= f.error_notification %>
-<ul class="nav nav-tabs">
-  <li class="active"><a href="#items_t" data-toggle="tab">Предметы</a></li>
-  <li><a href="#item_resists" data-toggle="tab">Сопротивления</a></li>
-  <li><a href="#attack" data-toggle="tab">Тип атаки</a></li>
-</ul>
-
-<div class="tab-content">
-  <!--TODO СДЕЛАТЬ ИЗ ЭТОГО ТАБЛИЦУ ДОБАВИТЬ КНОПКИ ДОБАВЛЕНИЯ/УДАЛЕНИЯ ПОЛЕЙ-->
-  <!--TODO МБ ПРИСОБАЧИТЬ СКРОЛЛ ЧТОБЫ СТРАНИЦА НЕ РАСТЯГИВАЛАСЬ ДО БЕСКОНЕЧНОСТИ-->
-  <!--TODO ПОДУМАТЬ НАД ТАБАМИ, ТК ТЕПЕРЬ ITEM ИМЕЕТ ОДИН! RESIST И ATTACK_TYPE-->
-  <div class="tab-pane active" id="items_t">
-    <div class="row">
-      <div class="col-md-4">
-        <%= f.simple_fields_for :image, f.object.build_image do |ff| %>
-            <div class="avatar">
-              <div class="preview img-wrapper"></div>
-              <%= render partial: 'images/image_fields', locals: {f: ff} %>
-            </div>
-        <% end %>
-      </div>
-      <div class="col-md-8">
-        <div style="margin: 20px">
-          <%= f.input :name, input_html: {class: 'form-control'} %>
-          <%= f.input :description, input_html: {class: 'form-control'} %>
-          <%= f.input :item_type, labe: 'Item_type', input_html: {class: 'form-control'} %>
-          <%= f.input :strength, input_html: {min: '0', step: 'any', class: 'form-control'} %>
-          <%= f.input :intellect, input_html: {min: '0', step: 'any', class: 'form-control'} %>
-          <%= f.input :agility, input_html: {min: '0', step: 'any', class: 'form-control'} %>
+<div class="fields">
+  <div class="row">
+    <div class="col-md-2">
+      <%= f.simple_fields_for :image, f.object.build_image do |ff| %>
+          <div class="avatar">
+            <div class="preview img-wrapper"></div>
+            <%= render partial: 'images/image_fields', locals: {f: ff} %>
+          </div>
+      <% end %>
+    </div>
+    <div class="col-md-10">
+      <div class="table">
+        <div class="item">
+          <div><%= f.input :name, input_html: {class: 'form-control'} %></div>
+          <!--<div><%#= f.input :description, input_html: {class: 'form-control'} %></div>-->
+          <div><%= f.input :item_type, label: 'Item_type', input_html: {class: 'form-control'} %></div>
+          <div><%= f.input :strength, input_html: {min: '0', step: 'any', class: 'form-control'} %></div>
+          <div><%= f.input :intellect, input_html: {min: '0', step: 'any', class: 'form-control'} %></div>
+          <div><%= f.input :agility, input_html: {min: '0', step: 'any', class: 'form-control'} %></div>
           <!--TODO ЕСЛИ НЕ МОЖЕТ БЫТЬ КУПЛЕН ТО НЕ УКАЗЫВАТЬ BUY_COST-->
-          <%= f.input :purchasable, input_html: { class: 'form-control'} %>
-          <%= f.input :sell_cost, input_html: {min: '1', step: 'any', class: 'form-control'} %>
-          <%= f.input :buy_cost, input_html: {min: '1', step: 'any', class: 'form-control'} %>
-          <%= f.input :bag_template_id, as: :hidden %>
+
+        </div>
+        <div class="item">
+          <%= f.input :purchasable, input_html: {class: 'form-control checkbox'} %>
+          <div><%= f.input :sell_cost, label: 'Sell_cost', input_html: {min: '1', step: 'any', class: 'form-control'} %></div>
+          <div><%= f.input :buy_cost, label: 'Buy_cost', input_html: {min: '1', step: 'any', class: 'form-control'} %></div>
         </div>
       </div>
     </div>
   </div>
-  <div class="tab-pane" id="item_resists">
-    <div class="row">
-      <div class="col-md-12">
-        <div style="margin: 20px">
-          <h2>Сопротивление</h2>
-          <%= f.simple_fields_for :resist_template, f.object.build_resist_template do |ff| %>
-              <%= render partial: 'resist_template_fields', locals: {f: ff} %>
-          <% end %>
-        </div>
-      </div>
-    </div>
+
+
+  <!--TODO ПРИЦЕПИТЬ ИКОНКИ ВМЕСТО НАЗВАНИЙ-->
+  <div class="item">
+    <%= f.simple_fields_for :resist_template, f.object.build_resist_template do |ff| %>
+        <div><%= ff.input :physical, input_html: {min: '-100', max: '100', step: 'any', class: 'form-control'} %></div>
+        <div><%= ff.input :fire, input_html: {min: '-100', max: '100', step: 'any', class: 'form-control'} %></div>
+        <div><%= ff.input :water, input_html: {min: '-100', max: '100', step: 'any', class: 'form-control'} %></div>
+        <div><%= ff.input :earth, input_html: {min: '-100', max: '100', step: 'any', class: 'form-control'} %></div>
+        <div><%= ff.input :holy, input_html: {min: '-100', max: '100', step: 'any', class: 'form-control'} %></div>
+        <div><%= ff.input :necrotic, input_html: {min: '-100', max: '100', step: 'any', class: 'form-control'} %></div>
+        <div><%= ff.input :nature, input_html: {min: '-100', max: '100', step: 'any', class: 'form-control'} %></div>
+        <%= ff.input :character_template_id, as: :hidden %>
+    <% end %>
   </div>
-  <div class="tab-pane" id="attack">
-    <div class="row">
-      <div class="col-md-12">
-        <div style="margin: 20px">
-          <h2>Типы атак</h2>
-          <%= f.simple_fields_for :attack_type_template, f.object.build_attack_type_template do |ff| %>
-              <%= render partial: 'attack_type_template_fields', locals: {f: ff} %>
-          <% end %>
-        </div>
-      </div>
-    </div>
-  </div>
+
+  <!--TODO ПРИЦЕПИТЬ ИКОНКИ ВМЕСТО НАЗВАНИЙ-->
+  <%= f.simple_fields_for :attack_type_templates, f.object.build_attack_type_template do |ff| %>
+      <div><%= ff.input :name, input_html: {class: 'form-control'} %></div>
+      <div><%= ff.input :attack, as: :range, input_html: {class: 'slider'} %></div>
+      <div><%= ff.input :attack_type, label: 'Attack_type', input_html: {class: 'form-control'} %></div>
+      <div><%= ff.input :crit_chance, label: 'Crit_chance', input_html: {class: 'form-control'} %></div>
+      <div><%= ff.input :crit_dmg, as: :range, label: 'Crit_damage', input_html: {class: 'slider'} %></div>
+      <%= ff.input :character_template_id, as: :hidden %>
+  <% end %>
 </div>
