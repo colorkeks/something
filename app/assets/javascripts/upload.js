@@ -1,4 +1,4 @@
-$(function() {
+function uploader() {
     function maskImgs() {
         $.each($('.img-wrapper img'), function(index, img) {
             var src = $(img).attr('src');
@@ -62,4 +62,4 @@ $(function() {
         }
     };
     preview.init();
-});
+}

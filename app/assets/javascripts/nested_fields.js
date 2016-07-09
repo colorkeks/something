@@ -29,7 +29,7 @@ function add_item_fields(link, association, content, table_name) {
     $(table).children(".modal:last").attr("id", new_id);
     $(table).children(".item_content:last").attr("data-target", new_id);
     off_on($(table).find(".fields:last"));
-    item_click();
+    uploader();
 }
 
 function item_click() {
@@ -44,7 +44,6 @@ function off_on(clazz) {
     // $(clazz).slider("destroy");
     slider(clazz);
     item_click();
-
     // навешивать обработчики(если они будут) при добавлении полей
 }
 
