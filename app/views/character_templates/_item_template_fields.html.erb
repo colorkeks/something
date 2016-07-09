@@ -1,56 +1,80 @@
-<div class="fields">
-  <div class="row">
-    <div class="col-md-2">
-      <%= f.simple_fields_for :image, f.object.build_image do |ff| %>
-          <div class="avatar">
-            <div class="preview img-wrapper"></div>
-            <%= render partial: 'images/image_fields', locals: {f: ff} %>
-          </div>
-      <% end %>
-    </div>
-    <div class="col-md-10">
-      <div class="table">
-        <div class="item">
-          <div><%= f.input :name, input_html: {class: 'form-control'} %></div>
-          <!--<div><%#= f.input :description, input_html: {class: 'form-control'} %></div>-->
-          <div><%= f.input :item_type, label: 'Item_type', input_html: {class: 'form-control'} %></div>
-          <div><%= f.input :strength, input_html: {min: '0', step: 'any', class: 'form-control'} %></div>
-          <div><%= f.input :intellect, input_html: {min: '0', step: 'any', class: 'form-control'} %></div>
-          <div><%= f.input :agility, input_html: {min: '0', step: 'any', class: 'form-control'} %></div>
-          <!--TODO ЕСЛИ НЕ МОЖЕТ БЫТЬ КУПЛЕН ТО НЕ УКАЗЫВАТЬ BUY_COST-->
+<div class='item_content avatar' data-toggle='modal'>
+  <div class='preview img-wrapper'></div>
+</div>
 
+
+
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        <div class="fields">
+          <div class="row">
+            <div class="col-md-2">
+              <%= f.simple_fields_for :image, f.object.build_image do |ff| %>
+                  <div class="avatar">
+                    <div class="preview img-wrapper"></div>
+                    <%= render partial: 'images/image_fields', locals: {f: ff} %>
+                  </div>
+              <% end %>
+            </div>
+            <div class="col-md-10">
+              <div class="table">
+                <div class="item">
+                  <div><%= f.input :name, input_html: {class: 'form-control'} %></div>
+                  <!--<div><%#= f.input :description, input_html: {class: 'form-control'} %></div>-->
+                  <div><%= f.input :item_type, label: 'Item_type', input_html: {class: 'form-control'} %></div>
+                  <div><%= f.input :strength, input_html: {min: '0', step: 'any', class: 'form-control'} %></div>
+                  <div><%= f.input :intellect, input_html: {min: '0', step: 'any', class: 'form-control'} %></div>
+                  <div><%= f.input :agility, input_html: {min: '0', step: 'any', class: 'form-control'} %></div>
+                  <!--TODO ЕСЛИ НЕ МОЖЕТ БЫТЬ КУПЛЕН ТО НЕ УКАЗЫВАТЬ BUY_COST-->
+
+                </div>
+                <div class="item">
+                  <%= f.input :purchasable, input_html: {class: 'form-control checkbox'} %>
+                  <div><%= f.input :sell_cost, label: 'Sell_cost', input_html: {min: '1', step: 'any', class: 'form-control'} %></div>
+                  <div><%= f.input :buy_cost, label: 'Buy_cost', input_html: {min: '1', step: 'any', class: 'form-control'} %></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <!--TODO ПРИЦЕПИТЬ ИКОНКИ ВМЕСТО НАЗВАНИЙ-->
+          <div class="item">
+            <%= f.simple_fields_for :resist_template, f.object.build_resist_template do |ff| %>
+                <div><%= ff.input :physical, input_html: {min: '-100', max: '100', step: 'any', class: 'form-control'} %></div>
+                <div><%= ff.input :fire, input_html: {min: '-100', max: '100', step: 'any', class: 'form-control'} %></div>
+                <div><%= ff.input :water, input_html: {min: '-100', max: '100', step: 'any', class: 'form-control'} %></div>
+                <div><%= ff.input :earth, input_html: {min: '-100', max: '100', step: 'any', class: 'form-control'} %></div>
+                <div><%= ff.input :holy, input_html: {min: '-100', max: '100', step: 'any', class: 'form-control'} %></div>
+                <div><%= ff.input :necrotic, input_html: {min: '-100', max: '100', step: 'any', class: 'form-control'} %></div>
+                <div><%= ff.input :nature, input_html: {min: '-100', max: '100', step: 'any', class: 'form-control'} %></div>
+                <%= ff.input :character_template_id, as: :hidden %>
+            <% end %>
+          </div>
+
+          <!--TODO ПРИЦЕПИТЬ ИКОНКИ ВМЕСТО НАЗВАНИЙ-->
+          <%= f.simple_fields_for :attack_type_templates, f.object.build_attack_type_template do |ff| %>
+              <div><%= ff.input :name, input_html: {class: 'form-control'} %></div>
+              <div><%= ff.input :attack, as: :range, input_html: {class: 'slider'} %></div>
+              <div><%= ff.input :attack_type, label: 'Attack_type', input_html: {class: 'form-control'} %></div>
+              <div><%= ff.input :crit_chance, label: 'Crit_chance', input_html: {class: 'form-control'} %></div>
+              <div><%= ff.input :crit_dmg, as: :range, label: 'Crit_damage', input_html: {class: 'slider'} %></div>
+              <%= ff.input :character_template_id, as: :hidden %>
+          <% end %>
         </div>
-        <div class="item">
-          <%= f.input :purchasable, input_html: {class: 'form-control checkbox'} %>
-          <div><%= f.input :sell_cost, label: 'Sell_cost', input_html: {min: '1', step: 'any', class: 'form-control'} %></div>
-          <div><%= f.input :buy_cost, label: 'Buy_cost', input_html: {min: '1', step: 'any', class: 'form-control'} %></div>
-        </div>
+        a
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>
-
-
-  <!--TODO ПРИЦЕПИТЬ ИКОНКИ ВМЕСТО НАЗВАНИЙ-->
-  <div class="item">
-    <%= f.simple_fields_for :resist_template, f.object.build_resist_template do |ff| %>
-        <div><%= ff.input :physical, input_html: {min: '-100', max: '100', step: 'any', class: 'form-control'} %></div>
-        <div><%= ff.input :fire, input_html: {min: '-100', max: '100', step: 'any', class: 'form-control'} %></div>
-        <div><%= ff.input :water, input_html: {min: '-100', max: '100', step: 'any', class: 'form-control'} %></div>
-        <div><%= ff.input :earth, input_html: {min: '-100', max: '100', step: 'any', class: 'form-control'} %></div>
-        <div><%= ff.input :holy, input_html: {min: '-100', max: '100', step: 'any', class: 'form-control'} %></div>
-        <div><%= ff.input :necrotic, input_html: {min: '-100', max: '100', step: 'any', class: 'form-control'} %></div>
-        <div><%= ff.input :nature, input_html: {min: '-100', max: '100', step: 'any', class: 'form-control'} %></div>
-        <%= ff.input :character_template_id, as: :hidden %>
-    <% end %>
-  </div>
-
-  <!--TODO ПРИЦЕПИТЬ ИКОНКИ ВМЕСТО НАЗВАНИЙ-->
-  <%= f.simple_fields_for :attack_type_templates, f.object.build_attack_type_template do |ff| %>
-      <div><%= ff.input :name, input_html: {class: 'form-control'} %></div>
-      <div><%= ff.input :attack, as: :range, input_html: {class: 'slider'} %></div>
-      <div><%= ff.input :attack_type, label: 'Attack_type', input_html: {class: 'form-control'} %></div>
-      <div><%= ff.input :crit_chance, label: 'Crit_chance', input_html: {class: 'form-control'} %></div>
-      <div><%= ff.input :crit_dmg, as: :range, label: 'Crit_damage', input_html: {class: 'slider'} %></div>
-      <%= ff.input :character_template_id, as: :hidden %>
-  <% end %>
 </div>

@@ -418,6 +418,15 @@ body {
   height: 90%;
 }
 
+.content {
+  margin: 20px;
+  margin-bottom: 100px;
+
+  .gold_field {
+    margin: 20px;
+  }
+}
+
 .page-header {
   border-bottom: 2px solid $main_color;
 }
@@ -514,25 +523,46 @@ body {
 }
 
 /***********************
- TABLE
+ ITEM "TABLE"
 ************************/
 .table-bordered {
   border: 2px solid orange;
 }
 
+.item_table {
+  display: inline-table;
+  width: 100%;
+  height: 300px;
+  text-align: left;
+  border: 2px solid orange;
 
   .item_content {
-      display: inline-block;
-      width: 100px;
-      height: 100px;
-      margin: 5px;
+    display: inline-block;
+    margin: 5px;
 
-      .img-wrapper{
-        width: 100px;
-        height: 100px;
-      }
+    .img-wrapper {
+      width: 94px;
+      height: 95px;
+      margin: 0 auto;
+      padding: 0;
     }
+  }
 
+  .add_items_header{
+    display: inline-block;
+    width: 100%;
+    padding: 6px;
+    border-bottom: 2px solid orange;
+
+    h4{
+      padding-left: 10px;
+    }
+  }
+}
+
+/***********************
+ ATTACK TYPES TABLE
+************************/
 
 #attack_types_table {
   .remove {
@@ -541,6 +571,10 @@ body {
     vertical-align: middle;
   }
 }
+
+/***********************
+ TABLE
+************************/
 
 .table {
   font-size: 14px;

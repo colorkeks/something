@@ -5,7 +5,7 @@
     <li class="active"><a href="#hero" data-toggle="tab">Герой</a></li>
     <li><a href="#resists" data-toggle="tab">Сопротивления</a></li>
     <li><a href="#attacks" data-toggle="tab">Типы атак</a></li>
-    <li><a href="#bag" data-toggle="tab">Предметы</a></li>
+    <li><a href="#bag" data-toggle="tab">Сумка</a></li>
   </ul>
 
   <%= simple_form_for @character_template, :html => {:class => 'form-horizontal', autocomplete: 'off'} do |f| %>
@@ -22,7 +22,7 @@
               <% end %>
             </div>
             <div class="col-md-8">
-              <div style="margin: 20px">
+              <div class="content">
                 <%= render partial: 'character_template_fields', locals: {f: f} %>
               </div>
             </div>
@@ -31,7 +31,7 @@
         <div class="tab-pane" id="resists">
           <div class="row">
             <div class="col-md-12">
-              <div style="margin: 20px">
+              <div class="content">
                 <h4>Сопротивление</h4>
                 <table class="table table-bordered">
                   <tbody>
@@ -49,7 +49,7 @@
         <div class="tab-pane" id="attacks">
           <div class="row">
             <div class="col-md-12">
-              <div style="margin: 20px">
+              <div class="content">
                 <h4>Добавить Типы Атак: <%= link_to_add_fields '<i class="glyphicon glyphicon-plus" aria-hidden="true"></i>', f, :attack_type_templates, 'attack_types_table', id: 'add-attack_types-btn', class: 'btn btn-bit btn-lg green' %></h4>
                 <table id="attack_types_table" class="table attack_types_table table-bordered">
                   <tbody id="attack_types_table_body">
@@ -63,8 +63,7 @@
           </div>
         </div>
         <div class="tab-pane" id="bag">
-          <div style="margin: 20px">
-            <h2>Сумка</h2>
+          <div class="content">
             <%= f.simple_fields_for :bag_template do |ff| %>
                 <%= render partial: 'bag_template_fields', locals: {f: ff} %>
             <% end %>

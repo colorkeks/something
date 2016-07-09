@@ -11,42 +11,45 @@ function remove_fields(link) {
 function add_fields(link, association, content, table_name) {
     var new_id = (parseInt($("." + table_name + " tr:visible:last td:first ").text()) + 1);
     new_id = new_id || 1;
+    var table = "#" + table_name;
     var regexp = new RegExp("new_" + association, "g");
-    $('#' + table_name).children('#' + table_name + '_body').append(content.replace(regexp, new_id));
-    off_on(table_name);
+    $(table).children('#' + table_name + '_body').append(content.replace(regexp, new_id));
+    off_on($(table).find(".fields:last"));
 }
 
 
 function add_item_fields(link, association, content, table_name) {
-    var new_id = (parseInt($("." + table_name + " .item_content:last ").attr('id')) + 1);
+    if ($("." + table_name).children(".item_content").length >= 12)
+        return;
+    
+    var new_id = (parseInt($("." + table_name + " .item_content:last ").attr('data-target')) + 1);
     new_id = new_id || 1;
-    $('#' + table_name).append("<div class='item_content avatar' id='" + new_id + "'> " +
-                                    "<div class='preview img-wrapper'></div>" +
-                                    "<div class='item_fields hidden'>" + content + "</div>" +
-                                "</div>");
-    off_on(table_name);
+    var table = "." + table_name;
+    $(table).append(content);
+    $(table).children(".modal:last").attr("id", new_id);
+    $(table).children(".item_content:last").attr("data-target", new_id);
+    off_on($(table).find(".fields:last"));
+    item_click();
 }
 
 function item_click() {
     $(".item_content").click(function () {
-        var body = $(".item-modal-body");
-        body.children().remove();
-        var fields = $(this).children(".item_fields").clone().html();
-        body.append(fields);
-        $("#myModal").modal()
+        var id = $(this).attr("data-target");
+        $("#" + id).modal();
     });
 }
 
-function off_on(table_name) {
+function off_on(clazz) {
     $(".item_content").off();
-    slider($("." + table_name).find(".slider").last());
+    // $(clazz).slider("destroy");
+    slider(clazz);
     item_click();
 
     // навешивать обработчики(если они будут) при добавлении полей
 }
 
-function slider(name) {
-    (name == undefined ? $(".slider") : $(name)).slider({
+function slider(clazz) {
+    (clazz == undefined ? $(".slider") : $(clazz).find(".slider")).slider({
         min: 1,
         max: 50,
         step: 1,

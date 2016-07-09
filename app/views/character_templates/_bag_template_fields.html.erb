@@ -1,42 +1,23 @@
-<!--TODO СТИЛИЗОВАТЬ-->
-<%= f.input :gold, input_html: {min: '0', step: 'any', class: 'form-control'} %>
+
 <%= f.error_notification %>
 
-
-<!--TODO СДЕЛАТЬ ИЗ ЭТОГО ТАБЛИЦУ ДОБАВИТЬ КНОПКИ ДОБАВЛЕНИЯ/УДАЛЕНИЯ ПОЛЕЙ-->
-<!--TODO МБ ПРИСОБАЧИТЬ СКРОЛЛ ЧТОБЫ СТРАНИЦА НЕ РАСТЯГИВАЛАСЬ ДО БЕСКОНЕЧНОСТИ-->
-<!--TODO ПОДУМАТЬ НАД ТАБАМИ, ТК ТЕПЕРЬ ITEM ИМЕЕТ ОДИН! RESIST И ATTACK_TYPE-->
-<div style="margin: 20px">
-  <%= f.simple_fields_for :item_templates, f.object.item_templates.build do |ff| %>
-
-        <div id="item_table" class="item_modal_buttons item_table">
-          <div class="item_content avatar" id="1">
-              <div class="preview img-wrapper"></div>
-              <div class="item_fields hidden">
-                <%= render partial: 'item_template_fields', locals: {f: ff} %>
-              </div>
-          </div>
-        </div>
-        <%= link_to_add_item_fields '<i class="glyphicon glyphicon-plus" aria-hidden="true"></i>', f, :item_templates, 'item_table',
-                                    id: 'add-item-btn', class: 'btn btn-bit btn-lg green' %>
-
-
-  <% end %>
-</div>
-
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" hidden aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">Название модали</h4>
-      </div>
-      <div class="item-modal-body">
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
-        <button type="button" class="btn btn-primary">Сохранить изменения</button>
-      </div>
+<div class="row">
+  <div class="col-md-3">
+    <div class="gold_field">
+    <h3>Золото:</h3>
+      <%= f.input :gold, label: false, input_html: {min: '0', step: 'any', class: 'form-control'} %>
     </div>
+  </div>
+  <div class="col-md-2"></div>
+  <div class="col-md-7">
+
+    <%= f.simple_fields_for :item_templates, f.object.item_templates.build do |ff| %>
+        <!--TODO ДОБАВИТЬ КНОПКИ УДАЛЕНИЯ ПОЛЕЙ-->
+        <div class="item_modal_buttons item_table">
+          <div class="add_items_header"><h4>Предметы: <%= link_to_add_item_fields '<i class="glyphicon glyphicon-plus" aria-hidden="true"></i>', f, :item_templates, 'item_table',
+                                                    id: 'add-item-btn', class: 'btn btn-bit green' %></h4></div>
+          <!--Сюда вставляем миниатюры-->
+        </div>
+    <% end %>
   </div>
 </div>
