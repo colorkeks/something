@@ -19,7 +19,7 @@ function add_fields(link, association, content, table_name) {
 
 
 function add_item_fields(link, association, content, table_name) {
-    if ($("." + table_name).find(".fields:visible").length >= 9)
+    if ($("." + table_name).find(".fields:visible").length >= 8)
         return;
     
     var new_id = (parseInt($("." + table_name + " .item_modal:last ").attr('data-target')) + 1);
