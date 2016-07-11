@@ -5,7 +5,7 @@
 
 function remove_fields(link) {
     $(link).prev("input[type=hidden]").val("true");
-    $(link).closest(".fields").remove();
+    $(link).closest(".fields").hide();
 }
 
 function add_fields(link, association, content, table_name) {
@@ -19,21 +19,21 @@ function add_fields(link, association, content, table_name) {
 
 
 function add_item_fields(link, association, content, table_name) {
-    if ($("." + table_name).children(".item_content").length >= 12)
+    if ($("." + table_name).find(".fields:visible").length >= 9)
         return;
     
-    var new_id = (parseInt($("." + table_name + " .item_content:last ").attr('data-target')) + 1);
+    var new_id = (parseInt($("." + table_name + " .item_modal:last ").attr('data-target')) + 1);
     new_id = new_id || 1;
     var table = "." + table_name;
     $(table).append(content);
-    $(table).children(".modal:last").attr("id", new_id);
-    $(table).children(".item_content:last").attr("data-target", new_id);
+    $(table).find(".modal:last").attr("id", new_id);
+    $(table).find(".item_modal:last").attr("data-target", new_id);
     off_on($(table).find(".fields:last"));
     uploader();
 }
 
 function item_click() {
-    $(".item_content").click(function () {
+    $(".item_modal").click(function () {
         var id = $(this).attr("data-target");
         $("#" + id).modal();
     });

@@ -2,10 +2,17 @@ function uploader() {
     function maskImgs() {
         $.each($('.img-wrapper img'), function(index, img) {
             var src = $(img).attr('src');
-            var parent = $(img).parent();
-            parent
+            var parents = $(img).parents(".fields").find(".img-wrapper");
+
+            //костыль
+            $(parents)
                 .css('background', 'url(' + src + ') no-repeat center center')
                 .css('background-size', 'cover');
+
+            $(img).parent()
+                .css('background', 'url(' + src + ') no-repeat center center')
+                .css('background-size', 'cover');
+
             $(img).remove();
         });
     }
