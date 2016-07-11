@@ -1,4 +1,4 @@
-<div class="fields">
+<div class="fields" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
   <div class="dropdown">
     <div class='item_content avatar' data-toggle="dropdown">
       <div class='preview img-wrapper'></div>
@@ -27,11 +27,11 @@
             <div class="col-md-8">
               <div class="row">
                 <div class="col-md-6">
-                    <div><%= f.input :name, input_html: {class: 'form-control'} %></div>
-                    <div><%= f.input :item_type, label: 'Item_type', input_html: {class: 'form-control'} %></div>
-                    <div><%= f.input :strength, input_html: {min: '0', step: 'any', class: 'form-control'} %></div>
-                    <div><%= f.input :intellect, input_html: {min: '0', step: 'any', class: 'form-control'} %></div>
-                    <div><%= f.input :agility, input_html: {min: '0', step: 'any', class: 'form-control'} %></div>
+                  <div><%= f.input :name, input_html: {class: 'form-control'} %></div>
+                  <div><%= f.input :item_type, label: 'Item_type', input_html: {class: 'form-control'} %></div>
+                  <div><%= f.input :strength, input_html: {min: '0', step: 'any', class: 'form-control'} %></div>
+                  <div><%= f.input :intellect, input_html: {min: '0', step: 'any', class: 'form-control'} %></div>
+                  <div><%= f.input :agility, input_html: {min: '0', step: 'any', class: 'form-control'} %></div>
                 </div>
                 <div class="col-md-6">
                   <div><%= f.input :sell_cost, label: 'Sell_cost', input_html: {min: '1', step: 'any', class: 'form-control'} %></div>
@@ -51,29 +51,36 @@
               </div>
             </div>
           </div>
+
           <div class="row">
             <div class="col-md-12">
-                <h4>Сопротивления</h4>
-                <table class="table content">
-                  <tbody>
-                  <tr>
-                    <%= f.simple_fields_for :resist_template, f.object.build_resist_template do |ff| %>
-                        <%= render partial: 'resist_template_fields', locals: {f: ff} %>
-                    <% end %>
-                  </tr>
-                  </tbody>
-                </table>
-
-                <h4>Параметры атаки</h4>
-                <table class="table">
-                  <tbody>
-                  <%= f.simple_fields_for :attack_type_templates, f.object.build_attack_type_template do |ff| %>
-                      <%= render partial: 'attack_type_template_fields', locals: {f: ff} %>
+              <h4>Сопротивления</h4>
+              <table class="table content">
+                <tbody>
+                <tr>
+                  <%= f.simple_fields_for :resist_template, f.object.build_resist_template do |ff| %>
+                      <%= render partial: 'resist_template_fields', locals: {f: ff} %>
                   <% end %>
-                  </tbody>
-                </table>
+                </tr>
+                </tbody>
+              </table>
             </div>
           </div>
+          </br>
+          </br>
+          <div class="row">
+            <div class="col-md-12">
+              <h4>Параметры атаки</h4>
+              <table class="table">
+                <tbody>
+                <%= f.simple_fields_for :attack_type_templates, f.object.build_attack_type_template do |ff| %>
+                    <%= render partial: 'attack_type_template_fields', locals: {f: ff} %>
+                <% end %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
         </div>
 
 
