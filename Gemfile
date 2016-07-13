@@ -39,6 +39,9 @@ gem 'bootstrap-slider-rails'
 gem 'simple_form'
 gem 'compass', '1.0.3'
 gem 'compass-rails', '2.0.4'
+gem 'select2-rails'
+gem 'auto_select2'
+gem 'auto_select2_tag'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

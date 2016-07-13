@@ -1,16 +1,10 @@
-
-<%= f.error_notification %>
-
 <div class="row">
   <div class="col-md-12">
-
     <%= f.simple_fields_for :item_templates, f.object.item_templates.build do |ff| %>
-        <!--TODO ДОБАВИТЬ КНОПКИ УДАЛЕНИЯ ПОЛЕЙ-->
         <div class="item_modal_buttons item_table">
           <div class="add_items_header">
+            <%= f.input :gold, input_html: {min: '0', step: 'any', class: 'form-control', value: 0} %>
             <h4>Предметы: <%= link_to_add_item_fields '<i class="glyphicon glyphicon-plus" aria-hidden="true"></i>', f, :item_templates, 'item_table', id: 'add-item-btn', class: 'btn btn-bit green' %></h4>
-            <div class="space"></div>
-            <%= f.input :gold, input_html: {min: '0', step: 'any', class: 'form-control'} %>
           </div>
           <!--Сюда вставляем миниатюры-->
         </div>

@@ -1,7 +1,10 @@
+<!--TODO ПЕРЕДЕЛАТЬ ВСЕ -->
 <%- model_class = CharacterTemplate -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+  <h1><%= t '.title', :default => model_class.model_name.human.titleize %></h1>
 </div>
+
+<div><%= (image_tag @character_template.image.image_content.url) if !@character_template.image.nil? %></div>
 
 <dl class="dl-horizontal">
   <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
@@ -19,11 +22,69 @@
 </dl>
 
 <%= link_to t('.back', :default => t("helpers.links.back")),
-              character_templates_path, :class => 'btn btn-default'  %>
+            character_templates_path, :class => 'btn btn-default' %>
 <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_character_template_path(@character_template), :class => 'btn btn-default' %>
+            edit_character_template_path(@character_template), :class => 'btn btn-default' %>
 <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-              character_template_path(@character_template),
-              :method => 'delete',
-              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-              :class => 'btn btn-danger' %>
+            character_template_path(@character_template),
+            :method => 'delete',
+            :data => {:confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?'))},
+            :class => 'btn btn-danger' %>
+
+<% if !@character_template.resist_template.nil? %>
+    <div class="table">
+      <tbody>
+      <tr>
+        <td><%= @character_template.resist_template.fire %></td>
+        <td><%= @character_template.resist_template.water %></td>
+        <td><%= @character_template.resist_template.earth %></td>
+        <td><%= @character_template.resist_template.nature %></td>
+        <td><%= @character_template.resist_template.physical %></td>
+        <td><%= @character_template.resist_template.holy %></td>
+      </tr>
+      </tbody>
+    </div>
+<% end %>
+
+<table class="table">
+  <tr>
+    <th>attack_name</th>
+    <th>attack_desc</th>
+  </tr>
+  <tbody>
+  <% @character_template.attack_type_templates.each do |attack| %>
+      <tr>
+        <td><%= attack.name %></td>
+        <td><%= attack.desc %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+
+<% if !@character_template.bag_template.nil? %>
+    <table class="table">
+      <tr>
+        <td>Gold</td>
+      </tr>
+      <tbody>
+      <tr>
+        <td><%= @character_template.bag_template.gold %></td>
+      </tr>
+      </tbody>
+    </table>
+    <table class="table">
+      <tr>
+        <th>item_image</th>
+        <th>item_name</th>
+      </tr>
+      <tbody>
+      <% @character_template.bag_template.item_templates.each do |item| %>
+          <tr>
+            <td><%= (image_tag item.image.image_content.url) if !item.image.nil? %></td>
+            <td><%= item.name %></td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+<% end %>

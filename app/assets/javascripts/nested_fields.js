@@ -8,24 +8,28 @@ function remove_fields(link) {
     $(link).closest(".fields").hide();
 }
 
-function add_fields(link, association, content, table_name) {
+function add_attack_type_fields(link, attack_type, content, table_name) {
+    if ($("." + table_name).find(".fields:visible").length >= 4) // больше лучше не надо
+        return;
+
     var new_id = (parseInt($("." + table_name + " tr:visible:last td:first ").text()) + 1);
     new_id = new_id || 1;
-    var table = "#" + table_name;
-    var regexp = new RegExp("new_" + association, "g");
-    $(table).children('#' + table_name + '_body').append(content.replace(regexp, new_id));
+    var table = "." + table_name;
+    var regexp = new RegExp("new_" + attack_type, "g");
+    $(table).append(content.replace(regexp, new_id));
     off_on($(table).find(".fields:last"));
 }
 
 
-function add_item_fields(link, association, content, table_name) {
-    if ($("." + table_name).find(".fields:visible").length >= 8)
+function add_item_fields(link, item, content, table_name) {
+    if ($("." + table_name).find(".fields:visible").length >= 8) //  больше лучше не надо
         return;
     
     var new_id = (parseInt($("." + table_name + " .item_modal:last ").attr('data-target')) + 1);
     new_id = new_id || 1;
     var table = "." + table_name;
-    $(table).append(content);
+    var regexp = new RegExp("new_" + item, "g");
+    $(table).append(content.replace(regexp, new_id));
     $(table).find(".modal:last").attr("id", new_id);
     $(table).find(".item_modal:last").attr("data-target", new_id);
     off_on($(table).find(".fields:last"));

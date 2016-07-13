@@ -19,7 +19,8 @@ body {
 }
 
 .container-table {
-  height: 85%;
+  height: 90%;
+  width: 80%;
   z-index: 10;
 }
 
@@ -103,7 +104,7 @@ body {
 .loginpanel {
   background: $background_panel_color;
   min-width: 300px;
-  width: 30%;
+  width: 25%;
 
   .control-label {
     display: block;
@@ -284,10 +285,10 @@ body {
 
 .btn-tn {
   margin: 5px;
-  font-size: 14px;
-  line-height: 1.33;
-  border-radius: 6px;
-  padding: 1px;
+  font-size: 10px;
+  line-height: 1;
+  border-radius: 4px;
+  padding: 5px 5px;
 }
 
 .btn.outline {
@@ -339,6 +340,7 @@ body {
   .file-upload-wrapper {
     position: relative;
     width: 250px;
+    height: 50px;
     margin: 0 auto;
     margin-bottom: 20px;
     z-index: 5;
@@ -394,43 +396,75 @@ body {
 }
 
 /***********************
-  ПОЛОВИНУ НАДО УБРАТь
+  ОСНОВНАЯ ПАНЕЛЬ
 ************************/
-
-.image {
-  display: inline-block;
-  position: relative;
-  margin: 5px;
-}
-
-.delete {
-  position: absolute;
-  top: 0;
-  right: 0;
-}
-
-.close {
-  display: none;
-}
 
 .profile-bg {
   background: $background_panel_color;
+  min-width: 450px;
   height: 90%;
-}
 
-.content {
-  margin-top: 20px;
-  margin-bottom: 50px;
-}
+  .content {
+    margin-top: 20px;
+    margin-bottom: 120px;
 
-.page-header {
-  border-bottom: 2px solid $main_color;
-}
+    &.character_content, &.items_content {
+      .icons-group {
+        display: inline-block;
+        vertical-align: top;
+        float: left;
+        margin: 5px;
 
-.footer {
-  position: absolute;
-  bottom: 0;
-  right: 0;
+        img{
+          margin-bottom: 10px;
+          display:inline-block;
+          &.text{
+            vertical-align: baseline;
+          }
+        }
+
+        .input {
+          display: inline-block;
+
+          &.integer, &.float {
+            width: 100px;
+          }
+
+          &.select {
+            width: 200px;
+          }
+
+          &.text, &.string {
+            width: 300px;
+          }
+
+        }
+      }
+    }
+
+    &.resist_content {
+      text-align: center;
+      div {
+        display: inline-block;
+        text-align: center;
+        div {
+          width: 180px;
+          display: block;
+        }
+      }
+    }
+
+  }
+
+  .page-header {
+    border-bottom: 2px solid $main_color;
+  }
+
+  .footer {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
 }
 
 /***********************
@@ -466,8 +500,9 @@ body {
 }
 
 .close {
-  color: $main_color;
-  opacity: 1;
+  display: none;
+  //color: $main_color;
+  //opacity: 1;
 }
 
 .close:hover {
@@ -476,11 +511,6 @@ body {
 
 .modal-header {
   border-bottom: none;
-}
-
-.table > tbody > tr > td {
-  text-align: center;
-  border: none;
 }
 
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
@@ -567,37 +597,41 @@ body {
       }
     }
   }
-    .add_items_header {
-      width: 100%;
-      padding: 6px;
-      border-bottom: 2px solid orange;
+  .add_items_header {
+    width: 100%;
+    padding: 6px;
+    border-bottom: 2px solid orange;
 
-      h4 {
-        display: inline-block;
-        padding-left: 10px;
-      }
-
-      .space {
-        display: inline-block;
-        width: 33%;
-      }
-
-      .input {
-        display: inline-block;
-      }
+    h4 {
+      width: 300px;
+      padding-left: 10px;
     }
+
+    .input {
+      width: 300px;
+    }
+  }
 
 }
 
 /***********************
  ATTACK TYPES TABLE
 ************************/
+.attack_types_table {
 
-#attack_types_table {
-  .remove {
-    width: 50px;
-    text-align: center;
-    vertical-align: middle;
+  .attack_types_content {
+    display: inline-block;
+    position: relative;
+    border: 2px solid orange;
+    width: 225px;
+    margin: 10px;
+    padding: 5px;
+
+    .remove {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
   }
 }
 
@@ -605,16 +639,11 @@ body {
  TABLE
 ************************/
 
-.table {
-  font-size: 14px;
+.table > tbody > tr > td {
+  text-align: center;
+  border: none;
 
-  .item {
-    div {
-      display: inline-block !important
-    }
-  }
-
-  .fields {
-    background-color: #343434 !important;
+  .input {
+    width: 200px;
   }
 }

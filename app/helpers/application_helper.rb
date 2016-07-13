@@ -9,7 +9,7 @@ module ApplicationHelper
       render(association.to_s.singularize + "_fields", :f => builder)
     end
     link_to_function(name.html_safe,
-                     "add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\", \"#{table_name}\")",
+                     "add_attack_type_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\", \"#{table_name}\")",
                      options,
     # :class => 'btn btn-white btn-sm pull-right tooltips'
     )

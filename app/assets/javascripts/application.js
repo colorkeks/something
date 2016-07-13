@@ -13,8 +13,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
-//= require_tree .
+//= require select2
+//= require select2_locale_ru
 //= require bootstrap-slider
+//= require_tree .
 
 
 

@@ -1,21 +1,35 @@
-<%= f.error_notification %>
 <div class="col-md-6">
+  <div class=" icons-group">
+    <%= image_tag('my_icons/knight.png', size: '128x128', title: 'hit points') %>
     <%= f.input :name, input_html: {class: 'form-control'} %>
-
+  </div>
+  <div class=" icons-group">
+    <%= image_tag('my_icons/letter.png', size: '128x128', title: 'hit points', class: 'text') %>
     <%= f.input :description, label: 'Desc', input_html: {:cols => 19, :rows => 5, class: 'form-control'} %>
+  </div>
 </div>
 <div class="col-md-6">
-    <%= f.input :hp, input_html: {min: '1', step: 'any', class: 'form-control'} %>
-
-    <%= f.input :strength, input_html: {min: '0', step: 'any', class: 'form-control'} %>
-
-    <%= f.input :intellect, input_html: {min: '0', step: 'any', class: 'form-control'} %>
-
-    <%= f.input :agility, input_html: {min: '0', step: 'any', class: 'form-control'} %>
-
-    <%= f.input :main_param,label: 'Main_param', input_html: { class: 'form-control'} %>
+  <div class=" icons-group">
+    <%= image_tag('my_icons/hp1.png', size: '128x128', title: 'hit points') %>
+    <%= f.input :hp, label: false, input_html: {min: '1', step: 'any', class: 'form-control'} %>
+  </div>
+  <div class=" icons-group">
+    <%= image_tag('my_icons/strength.png', size: '128x128', title: 'strength points') %>
+    <%= f.input :strength, label: false, input_html: {min: '0', step: 'any', class: 'form-control'} %>
+  </div>
+  <div class=" icons-group">
+    <%= image_tag('my_icons/intellect.png', size: '128x128', title: 'intellect points') %>
+    <%= f.input :intellect, label: false, input_html: {min: '0', step: 'any', class: 'form-control'} %>
+  </div>
+  <div class=" icons-group">
+    <%= image_tag('my_icons/agility.png', size: '128x128', title: 'agility points') %>
+    <%= f.input :agility, label: false, input_html: {min: '0', step: 'any', class: 'form-control'} %>
+  </div>
+    <div class=" icons-group">
+      <%= image_tag('my_icons/question.png', size: '128x128', title: 'main parameter') %>
+      <%= f.input :main_param, as: :select, label: false, collection: %w(agility strange intellect), input_html: {class: 'form-control right'} %>
+    </div>
 </div>
-
 
 
 

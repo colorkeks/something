@@ -15,72 +15,81 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-body">
-          <div class="row">
-            <div class="col-md-4">
-              <%= f.simple_fields_for :image, f.object.build_image do |ff| %>
-                  <div class="avatar">
-                    <div class="preview img-wrapper"></div>
-                    <%= render partial: 'images/image_fields', locals: {f: ff} %>
+          <div class="content items_content">
+            <div class="row">
+              <div class="col-md-3">
+                <%= f.simple_fields_for :image, f.object.build_image do |ff| %>
+                    <div class="avatar">
+                      <div class="preview img-wrapper"></div>
+                      <%= render partial: 'images/image_fields', locals: {f: ff} %>
+                    </div>
+                <% end %>
+              </div>
+              <div class="col-md-9">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class=" icons-group">
+                      <%= image_tag('my_icons/knight.png', size: '128x128', title: 'hit points') %>
+                      <%= f.input :name, input_html: {class: 'form-control'} %>
+                    </div>
+                    <div class=" icons-group">
+                      <%= image_tag('my_icons/letter.png', size: '128x128', title: 'hit points', class: 'text') %>
+                      <%= f.input :description, label: 'Desc', input_html: {:cols => 19, :rows => 5, class: 'form-control'} %>
+                    </div>
+                    <div class=" icons-group">
+                      <%= image_tag('my_icons/question.png', size: '128x128', title: 'item type') %>
+                      <%= f.input :item_type, label: 'Item_type', collection: %w(helm chest boots weapon shield shoulder), input_html: {class: 'form-control'} %>
+                    </div>
                   </div>
-              <% end %>
-            </div>
-            <div class="col-md-8">
-              <div class="row">
-                <div class="col-md-6">
-                  <div><%= f.input :name, input_html: {class: 'form-control'} %></div>
-                  <div><%= f.input :item_type, label: 'Item_type', input_html: {class: 'form-control'} %></div>
-                  <div><%= f.input :strength, input_html: {min: '0', step: 'any', class: 'form-control'} %></div>
-                  <div><%= f.input :intellect, input_html: {min: '0', step: 'any', class: 'form-control'} %></div>
-                  <div><%= f.input :agility, input_html: {min: '0', step: 'any', class: 'form-control'} %></div>
-                </div>
-                <div class="col-md-6">
-                  <div><%= f.input :sell_cost, label: 'Sell_cost', input_html: {min: '1', step: 'any', class: 'form-control'} %></div>
-                  <div><%= f.input :purchasable, input_html: {class: 'checkbox'} %></div>
-                  <div><%= f.input :buy_cost, label: 'Buy_cost', input_html: {min: '1', step: 'any', class: 'form-control'} %></div>
+                  <div class="col-md-6">
+                    <div class=" icons-group">
+                      <%= image_tag('my_icons/strength.png', size: '128x128', title: 'strength points') %>
+                      <%= f.input :strength, label: false, input_html: {min: '0', step: 'any', class: 'form-control'} %>
+                    </div>
+                    <div class=" icons-group">
+                      <%= image_tag('my_icons/intellect.png', size: '128x128', title: 'intellect points') %>
+                      <%= f.input :intellect, label: false, input_html: {min: '0', step: 'any', class: 'form-control'} %>
+                    </div>
+                    <div class=" icons-group">
+                      <%= image_tag('my_icons/agility.png', size: '128x128', title: 'agility points') %>
+                      <%= f.input :agility, label: false, input_html: {min: '0', step: 'any', class: 'form-control'} %>
+                    </div>
+
+                    <!--TODO НАРИСОВАТЬ ИКОНКИ ПРОДАТЬ/КУПИТЬ И ЧТО-НИБУДЬ СДЕЛАТЬ С ЧЕКБОКСОМ-->
+                    <div><%= f.input :sell_cost, label: 'Sell_cost', input_html: {min: '1', step: 'any', class: 'form-control'} %></div>
+                    <div><%= f.input :purchasable, input_html: {class: 'checkbox'} %></div>
+                    <div><%= f.input :buy_cost, label: 'Buy_cost', input_html: {min: '1', step: 'any', class: 'form-control'} %></div>
+                  </div>
                 </div>
               </div>
-              <div class="row">
+            </div>
+
+            <div class="row">
+              <div class="col-md-12">
+                <h4>Сопротивления</h4>
+                <div class="content resist_content">
+                  <%= f.simple_fields_for :resist_template, f.object.build_resist_template do |ff| %>
+                      <%= render partial: 'resist_templates/resist_template_fields', locals: {f: ff} %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+            </br>
+            </br>
+            <!--TODO ЛИБО ПОМЕНЯТЬ ВАЛИДАЦИЮ ЛИБО ДОБАВЛЯТЬ ТИП АТАКИ ПО КНОПКЕ, ТК У ВЕЩЕ МОЖЕТ И НЕ БЫТЬ ТИПА АТАКИ-->
+            <div class="row">
+              <div class="col-md-12">
+                <h4>Параметры атаки</h4>
                 <table class="table">
                   <tbody>
-                  <tr>
-                    <!--TODO ЕСЛИ НЕ МОЖЕТ БЫТЬ КУПЛЕН ТО НЕ УКАЗЫВАТЬ BUY_COST-->
-
-                  </tr>
+                  <%= f.simple_fields_for :attack_type_template, f.object.build_attack_type_template do |ff| %>
+                      <%= render partial: 'attack_type_template_fields', locals: {f: ff} %>
+                  <% end %>
                   </tbody>
                 </table>
               </div>
             </div>
           </div>
-
-          <div class="row">
-            <div class="col-md-12">
-              <h4>Сопротивления</h4>
-              <table class="table content">
-                <tbody>
-                <tr>
-                  <%= f.simple_fields_for :resist_template, f.object.build_resist_template do |ff| %>
-                      <%= render partial: 'resist_template_fields', locals: {f: ff} %>
-                  <% end %>
-                </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-          </br>
-          </br>
-          <div class="row">
-            <div class="col-md-12">
-              <h4>Параметры атаки</h4>
-              <table class="table">
-                <tbody>
-                <%= f.simple_fields_for :attack_type_templates, f.object.build_attack_type_template do |ff| %>
-                    <%= render partial: 'attack_type_template_fields', locals: {f: ff} %>
-                <% end %>
-                </tbody>
-              </table>
-            </div>
-          </div>
-
         </div>
 
 
