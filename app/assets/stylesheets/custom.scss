@@ -290,7 +290,7 @@ body {
 
   .content {
 
-    &.character_content, &.items_content {
+    &.character_content, &.items_content, &.bag_content{
       height: 50%;
       .icons-group {
         display: inline-block;

@@ -3,8 +3,15 @@
     <%= f.simple_fields_for :item_templates, f.object.item_templates.build do |ff| %>
         <div class="item_modal_buttons item_table">
           <div class="add_items_header">
-            <%= f.input :gold, input_html: {min: '0', step: 'any', class: 'form-control', value: 0} %>
-            <h4>Предметы: <%= link_to_add_item_fields '<i class="glyphicon glyphicon-plus" aria-hidden="true"></i>', f, :item_templates, 'item_table', id: 'add-item-btn', class: 'btn btn-bit green' %></h4>
+
+            <div class=" icons-group">
+              <%= image_tag('my_icons/gold.png', size: '128x128', title: 'золото') %>
+              <%= f.input :gold, label: false, input_html: {min: '0', step: 'any', class: 'form-control', value: 0} %>
+            </div>
+            <div class=" icons-group" style="display: block; float: none">
+              <%= image_tag('my_icons/items.png', size: '128x128', title: 'добавить предмет') %>
+              <%= link_to_add_item_fields '<i class="glyphicon glyphicon-plus" aria-hidden="true"></i>', f, :item_templates, 'item_table', id: 'add-item-btn', class: 'btn btn-bit green' %>
+            </div>
           </div>
           <!--Сюда вставляем миниатюры-->
         </div>

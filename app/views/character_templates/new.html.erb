@@ -66,7 +66,7 @@
         <div class="tab-pane" id="bag">
           <div class="row">
             <div class="col-md-12">
-              <div class="content">
+              <div class="content bag_content">
                 <%= f.simple_fields_for :bag_template do |ff| %>
                     <%= ff.error_notification %>
                     <%= render partial: 'bag_template_fields', locals: {f: ff} %>
