@@ -38,7 +38,7 @@
 </head>
 <body>
 
-<nav class="navbar navbar-inverse navbar-static-top">
+<nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
@@ -62,27 +62,32 @@
     </div>
   </div>
 </nav>
+
+
+
 <% if content_for? :body %>
     <div class="rails-flash"><%= bootstrap_flash %></div>
     <%= yield :body %>
 <% else %>
     <div id="Clouds">
-          <div class="Cloud Foreground"></div>
-          <div class="Cloud Background"></div>
-          <div class="Cloud Foreground"></div>
-          <div class="Cloud Background"></div>
-          <div class="Cloud Foreground"></div>
-          <div class="Cloud Background"></div>
-          <div class="Cloud Background"></div>
-          <div class="Cloud Foreground"></div>
-          <div class="Cloud Background"></div>
-          <div class="Cloud Background"></div>
-      <!--  <svg viewBox="0 0 40 24" class="Cloud"><use xlink:href="#Cloud"></use></svg>-->
+      <div class="Cloud Foreground"></div>
+      <div class="Cloud Background"></div>
+      <div class="Cloud Foreground"></div>
+      <div class="Cloud Background"></div>
+      <div class="Cloud Foreground"></div>
+      <div class="Cloud Background"></div>
+      <div class="Cloud Background"></div>
+      <div class="Cloud Foreground"></div>
+      <div class="Cloud Background"></div>
+      <div class="Cloud Background"></div>
     </div>
+    <div class="rails-flash"><%= bootstrap_flash %></div>
     <div class="container container-table">
-      <div class="rails-flash"><%= bootstrap_flash %></div>
       <%= yield %>
     </div>
 <% end %>
 </body>
+<div class="navbar navbar-inverse navbar-bottom">
+  <h4>Rails SomeThing 2016</h4>
+</div>
 </html>

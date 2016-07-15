@@ -1,5 +1,4 @@
-<%- model_class = CharacterTemplate -%>
-<div class="profile-bg bit-border orange-gray">
+<div class="profile-panel bit-content orange-gray">
   <%= simple_form_for @character_template, :html => {autocomplete: 'off'} do |f| %>
 
 
@@ -76,16 +75,12 @@
             </div>
           </div>
         </div>
-      </div>
 
-
-      <!--TODO стилизировать счетчики, сейчас отстой-->
-
-      <div class="footer">
-        <%= f.button :submit, :class => 'btn btn-bit btn-lg green' %>
-        <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                    character_templates_path, :class => 'btn btn-bit btn-lg outline' %>
-      </div>
-
+        <div class="footer">
+          <%= f.button :submit, 'Создать героя', :class => 'btn btn-bit btn-lg green' %>
+          <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                      character_templates_path, :class => 'btn btn-bit btn-lg outline' %>
+        </div>
       </div>
   <% end %>
+</div>
