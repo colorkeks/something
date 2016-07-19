@@ -1,4 +1,4 @@
-<div class="fields" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<div class="fields item_fields" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
   <div class="dropdown">
     <div class='item_content avatar' data-toggle="dropdown">
       <div class='preview img-wrapper'></div>
@@ -36,7 +36,7 @@
                 </div>
                 <div class=" icons-group">
                   <%= image_tag('my_icons/question.png', size: '128x128', title: 'item type') %>
-                  <%= f.input :item_type, label: 'Item_type', collection: %w(helm chest boots weapon shield shoulder), input_html: {class: 'form-control'} %>
+                  <%= f.input :item_type, label: 'Item_type', collection: %w(шлем плечи тело пояс ноги ботинки осн.рука втор.рука кольцо1 кольцо2), input_html: {class: 'form-control'} %>
                 </div>
               </div>
               <div class="col-md-5">
@@ -86,13 +86,12 @@
             <div class="row">
               <div class="col-md-12">
                 <h4>Параметры атаки</h4>
-                <table class="table">
-                  <tbody>
-                  <%= f.simple_fields_for :attack_type_template, f.object.build_attack_type_template do |ff| %>
-                      <%= render partial: 'attack_type_template_fields', locals: {f: ff} %>
-                  <% end %>
-                  </tbody>
-                </table>
+                <div class="table attack_type_table">
+
+                    <%= f.simple_fields_for :attack_type_template, f.object.build_attack_type_template do |ff| %>
+                        <%= render partial: 'attack_type_template_fields', locals: {f: ff} %>
+                    <% end %>
+                </div>
               </div>
             </div>
           </div>

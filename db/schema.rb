@@ -17,29 +17,32 @@ ActiveRecord::Schema.define(version: 20160707114342) do
   enable_extension "plpgsql"
 
   create_table "attack_type_templates", force: :cascade do |t|
-    t.string    "name",            null: false
-    t.string    "desc",            null: false
-    t.int4range "attack",          null: false
-    t.string    "attack_type",     null: false
-    t.float     "crit_chance",     null: false
-    t.int4range "crit_dmg",        null: false
-    t.integer   "attackable_id"
-    t.string    "attackable_type"
-    t.datetime  "created_at",      null: false
-    t.datetime  "updated_at",      null: false
+    t.string   "name",            null: false
+    t.text     "desc",            null: false
+    t.string   "target",          null: false
+    t.string   "cost_type",       null: false
+    t.integer  "cost",            null: false
+    t.integer  "attack",          null: false
+    t.string   "attack_type",     null: false
+    t.float    "crit_chance",     null: false
+    t.float    "crit_rate",       null: false
+    t.integer  "attackable_id"
+    t.string   "attackable_type"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   add_index "attack_type_templates", ["attackable_type", "attackable_id"], name: "index_attack_type_templates_on_attackable_type_and_id", using: :btree
 
   create_table "attack_types", force: :cascade do |t|
-    t.int4range "attack",                  null: false
-    t.float     "crit_chance",             null: false
-    t.int4range "crit_dmg",                null: false
-    t.integer   "character_id"
-    t.integer   "item_id"
-    t.integer   "attack_type_template_id"
-    t.datetime  "created_at",              null: false
-    t.datetime  "updated_at",              null: false
+    t.integer  "attack",                  null: false
+    t.float    "crit_chance",             null: false
+    t.float    "crit_rate",               null: false
+    t.integer  "character_id"
+    t.integer  "item_id"
+    t.integer  "attack_type_template_id"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   create_table "bag_templates", force: :cascade do |t|
@@ -72,6 +75,8 @@ ActiveRecord::Schema.define(version: 20160707114342) do
     t.string   "name"
     t.text     "description"
     t.integer  "hp",          default: 1
+    t.integer  "mp",          default: 1
+    t.integer  "haste",       default: 1
     t.float    "strength",    default: 1.0
     t.float    "intellect",   default: 1.0
     t.float    "agility",     default: 1.0

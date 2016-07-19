@@ -4,6 +4,8 @@ class CreateCharacterTemplates < ActiveRecord::Migration
       t.string  :name
       t.text    :description
       t.integer :hp,         default: 1
+      t.integer :mp,         default: 1
+      t.integer :haste,      default: 1
       t.float   :strength,   default: 1
       t.float   :intellect,  default: 1
       t.float   :agility,    default: 1

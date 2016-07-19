@@ -1,0 +1,105 @@
+<div class="profile-panel bit-content orange-gray">
+  <%= simple_form_for @character_template, :html => {autocomplete: 'off'} do |f| %>
+      <div class="row">
+
+
+        <div class="content character_content">
+          <div class="col-md-6">
+            <div class="table table-bordered character_table">
+              <div class="image-container">
+                <div class="avatar">
+                  <%= f.simple_fields_for :image do |ff| %>
+                      <div class="preview img-wrapper" style="background: url(<%= (params[:action] == 'edit') ? @character_template.image.image_content.url : '' %>) no-repeat center center; background-size: cover" ></div>
+
+                      <%= render partial: 'images/image_fields', locals: {f: ff} %>
+                  <% end %>
+                </div>
+              </div>
+              <div class="stats-container">
+                <div class="stats-header">
+                  <div class=" icons-group">
+                    <%= image_tag('my_icons/question.png', size: '40x40', title: 'основной параметр') %>
+                    <%= f.input :main_param, as: :select, label: false, collection: %w(agility strange intellect), input_html: {class: 'form-control right'} %>
+                  </div>
+                </div>
+                <%= f.error_notification %>
+                <%= render partial: 'character_template_stats_fields', locals: {f: f} %>
+              </div>
+            </div>
+
+
+            <ul class="nav nav-tabs">
+              <li class="active">
+                <a href="#hero" data-toggle="tab"><%= image_tag('free_icons/scroll_5.png', size: '90x90', title: 'hero') %></a>
+              </li>
+              <li>
+                <a class="tab_images" href="#resists" data-toggle="tab"><%= image_tag('free_icons/tome.png', size: '90x90', title: 'character resists') %></a>
+              </li>
+              <li>
+                <a href="#attacks" data-toggle="tab"><%= image_tag('my_icons/attack.png', size: '90x90', title: 'attack_types') %></a>
+              </li>
+            </ul>
+
+
+            <div class="tab-content">
+              <div class="tab-pane active" id="hero">
+                <div class="content character_content">
+                  <%= render partial: 'character_template_desc_fields', locals: {f: f} %>
+                </div>
+              </div>
+              <div class="tab-pane" id="resists">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="content resist_content">
+                      <%= f.simple_fields_for :resist_template do |ff| %>
+                          <%= ff.error_notification %>
+                          <%= render partial: 'resist_templates/resist_template_fields', locals: {f: ff} %>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane" id="attacks">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="content attack_content">
+                      <h4>Добавить Типы
+                        Атак: <%= link_to_add_fields '<i class="glyphicon glyphicon-plus" aria-hidden="true"></i>', f, :attack_type_templates, 'attack_types_table', id: 'add-attack_types-btn', class: 'btn btn-bit btn-lg green' %></h4>
+
+                          <div class="attack_types_table">
+                            <% if params[:action] == 'edit' %>
+                            <%= f.simple_fields_for :attack_type_templates do |ff| %>
+                                <%= ff.error_notification %>
+                                <%= render partial: 'attack_type_template_fields', locals: {f: ff} %>
+                            <% end %>
+                            <%end %>
+                          </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+
+        <div class="col-md-6">
+          <div class="content bag_content">
+            <%= f.simple_fields_for :bag_template do |ff| %>
+                <%= ff.error_notification %>
+                <%= render partial: 'bag_template_fields', locals: {f: ff} %>
+            <% end %>
+          </div>
+        </div>
+
+
+        <div class="footer">
+          <%= f.button :submit, 'Создать героя', :class => 'btn btn-bit btn-lg green' %>
+          <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                      character_templates_path, :class => 'btn btn-bit btn-lg outline' %>
+        </div>
+      </div>
+  <% end %>
+
+</div>

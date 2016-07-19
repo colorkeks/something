@@ -1,13 +1,12 @@
 <%- model_class = CharacterTemplate -%>
-<div class="row">
-  <div class="container-cell bit-content orange-gray">
+<div class="profile-panel bit-content orange-gray">
     <div class="page-header">
       <h1><%= t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
     </div>
-    <table class="table table-striped">
+    <table class="table">
       <thead>
       <tr>
-        <th><%= model_class.human_attribute_name(:id) %></th>
+        <th>Image</th>
         <th><%= model_class.human_attribute_name(:name) %></th>
         <th><%= model_class.human_attribute_name(:description) %></th>
         <th><%= model_class.human_attribute_name(:hp) %></th>
@@ -21,7 +20,7 @@
       <tbody>
       <% @character_templates.each do |character_template| %>
           <tr>
-            <td><%= link_to character_template.id, character_template_path(character_template) %></td>
+            <td><%=image_tag(character_template.image.image_content.url()) %></td>
             <td><%= character_template.name %></td>
             <td><%= character_template.description %></td>
             <td><%= character_template.hp %></td>
@@ -48,5 +47,4 @@
     <%= link_to t('.new', :default => t("helpers.links.new")),
                 new_character_template_path,
                 :class => 'btn btn-primary' %>
-  </div>
 </div>

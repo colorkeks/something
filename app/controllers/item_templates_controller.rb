@@ -74,6 +74,6 @@ class ItemTemplatesController < ApplicationController
       params.require(:item_template).permit(:name, :description, :item_type, :strength, :intellect, :agility, :sell_cost,:buy_cost,:purchasable, :bag_template_id, :reward_template_id,
                                             image_attributes:[:image_content, :item_template_id],
                                             resist_templates_attributes:[:physical, :fire, :water, :earth, :holy, :necrotic, :nature, :item_template_id],
-                                            attack_type_template_attributes:[:name, :attack, :attack_type, :crit_chance, :crit_dmg, :item_template_id])
+                                            attack_type_template_attributes:[:name, :attack, :attack_type, :crit_chance, :crit_rate, :item_template_id])
     end
 end

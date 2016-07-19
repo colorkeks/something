@@ -69,15 +69,15 @@ class CharacterTemplatesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def character_template_params
-      params.require(:character_template).permit(:name, :description, :hp, :strength, :intellect, :agility, :main_param,
-                                                  image_attributes:[:image_content, :character_template_id],
-                                                  resist_template_attributes:[:physical, :fire, :water, :earth, :holy, :necrotic, :nature],
-                                                  attack_type_templates_attributes:[:name, :desc, :attack, :attack_type, :crit_chance, :crit_dmg, :_destroy],
-                                                  bag_template_attributes:[:gold,
-                                                                           item_templates_attributes:[:name, :description, :item_type, :strength, :intellect, :agility, :sell_cost, :buy_cost, :purchasable,:_destroy,
-                                                                                                      image_attributes:[:image_content],
-                                                                                                      resist_template_attributes:[:physical, :fire, :water, :earth, :holy, :necrotic, :nature],
-                                                                                                      attack_type_template_attributes:[:name, :desc, :attack, :attack_type, :crit_chance, :crit_dmg, :_destroy]
+      params.require(:character_template).permit(:id, :name, :description, :hp, :mp, :haste, :strength, :intellect, :agility, :main_param,
+                                                  image_attributes:[:id, :image_content, :character_template_id],
+                                                  resist_template_attributes:[:id, :physical, :fire, :water, :earth, :holy, :necrotic, :nature],
+                                                  attack_type_templates_attributes:[:id, :name, :desc, :target, :cost_type, :cost, :attack, :attack_type, :crit_chance, :crit_rate, :_destroy],
+                                                  bag_template_attributes:[:id, :gold,
+                                                                           item_templates_attributes:[:id, :name, :description, :item_type, :strength, :intellect, :agility, :sell_cost, :buy_cost, :purchasable,:_destroy,
+                                                                                                      image_attributes:[:id, :image_content],
+                                                                                                      resist_template_attributes:[:id, :physical, :fire, :water, :earth, :holy, :necrotic, :nature],
+                                                                                                      attack_type_template_attributes:[:id, :name, :desc, :target, :cost_type, :cost,  :attack, :attack_type, :crit_chance, :crit_rate, :_destroy]
                                                                            ]])
     end
 end
