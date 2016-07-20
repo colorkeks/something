@@ -27,20 +27,12 @@
               </div>
             </div>
 
-            <% if params[:action] != 'edit' %>
-                <div class="content bag_content">
-                  <%= f.simple_fields_for :bag_template do |ff| %>
-                      <%= ff.error_notification %>
-                      <%= render partial: 'bag_template_fields', locals: {f: ff} %>
-                  <% end %>
-                </div>
-            <% else %>
-                <div class="content bag_content">
-                  <h3>Вложенные поля предметов, по какой-то причине не отображаются :(</h3>
-                  <br>
-                  <h3>По этому сумку пока редактировать нельзя</h3>
-                </div>
-            <% end %>
+            <div class="content bag_content">
+              <%= f.simple_fields_for :bag_template do |ff| %>
+                  <%= ff.error_notification %>
+                  <%= render partial: 'bag_template_fields', locals: {f: ff} %>
+              <% end %>
+            </div>
 
 
           </div>
