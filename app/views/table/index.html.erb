@@ -9,11 +9,16 @@
     </div>
 
     <div class="group main">
-    <%= link_to t('.heroes', :default => t("helpers.links.heroes")), character_templates_path(), :class => 'btn btn-bit btn-full green' %>
+      <%= link_to t('.heroes', :default => t("helpers.links.heroes")), character_templates_path(), :class => 'btn btn-bit btn-full green' %>
+      <br>
+      <%= link_to t('helpers.links.monsters', :default => t("helpers.links.monsters")), monsters_path(), :class => 'btn btn-bit btn-full green' %>
+      <br>
+    </div>
     <br>
-    <%= link_to t('helpers.links.quests', :default => t("helpers.links.quests")), character_templates_path(), :class => 'btn btn-bit btn-full green' %>
-    <br>
-      <%= link_to t('helpers.links.monsters', :default => t("helpers.links.monsters")), character_templates_path(), :class => 'btn btn-bit btn-full green' %>
+    <div class="group main">
+      <%= link_to t('helpers.links.quest_templates', :default => t("helpers.links.quest_templates")), quest_templates_path(), :class => 'btn btn-bit btn-full green' %>
+      <br>
+      <%= link_to t('helpers.links.reward_templates', :default => t("helpers.links.reward_templates")), reward_templates_path(), :class => 'btn btn-bit btn-full green' %>
     </div>
     <div class="group help">
       <%= link_to t('helpers.links.options', :default => t("helpers.links.options")), character_templates_path(), :class => 'btn btn-bit btn-full outline' %>

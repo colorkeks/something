@@ -5,7 +5,7 @@ class QuestTemplatesController < ApplicationController
 
 
   def index
-    @mquest_templates = QuestTemplate.all
+    @quest_templates = QuestTemplate.all
   end
 
   def show

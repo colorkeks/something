@@ -186,7 +186,6 @@ ActiveRecord::Schema.define(version: 20160707114342) do
   create_table "reward_templates", force: :cascade do |t|
     t.integer  "exp"
     t.integer  "gold"
-    t.integer  "item_template_id"
     t.integer  "quest_template_id", null: false
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
