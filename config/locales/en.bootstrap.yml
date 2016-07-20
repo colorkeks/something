@@ -16,6 +16,11 @@ en:
       destroy: "Delete"
       new: "New"
       edit: "Edit"
+      heroes: "Heroes"
+      quests: "Quests"
+      monsters: "Monsters"
+      help: "Help"
+      options: "Options"
       edit_bag: "Edit Bag"
     titles:
       edit: "Edit %{model}"

@@ -3,7 +3,7 @@
 $main_color: orange;
 //#20899a
 $hover_color: #3dc2eb;
-$background_panel_color: #343434;
+$background_panel_color: #222222;
 $green_btn: #165a3a;
 
 html {
@@ -276,8 +276,18 @@ body {
       margin-top: 100px;
       width: 100%;
       min-height: 760px;
-      min-width: 950px;
+      min-width: 500px;
     }
+
+    &.profile-panel-left{
+      position: relative;
+      float: left;
+      background: $background_panel_color;
+      margin: 0;
+      width: 25%;
+      min-height: 760px;
+    }
+
   }
 
   .tab_images {
@@ -290,6 +300,22 @@ body {
 
   .tab-content, .bag_content, .nav-tabs {
     min-width: 480px;
+  }
+
+
+  .group{
+    margin-bottom: 5px;
+    margin-top: 5px;
+
+    &.main{
+
+    }
+
+
+    &.help{
+      position: absolute;
+      bottom: 0;
+    }
   }
 
   .content {
@@ -400,6 +426,17 @@ body {
 .btn-lg {
   margin: 5px;
   font-size: 14px;
+  line-height: 1.33;
+  border-radius: 6px;
+  padding: 12px 22px;
+}
+
+.btn-full{
+  vertical-align: middle;
+  display: table-cell;
+  width: 500px;
+  height: 70px;
+  font-size: 16px;
   line-height: 1.33;
   border-radius: 6px;
   padding: 12px 22px;

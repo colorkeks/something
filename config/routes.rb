@@ -1,5 +1,35 @@
 Rails.application.routes.draw do
 
+  get 'reward_templates/new'
+
+  get 'reward_templates/edit'
+
+  get 'reward_templates/update'
+
+  get 'reward_templates/create'
+
+  get 'reward_templates/destroy'
+
+  get 'monsters/new'
+
+  get 'monsters/edit'
+
+  get 'monsters/update'
+
+  get 'monsters/create'
+
+  get 'monsters/destroy'
+
+  get 'quest_templates/new'
+
+  get 'quest_templates/edit'
+
+  get 'quest_templates/update'
+
+  get 'quest_templates/create'
+
+  get 'quest_templates/destroy'
+
   resources :attack_types
   resources :resists
   resources :attack_type_templates
@@ -24,6 +54,8 @@ Rails.application.routes.draw do
   resources :items
 
   resources :item_templates
+
+  resources :quest_templates
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

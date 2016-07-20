@@ -3,7 +3,6 @@ class CreateRewardTemplates < ActiveRecord::Migration
     create_table :reward_templates do |t|
       t.integer :exp
       t.integer :gold
-      t.integer :item_template_id
       t.integer :quest_template_id,  null: false
 
       t.timestamps null: false

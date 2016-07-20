@@ -9,7 +9,7 @@
               <div class="image-container">
                 <div class="avatar">
                   <%= f.simple_fields_for :image, @character_template do |ff| %>
-                      <div class="preview img-wrapper" style="background: url(<%= (params[:action] == 'edit') ? @character_template.image.image_content.url : '' %>) no-repeat center center; background-size: cover" ></div>
+                      <div class="preview img-wrapper" style="background: url(<%= (params[:action] == 'edit') ? @character_template.image.image_content.url : '' %>) no-repeat center center; background-size: cover"></div>
 
                       <%= render partial: 'images/image_fields', locals: {f: ff} %>
                   <% end %>
@@ -28,75 +28,79 @@
             </div>
 
             <% if params[:action] != 'edit' %>
-                  <div class="content bag_content">
-                    <%= f.simple_fields_for :bag_template do |ff| %>
-                        <%= ff.error_notification %>
-                        <%= render partial: 'bag_template_fields', locals: {f: ff} %>
-                    <% end %>
-                  </div>
-            <%else%>
+                <div class="content bag_content">
+                  <%= f.simple_fields_for :bag_template do |ff| %>
+                      <%= ff.error_notification %>
+                      <%= render partial: 'bag_template_fields', locals: {f: ff} %>
+                  <% end %>
+                </div>
+            <% else %>
                 <div class="content bag_content">
                   <h3>Вложенные поля предметов, по какой-то причине не отображаются :(</h3>
                   <br>
                   <h3>По этому сумку пока редактировать нельзя</h3>
                 </div>
-            <%end%>
+            <% end %>
 
 
           </div>
         </div>
 
         <div class="col-md-6">
-        <ul class="nav nav-tabs">
-          <li class="active">
-            <a href="#hero" data-toggle="tab"><%= image_tag('free_icons/scroll_5.png', size: '90x90', title: 'hero') %></a>
-          </li>
-          <li>
-            <a class="tab_images" href="#resists" data-toggle="tab"><%= image_tag('free_icons/tome.png', size: '90x90', title: 'character resists') %></a>
-          </li>
-          <li>
-            <a href="#attacks" data-toggle="tab"><%= image_tag('my_icons/attack.png', size: '90x90', title: 'attack_types') %></a>
-          </li>
-        </ul>
+          <ul class="nav nav-tabs">
+            <li class="active">
+              <a href="#hero" data-toggle="tab"><%= image_tag('free_icons/scroll_5.png', size: '90x90', title: 'hero') %></a>
+            </li>
+            <li>
+              <a class="tab_images" href="#resists" data-toggle="tab"><%= image_tag('free_icons/tome.png', size: '90x90', title: 'character resists') %></a>
+            </li>
+            <li>
+              <a href="#attacks" data-toggle="tab"><%= image_tag('my_icons/attack.png', size: '90x90', title: 'attack_types') %></a>
+            </li>
+          </ul>
 
-        <div class="tab-content">
-          <div class="tab-pane active" id="hero">
-            <div class="content character_content">
-              <%= render partial: 'character_template_desc_fields', locals: {f: f} %>
-            </div>
-          </div>
-          <div class="tab-pane" id="resists">
-            <div class="row">
-              <div class="col-md-12">
-                <div class="content resist_content">
-                  <%= f.simple_fields_for :resist_template do |ff| %>
-                      <%= ff.error_notification %>
-                      <%= render partial: 'resist_templates/resist_template_fields', locals: {f: ff} %>
-                  <% end %>
+          <div class="tab-content">
+            <div class="tab-pane active" id="hero">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="content character_content">
+                    <%= render partial: 'character_template_desc_fields', locals: {f: f} %>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="tab-pane" id="attacks">
-            <div class="row">
-              <div class="col-md-12">
-                <div class="content attack_content">
-                  <h4>Добавить Типы
-                    Атак: <%= link_to_add_fields '<i class="glyphicon glyphicon-plus" aria-hidden="true"></i>', f, :attack_type_templates, 'attack_types_table', id: 'add-attack_types-btn', class: 'btn btn-bit btn-lg green' %></h4>
+            <div class="tab-pane" id="resists">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="content resist_content">
+                    <%= f.simple_fields_for :resist_template do |ff| %>
+                        <%= ff.error_notification %>
+                        <%= render partial: 'resist_templates/resist_template_fields', locals: {f: ff} %>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane" id="attacks">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="content attack_content">
+                    <h4>Добавить Типы
+                      Атак: <%= link_to_add_fields '<i class="glyphicon glyphicon-plus" aria-hidden="true"></i>', f, :attack_type_templates, 'attack_types_table', id: 'add-attack_types-btn', class: 'btn btn-bit btn-lg green' %></h4>
 
-                  <div class="attack_types_table">
-                    <% if params[:action] == 'edit' %>
-                        <%= f.simple_fields_for :attack_type_templates do |ff| %>
-                            <%= ff.error_notification %>
-                            <%= render partial: 'attack_type_template_fields', locals: {f: ff} %>
-                        <% end %>
-                    <%end %>
+                    <div class="attack_types_table">
+                      <% if params[:action] == 'edit' %>
+                          <%= f.simple_fields_for :attack_type_templates do |ff| %>
+                              <%= ff.error_notification %>
+                              <%= render partial: 'attack_type_template_fields', locals: {f: ff} %>
+                          <% end %>
+                      <% end %>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
         </div>
 
         <div class="footer">
