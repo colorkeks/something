@@ -5,7 +5,7 @@ class RewardTemplatesController < ApplicationController
 
 
   def index
-    @monsters = RewardTemplate.all
+    @reward = RewardTemplate.all
   end
 
   def show
