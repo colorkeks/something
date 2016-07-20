@@ -284,6 +284,10 @@ body {
     margin-bottom: 0.5px;
   }
 
+  .tab-content{
+    padding-bottom: 100px;
+  }
+
   .tab-content, .bag_content, .nav-tabs {
     min-width: 480px;
   }
@@ -734,7 +738,7 @@ body {
     display: inline-block;
     position: relative;
     border: 2px solid orange;
-    width: 48%;
+    width: 47%;
     margin: 4px;
     padding: 5px;
 

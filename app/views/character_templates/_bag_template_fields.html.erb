@@ -3,17 +3,16 @@
 
     <div class=" icons-group">
       <%= image_tag('my_icons/gold.png', size: '128x128', title: 'золото') %>
-      <%= f.input :gold, label: false, input_html: {min: '0', step: 'any', class: 'form-control', value: 0} %>
+      <%= f.input :gold, label: false, input_html: {min: '0', step: 'any', class: 'form-control'} %>
     </div>
     <div class=" icons-group" style="display: block; float: none">
       <%= image_tag('my_icons/items.png', size: '128x128', title: 'добавить предмет') %>
       <%= link_to_add_item_fields '<i class="glyphicon glyphicon-plus" aria-hidden="true"></i>', f, :item_templates, 'item_table_body', id: 'add-item-btn', class: 'btn btn-bit green' %>
     </div>
   </div>
-  <!--TODO ПРИДУМАТЬ КАК ОТКРЫВАТЬ МОДАЛИ ПРЕДМЕТОВ ВО ВРЕМЯ РЕДАКТИРОВАНИЯ ИЛИ ОТКАЗАТЬСЯ ОТ МОДАЛЕЙ-->
   <div class="item_table_body">
       <% if params[:action] == 'edit' %>
-          <%= f.simple_fields_for :item_templates do |ff| %>
+          <%= f.simple_fields_for :item_templates, @character_template.bag_template.item_templates do |ff| %>
               <%= render partial: 'item_template_fields', locals: {f: ff} %>
           <% end %>
       <% end %>

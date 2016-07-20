@@ -17,11 +17,9 @@ Rails.application.routes.draw do
 
   resources :character_parameters
 
-
-
   resources :character_templates
 
-
+  resources :bag_templates
 
   resources :items
 

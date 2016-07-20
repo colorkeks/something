@@ -1,28 +1,38 @@
 <div class="fields item_fields" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
   <div class="dropdown">
-    <div class='item_content avatar' data-toggle="dropdown">
+    <div class='item_content avatar' style="background: url(<%= f.object%>) no-repeat center center; background-size: cover" data-toggle="dropdown">
       <div class='preview img-wrapper'></div>
     </div>
     <ul class="dropdown-menu" role="menu">
-      <li role="presentation"><a class="item_modal" role="menuitem" tabindex="-1" href="#">Предмет</a></li>
+      <li role="presentation"><a class="item_modal" data-toggle="modal" data-target="<%= params[:action] == 'edit' ? '#' + f.object.id.to_s : ''%>" role="menuitem" tabindex="-1" href="#">Предмет</a></li>
       <li role="presentation">
         <a role="menuitem" tabindex="-1" href="#"><%= link_to_remove_fields 'Удалить', f, '' %></a></li>
     </ul>
   </div>
 
 
-  <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal fade" id="<%= params[:action] == 'edit' ? f.object.id : ''%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-body">
           <div class="content items_content">
             <div class="row">
               <div class="col-md-3">
-                <%= f.simple_fields_for :image, f.object.build_image do |ff| %>
-                    <div class="avatar">
-                      <div class="preview img-wrapper"></div>
-                      <%= render partial: 'images/image_fields', locals: {f: ff} %>
-                    </div>
+                <!--TODO ПОНЯТЬ ПОЧЕМУ НЕ ПОДТЯГИВАЮТСЯ ДАННЫЕ ВЛОЖЕННЫХ ПОЛЕЙ ПРЕДМЕТА-->
+                <% if params[:action] == 'edit' %>
+                    <%= f.simple_fields_for :image do |ff| %>
+                        <div class="avatar">
+                          <div class="preview img-wrapper"></div>
+                          <%= render partial: 'images/image_fields', locals: {f: ff} %>
+                        </div>
+                    <% end %>
+                <% else %>
+                    <%= f.simple_fields_for :image, f.object.build_image do |ff| %>
+                        <div class="avatar">
+                          <div class="preview img-wrapper"></div>
+                          <%= render partial: 'images/image_fields', locals: {f: ff} %>
+                        </div>
+                    <% end %>
                 <% end %>
               </div>
               <div class="col-md-4">
@@ -73,24 +83,37 @@
             <div class="row">
               <div class="col-md-12">
                 <h4>Сопротивления</h4>
+                <!--TODO ПОНЯТЬ ПОЧЕМУ НЕ ПОДТЯГИВАЮТСЯ ДАННЫЕ ВЛОЖЕННЫХ ПОЛЕЙ ПРЕДМЕТА-->
                 <div class="content resist_content">
-                  <%= f.simple_fields_for :resist_template, f.object.build_resist_template do |ff| %>
-                      <%= render partial: 'resist_templates/resist_template_fields', locals: {f: ff} %>
+                  <% if params[:action] == 'edit'%>
+                      <%= f.simple_fields_for :resist_template do |ff| %>
+                          <%= render partial: 'resist_templates/resist_template_fields', locals: {f: ff} %>
+                      <% end %>
+                  <%else %>
+                      <%= f.simple_fields_for :resist_template, f.object.build_resist_template do |ff| %>
+                          <%= render partial: 'resist_templates/resist_template_fields', locals: {f: ff} %>
+                      <% end %>
                   <% end %>
                 </div>
               </div>
             </div>
             </br>
             </br>
-            <!--TODO ЛИБО ПОМЕНЯТЬ ВАЛИДАЦИЮ ЛИБО ДОБАВЛЯТЬ ТИП АТАКИ ПО КНОПКЕ, ТК У ВЕЩЕ МОЖЕТ И НЕ БЫТЬ ТИПА АТАКИ-->
             <div class="row">
               <div class="col-md-12">
                 <h4>Параметры атаки</h4>
+                <!--TODO ПОНЯТЬ ПОЧЕМУ НЕ ПОДТЯГИВАЮТСЯ ДАННЫЕ ВЛОЖЕННЫХ ПОЛЕЙ ПРЕДМЕТА-->
                 <div class="table attack_type_table">
+                  <% if params[:action] == 'edit'%>
+                      <%= f.simple_fields_for :attack_type_template do |ff| %>
+                          <%= render partial: 'attack_type_template_fields', locals: {f: ff} %>
+                      <% end %>
+                  <%else %>
+                      <%= f.simple_fields_for :attack_type_template, f.object.build_attack_type_template do |ff| %>
+                          <%= render partial: 'attack_type_template_fields', locals: {f: ff} %>
+                      <% end %>
+                  <% end %>
 
-                    <%= f.simple_fields_for :attack_type_template, f.object.build_attack_type_template do |ff| %>
-                        <%= render partial: 'attack_type_template_fields', locals: {f: ff} %>
-                    <% end %>
                 </div>
               </div>
             </div>

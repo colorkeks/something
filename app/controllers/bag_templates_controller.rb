@@ -1,0 +1,2 @@
+class BagTemplatesController < ApplicationController
+end
