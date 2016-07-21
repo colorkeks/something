@@ -323,7 +323,7 @@ body {
 
   .content {
 
-    &.character_content, &.items_content, &.bag_content, &.resist_content {
+    &.character_content, &.items_content, &.bag_content, &.resist_content, &.monster_content {
       height: 50%;
       .icons-group {
         display: inline-block;
@@ -339,7 +339,7 @@ body {
           margin-bottom: 10px;
           display: inline-block;
           &.text {
-            vertical-align: baseline;
+            vertical-align: top;
           }
         }
 
@@ -652,10 +652,10 @@ body {
 }
 
 /***********************
-  CHARACTER_TABLE
+  CHARACTER_TABLE AND MONSTER TABLE
 ************************/
 
-.hero_info {
+.hero_info, .monster_info {
   border: 2px solid $main_color;
   display: table;
 
@@ -687,7 +687,7 @@ body {
       }
     }
 
-  .character_table {
+  .character_table, .monster_table {
 
     &.table {
       border-left: none;
@@ -737,6 +737,26 @@ body {
     .icons-group {
       width: 45%;
       padding: 0;
+    }
+  }
+
+  .monster_stats {
+
+    .icons-group {
+      position: relative;
+      text-align: left;
+      width: 100%;
+      padding: 0;
+
+      .input{
+        position: relative;
+        .text{
+          width: 80% !important;
+        }
+      }
+      img{
+        margin-top: 0;
+      }
     }
   }
 
@@ -837,6 +857,14 @@ body {
 
 .table {
   border: 2px solid $main_color;
+
+  th{
+    text-align: center;
+  }
+
+  thead > tr > th {
+    border-bottom: 2px solid $main_color;
+  }
 
   tbody > tr > th {
     border: 1px solid $main_color;

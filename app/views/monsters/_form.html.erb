@@ -3,36 +3,42 @@
       <div class="row">
 
 
-        <div class="content character_content">
-          <div class="col-md-6">
-            <div class="table table-bordered character_table">
-              <div class="image-container">
-                <div class="avatar">
-                  <%= f.simple_fields_for :image do |ff| %>
-                      <div class="preview img-wrapper" style="background: url(<%= (params[:action] == 'edit') ? @character_template.image.image_content.url : '' %>) no-repeat center center; background-size: cover"></div>
-                      <div style="border-right: 1px solid orange">
-                      <%= render partial: 'images/image_fields', locals: {f: ff} %>
-                      </div>
-                  <% end %>
-                </div>
+        <div class="content monster_content">
+          <div class="col-md-6 col-fixed-650">
+            <div class="monster_info">
+              <div class="info_header">
+                <%= image_tag('free_icons/scroll_5.png', size: '40x40', title: 'hero') %>
+                <h3>Описание Монстра</h3>
               </div>
-              <div class="stats-container">
-                <div class="stats-header">
-                  <div class=" icons-group">
+              <div class="table table-bordered monster_table">
+                <div class="image-container">
+                  <div class="avatar">
+                    <%= f.simple_fields_for :image do |ff| %>
+                        <div class="preview img-wrapper" style="background: url(<%= (params[:action] == 'edit') ? @character_template.image.image_content.url : '' %>) no-repeat center center; background-size: cover"></div>
+                        <%= render partial: 'images/image_fields', locals: {f: ff} %>
+                    <% end %>
+                  </div>
+                </div>
+                <div class="stats-container">
+                  <div class="stats-header">
                     <div class=" icons-group">
-                      <%= image_tag('free_icons/scroll_5.png', size: '40x40', title: 'monster name') %>
+                      <%= image_tag('my_icons/knight.png', size: '40x40', title: 'имя героя') %>
                       <%= f.input :name, label: false, input_html: {class: 'form-control'} %>
                     </div>
                   </div>
-                </div>
-                <%= f.error_notification %>
-                <div class="scroll cell">
-                  <div class=" icons-group">
-                    <%= image_tag('my_icons/hp1.png', size: '50x50', title: 'здоровье') %>
-                    <%= f.input :hp, label: false, input_html: {min: '1', step: 'any', class: 'form-control'} %>
+                  <div class="monster_stats">
+                    <div class=" icons-group">
+                      <%= image_tag('my_icons/hp1.png', size: '50x50', title: 'здоровье') %>
+                      <%= f.input :hp, label: false, input_html: {min: '1', step: 'any', class: 'form-control'} %>
+                    </div>
+                    <div class=" icons-group">
+                      <%= image_tag('my_icons/letter.png', size: '50x50', title: 'описание героя', class: 'text') %>
+                      <%= f.input :desc, label: false, input_html: {:cols => 19, :rows => 5, class: 'form-control'} %>
+                    </div>
                   </div>
                 </div>
               </div>
+
             </div>
           </div>
         </div>

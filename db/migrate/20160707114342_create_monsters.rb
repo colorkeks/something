@@ -2,7 +2,7 @@ class CreateMonsters < ActiveRecord::Migration
   def change
     create_table :monsters do |t|
       t.string :name,                null: false
-      t.string :desc
+      t.text :desc
       t.integer :hp,                 null: false
       t.integer :quest_template_id
 

@@ -6,14 +6,14 @@
     <table class="table">
       <thead>
       <tr>
+        <!--TODO СТИЛИЗИРОВАТЬ-->
         <th>Image</th>
-        <th><%= model_class.human_attribute_name(:name) %></th>
-        <th><%= model_class.human_attribute_name(:description) %></th>
-        <th><%= model_class.human_attribute_name(:hp) %></th>
-        <th><%= model_class.human_attribute_name(:strength) %></th>
-        <th><%= model_class.human_attribute_name(:intellect) %></th>
-        <th><%= model_class.human_attribute_name(:agility) %></th>
-        <th><%= model_class.human_attribute_name(:created_at) %></th>
+        <th><%= image_tag('my_icons/knight.png', size: '80x80', title: 'имя героя') %></th>
+        <th><%= image_tag('my_icons/hp1.png', size: '80x80', title: 'здоровье') %></th>
+        <th><%= image_tag('my_icons/mp.png', size: '80x80', title: 'мана') %></th>
+        <th><%= image_tag('my_icons/strength.png', size: '80x80', title: 'сила') %></th>
+        <th><%= image_tag('my_icons/intellect.png', size: '80x80', title: 'интеллект') %></th>
+        <th><%= image_tag('my_icons/agility.png', size: '80x80', title: 'ловкость') %></th>
         <th><%= t '.actions', :default => t("helpers.actions") %></th>
       </tr>
       </thead>
@@ -22,12 +22,11 @@
           <tr>
             <td><%=image_tag(character_template.image.image_content.url()) %></td>
             <td><%= character_template.name %></td>
-            <td><%= character_template.description %></td>
             <td><%= character_template.hp %></td>
+            <td><%= character_template.mp %></td>
             <td><%= character_template.strength %></td>
             <td><%= character_template.intellect %></td>
             <td><%= character_template.agility %></td>
-            <td><%= character_template.created_at %></td>
             <td>
               <%= link_to t('.show', :default => t("helpers.links.show")),
                           character_template_path(character_template), :class => 'btn btn-bit btn-lg outline' %>
