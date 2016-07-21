@@ -7,14 +7,13 @@
     </div>
     <div class=" icons-group" style="display: block; float: none">
       <%= image_tag('my_icons/items.png', size: '128x128', title: 'добавить предмет') %>
-      <!--TODO РАЗОБРАТЬСЯ С ДОБАВЛЕНИЕМ ПРЕДМЕТОВ В РЕЖИМЕ EDIT-->
       <%= link_to_add_item_fields '<i class="glyphicon glyphicon-plus" aria-hidden="true"></i>', f, :item_templates, 'item_table_body', id: 'add-item-btn', class: 'btn btn-bit green' %>
     </div>
   </div>
   <div class="item_table_body">
       <% if params[:action] == 'edit' %>
           <%= f.simple_fields_for :item_templates do |ff| %>
-              <%= render partial: 'item_template_fields', locals: {f: ff} %>
+              <%= render partial: 'edit_item_template_fields', locals: {f: ff} %>
           <% end %>
       <% end %>
     <!--Сюда вставляем миниатюры-->

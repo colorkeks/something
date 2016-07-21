@@ -24,6 +24,18 @@ $(function() {
     $(".rails-flash").animate({right: '0px'}).delay(1000).fadeOut(2000);
     slider();
     uploader();
+
+
+    $(window).resize(function () {
+        if ($(window).width() <= 870){
+            $(".navbar-fixed-top").css("width", '100%');
+        }
+        else {
+            $(".navbar-fixed-top").css("width", '80%');
+        }
+    })
+    
+
 });
 
 

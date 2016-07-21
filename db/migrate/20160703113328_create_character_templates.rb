@@ -3,6 +3,7 @@ class CreateCharacterTemplates < ActiveRecord::Migration
     create_table :character_templates do |t|
       t.string  :name
       t.text    :description
+      t.string  :hero_class, default: 'warrior'
       t.integer :hp,         default: 1
       t.integer :mp,         default: 1
       t.integer :haste,      default: 1

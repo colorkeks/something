@@ -4,7 +4,7 @@
 
 
 function remove_fields(link) {
-    $(link).prev("input[type=hidden]").val("true");
+    $(link).parent().find("input[type=hidden]").val("true");
     $(link).closest(".fields").hide();
 }
 
@@ -25,7 +25,7 @@ function add_item_fields(link, item, content, table_name) {
     if ($("." + table_name).find(".fields:visible").length >= 4) //  больше лучше не надо
         return;
     
-    var new_id = (parseInt($("." + table_name + " .item_modal:last ").attr('data-target')) + 1);
+    var new_id = (parseInt($("." + table_name).find(".modal:last ").attr('id')) + 1);
     new_id = new_id || 1;
     
     var regexp = new RegExp("new_" + item, "g");

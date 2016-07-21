@@ -62,7 +62,7 @@ class QuestTemplatesController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def quest_template_params
     params.require(:quest_template).permit(:id, :name, :desc, :next_id,
-                                          monsters_attributes:[ :id, :name,  :hp,
+                                          monsters_attributes:[ :id, :desc, :name,  :hp,
                                                                  image_attributes:                [:id, :image_content],
                                                                  resist_template_attributes:      [:id, :physical, :fire, :water, :earth, :holy, :necrotic, :nature],
                                                                  attack_type_templates_attributes:[:id, :name, :desc, :target, :cost_type, :cost, :attack, :attack_type, :crit_chance, :crit_rate, :_destroy],

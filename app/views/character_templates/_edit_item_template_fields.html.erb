@@ -1,13 +1,9 @@
 <div class="fields item_fields" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
   <div class="dropdown">
-    <div class='item_content avatar' style="background: url(<%= f.object%>) no-repeat center center; background-size: cover" data-toggle="dropdown">
-      <% if params[:action] == 'edit' %>
+    <div class='item_content avatar' data-toggle="dropdown">
           <%= f.simple_fields_for :image do |ff| %>
-              <div class='preview img-wrapper' style="background: url(<%= ff.object.image_content.url %>) no-repeat center center"></div>
+              <div class='preview img-wrapper' style="background: url(<%= ff.object.image_content.url%>) no-repeat center center"></div>
           <% end %>
-      <% else %>
-          <div class='preview img-wrapper'></div>
-      <% end %>
     </div>
     <ul class="dropdown-menu" role="menu">
       <li role="presentation">
@@ -26,21 +22,12 @@
           <div class="content items_content">
             <div class="row">
               <div class="col-md-3">
-                <% if params[:action] == 'edit' %>
                     <%= f.simple_fields_for :image do |ff| %>
                         <div class="avatar">
                           <div class="preview img-wrapper" style="background: url(<%= ff.object.image_content.url %>) no-repeat center center"></div>
                           <%= render partial: 'images/image_fields', locals: {f: ff} %>
                         </div>
                     <% end %>
-                <% else %>
-                    <%= f.simple_fields_for :image, f.object.build_image do |ff| %>
-                        <div class="avatar">
-                          <div class="preview img-wrapper"></div>
-                          <%= render partial: 'images/image_fields', locals: {f: ff} %>
-                        </div>
-                    <% end %>
-                <% end %>
               </div>
               <div class="col-md-4">
                 <div class=" icons-group">
@@ -70,7 +57,7 @@
                   <%= f.input :agility, label: false, input_html: {min: '0', step: 'any', class: 'form-control'} %>
                 </div>
 
-                <!--TODO НАРИСОВАТЬ ИКОНКИ ПРОДАТЬ/КУПИТЬ И ЧТО-НИБУДЬ СДЕЛАТЬ С ЧЕКБОКСОМ-->
+                <!--TODO ЧТО-НИБУДЬ СДЕЛАТЬ С ЧЕКБОКСОМ-->
                 <div class=" icons-group">
                   <%= image_tag('my_icons/exchangable.png', size: '128x128', title: 'exchangeable') %>
                   <%= f.input :purchasable, label: false, input_html: {class: 'form-control checkbox'} %>
@@ -90,17 +77,10 @@
             <div class="row">
               <div class="col-md-12">
                 <h4>Сопротивления</h4>
-                <!--TODO ПОНЯТЬ ПОЧЕМУ НЕ ПОДТЯГИВАЮТСЯ ДАННЫЕ ВЛОЖЕННЫХ ПОЛЕЙ ПРЕДМЕТА-->
                 <div class="content resist_content">
-                  <% if params[:action] == 'edit' %>
                       <%= f.simple_fields_for :resist_template do |ff| %>
                           <%= render partial: 'resist_templates/resist_template_fields', locals: {f: ff} %>
                       <% end %>
-                  <% else %>
-                      <%= f.simple_fields_for :resist_template, f.object.build_resist_template do |ff| %>
-                          <%= render partial: 'resist_templates/resist_template_fields', locals: {f: ff} %>
-                      <% end %>
-                  <% end %>
                 </div>
               </div>
             </div>
@@ -109,18 +89,10 @@
             <div class="row">
               <div class="col-md-12">
                 <h4>Параметры атаки</h4>
-                <!--TODO ПОНЯТЬ ПОЧЕМУ НЕ ПОДТЯГИВАЮТСЯ ДАННЫЕ ВЛОЖЕННЫХ ПОЛЕЙ ПРЕДМЕТА-->
                 <div class="table attack_type_table">
-                  <% if params[:action] == 'edit' %>
                       <%= f.simple_fields_for :attack_type_template do |ff| %>
                           <%= render partial: 'attack_type_template_fields', locals: {f: ff} %>
                       <% end %>
-                  <% else %>
-                      <%= f.simple_fields_for :attack_type_template, f.object.build_attack_type_template do |ff| %>
-                          <%= render partial: 'attack_type_template_fields', locals: {f: ff} %>
-                      <% end %>
-                  <% end %>
-
                 </div>
               </div>
             </div>

@@ -1,8 +1,8 @@
  <div class=" icons-group">
-    <%= image_tag('my_icons/knight.png', size: '128x128', title: 'имя героя') %>
-    <%= f.input :name, label: false, input_html: {class: 'form-control'} %>
+    <%#= image_tag('my_icons/knight.png', size: '100x100', title: 'имя героя') %>
+    <%= f.input :name, input_html: {class: 'form-control'} %>
   </div>
-  <div class=" icons-group">
-    <%= image_tag('my_icons/letter.png', size: '128x128', title: 'описание героя', class: 'text') %>
-    <%= f.input :description, label: false, input_html: {:cols => 19, :rows => 5, class: 'form-control'} %>
-  </div>
+  <!--<div class=" icons-group">-->
+    <%#= image_tag('my_icons/letter.png', size: '100x100', title: 'описание героя', class: 'text') %>
+    <%= f.input :description, input_html: {:cols => 19, :rows => 5, class: 'form-control'} %>
+  <!--</div>-->

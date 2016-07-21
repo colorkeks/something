@@ -1,0 +1,92 @@
+<div class="profile-panel bit-content orange-gray">
+  <%= simple_form_for @monster, :html => {autocomplete: 'off'} do |f| %>
+      <div class="row">
+
+
+        <div class="content character_content">
+          <div class="col-md-6">
+            <div class="table table-bordered character_table">
+              <div class="image-container">
+                <div class="avatar">
+                  <%= f.simple_fields_for :image do |ff| %>
+                      <div class="preview img-wrapper" style="background: url(<%= (params[:action] == 'edit') ? @character_template.image.image_content.url : '' %>) no-repeat center center; background-size: cover"></div>
+                      <div style="border-right: 1px solid orange">
+                      <%= render partial: 'images/image_fields', locals: {f: ff} %>
+                      </div>
+                  <% end %>
+                </div>
+              </div>
+              <div class="stats-container">
+                <div class="stats-header">
+                  <div class=" icons-group">
+                    <div class=" icons-group">
+                      <%= image_tag('free_icons/scroll_5.png', size: '40x40', title: 'monster name') %>
+                      <%= f.input :name, label: false, input_html: {class: 'form-control'} %>
+                    </div>
+                  </div>
+                </div>
+                <%= f.error_notification %>
+                <div class="scroll cell">
+                  <div class=" icons-group">
+                    <%= image_tag('my_icons/hp1.png', size: '50x50', title: 'здоровье') %>
+                    <%= f.input :hp, label: false, input_html: {min: '1', step: 'any', class: 'form-control'} %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <ul class="nav nav-tabs">
+            <li class="active">
+              <a class="tab_images" href="#resists" data-toggle="tab"><%= image_tag('free_icons/tome.png', size: '90x90', title: 'character resists') %></a>
+            </li>
+            <li>
+              <a href="#attacks" data-toggle="tab"><%= image_tag('my_icons/attack.png', size: '90x90', title: 'attack_types') %></a>
+            </li>
+          </ul>
+          <div class="tab-content">
+            <div class="tab-pane active" id="resists">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="content resist_content">
+                    <%= f.simple_fields_for :resist_template do |ff| %>
+                        <%= ff.error_notification %>
+                        <%= render partial: 'resist_templates/resist_template_fields', locals: {f: ff} %>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane" id="attacks">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="content attack_content">
+                    <h4>Добавить Типы
+                      Атак: <%= link_to_add_fields '<i class="glyphicon glyphicon-plus" aria-hidden="true"></i>', f, :attack_type_templates, 'attack_types_table', id: 'add-attack_types-btn', class: 'btn btn-bit btn-lg green' %></h4>
+
+                    <div class="attack_types_table">
+                      <% if params[:action] == 'edit' %>
+                          <%= f.simple_fields_for :attack_type_templates do |ff| %>
+                              <%= ff.error_notification %>
+                              <%= render partial: 'character_templates/attack_type_template_fields', locals: {f: ff} %>
+                          <% end %>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer">
+          <%= f.button :submit, :class => 'btn btn-bit btn-lg green' %>
+          <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                      monsters_path, :class => 'btn btn-bit btn-lg outline' %>
+        </div>
+      </div>
+  <% end %>
+
+</div>

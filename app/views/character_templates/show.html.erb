@@ -87,7 +87,6 @@
               <div><%= attack.attack %></div>
               <div><%= attack.crit_rate %></div>
               <div><%= attack.crit_chance %></div>
-
           <% end %>
         </div>
         <div class="tab-pane" id="bag">
@@ -103,37 +102,40 @@
 
                   Описание предмета
 
-                  <%= item.name %>
-                  <%= item.description %>
-                  <%= item.item_type %>
-                  <%= item.strength %>
-                  <%= item.intellect %>
-                  <%= item.agility %>
-                  <%= item.purchasable %>
-                  <%= item.sell_cost %>
-                  <%= item.buy_cost %>
+                  Название:         <%= item.name %>
+                  Описание:         <%= item.description %>
+                  Тип предмета:     <%= item.item_type %>
+                  Бонус силы:       <%= item.strength %>
+                  Бонус интеллекта: <%= item.intellect %>
+                  Бонус ловкости:   <%= item.agility %>
+                  Покупаемый:       <%= item.purchasable %>
+                  Цена продажи:     <%= item.sell_cost %>
+                  Цена покупки:     <%= item.buy_cost %>
 
                   Бонусы сопротивления
+                  <% if item.resist_template %>
+                   Физический урон:     <%= item.resist_template.physical %>
+                   Магия огоня:         <%= item.resist_template.fire %>
+                   Магия воды:          <%= item.resist_template.water %>
+                   Магия земли:         <%= item.resist_template.earth %>
+                   Светлая магия:       <%= item.resist_template.holy %>
+                   Некротическая магия: <%= item.resist_template.necrotic %>
+                   Магия природы:       <%= item.resist_template.nature %>
+                  <% end %>
 
-                  <%= item.resist_template.physical %>
-                  <%= item.resist_template.fire %>
-                  <%= item.resist_template.water %>
-                  <%= item.resist_template.earth %>
-                  <%= item.resist_template.holy %>
-                  <%= item.resist_template.necrotic %>
-                  <%= item.resist_template.nature %>
-
+                  <% if item.attack_type_template %>
                   Тип Атаки
 
-                  <%= item.attack_type_template.name %>
-                  <%= item.attack_type_template.desc %>
-                  <%= item.attack_type_template.target %>
-                  <%= item.attack_type_template.cost_type %>
-                  <%= item.attack_type_template.cost %>
-                  <%= item.attack_type_template.attack_type %>
-                  <%= item.attack_type_template.attack %>
-                  <%= item.attack_type_template.crit_rate %>
-                  <%= item.attack_type_template.crit_chance %>
+                   Название:   <%= item.attack_type_template.name %>
+                   Описание:   <%= item.attack_type_template.desc %>
+                   Цель:       <%= item.attack_type_template.target %>
+                   Типа платы: <%= item.attack_type_template.cost_type %>
+                   Плата:      <%= item.attack_type_template.cost %>
+                   Тип атаки:  <%= item.attack_type_template.attack_type %>
+                   Урон:       <%= item.attack_type_template.attack %>
+                   Крит.Множ.: <%= item.attack_type_template.crit_rate %>
+                   Крит.Шанс:  <%= item.attack_type_template.crit_chance %>
+                  <% end %>
 
                 "><%= (image_tag item.image.image_content.url) if !item.image.nil? %></div>
               </div>

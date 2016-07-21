@@ -4,36 +4,47 @@
 
 
         <div class="content character_content">
-          <div class="col-md-6">
-            <div class="table table-bordered character_table">
-              <div class="image-container">
-                <div class="avatar">
-                  <%= f.simple_fields_for :image, @character_template do |ff| %>
-                      <div class="preview img-wrapper" style="background: url(<%= (params[:action] == 'edit') ? @character_template.image.image_content.url : '' %>) no-repeat center center; background-size: cover"></div>
-
-                      <%= render partial: 'images/image_fields', locals: {f: ff} %>
-                  <% end %>
-                </div>
+          <div class="col-md-6 col-fixed-650">
+            <div class="hero_info">
+              <div class="info_header">
+                <%= image_tag('free_icons/scroll_5.png', size: '40x40', title: 'hero') %>
+                <h3>Описание героя</h3>
               </div>
-              <div class="stats-container">
-                <div class="stats-header">
-                  <div class=" icons-group">
-                    <%= image_tag('my_icons/question.png', size: '40x40', title: 'основной параметр') %>
-                    <%= f.input :main_param, as: :select, label: false, collection: %w(agility strange intellect), input_html: {class: 'form-control right'} %>
+              <div class="table table-bordered character_table">
+                <div class="image-container">
+                  <div class="avatar">
+                    <%= f.simple_fields_for :image do |ff| %>
+                        <div class="preview img-wrapper" style="background: url(<%= (params[:action] == 'edit') ? @character_template.image.image_content.url : '' %>) no-repeat center center; background-size: cover"></div>
+                        <%= render partial: 'images/image_fields', locals: {f: ff} %>
+                    <% end %>
                   </div>
                 </div>
-                <%= f.error_notification %>
-                <%= render partial: 'character_template_stats_fields', locals: {f: f} %>
+                <div class="stats-container">
+                  <div class="stats-header">
+                    <div class=" icons-group">
+                        <%= image_tag('my_icons/knight.png', size: '40x40', title: 'имя героя') %>
+                        <%= f.input :name, label: false, input_html: {class: 'form-control'} %>
+                    </div>
+                  </div>
+                  <%= f.error_notification %>
+                  <%= render partial: 'character_template_stats_fields', locals: {f: f} %>
+                </div>
+              </div>
+
+
+              <div class=" icons-group">
+                <%= image_tag('my_icons/main_param.png', size: '100x100', title: 'основной параметр') %>
+                <%= f.input :main_param, as: :select, label: 'Гл.параметр', collection: %w(agility strange intellect), input_html: {class: 'form-control right'} %>
+              </div>
+              <div class=" icons-group">
+                <%= image_tag('my_icons/class.png', size: '100x100', title: 'класс') %>
+                <%= f.input :hero_class, label: 'Класс', collection: %w(warrior mage rogue), input_html: {min: '1', step: 'any', class: 'form-control'} %>
+              </div>
+              <div class=" icons-group">
+                <%= image_tag('my_icons/letter.png', size: '100x100', title: 'описание героя', class: 'text') %>
+                <%= f.input :description, label: 'Описание героя', input_html: {:cols => 19, :rows => 5, class: 'form-control'} %>
               </div>
             </div>
-
-            <div class="content bag_content">
-              <%= f.simple_fields_for :bag_template do |ff| %>
-                  <%= ff.error_notification %>
-                  <%= render partial: 'bag_template_fields', locals: {f: ff} %>
-              <% end %>
-            </div>
-
 
           </div>
         </div>
@@ -41,7 +52,7 @@
         <div class="col-md-6">
           <ul class="nav nav-tabs">
             <li class="active">
-              <a href="#hero" data-toggle="tab"><%= image_tag('free_icons/scroll_5.png', size: '90x90', title: 'hero') %></a>
+              <a href="#bag" data-toggle="tab"><%= image_tag('free_icons/backpack.png', size: '90x90', title: 'hero') %></a>
             </li>
             <li>
               <a class="tab_images" href="#resists" data-toggle="tab"><%= image_tag('free_icons/tome.png', size: '90x90', title: 'character resists') %></a>
@@ -52,11 +63,14 @@
           </ul>
 
           <div class="tab-content">
-            <div class="tab-pane active" id="hero">
+            <div class="tab-pane active" id="bag">
               <div class="row">
                 <div class="col-md-12">
-                  <div class="content character_content">
-                    <%= render partial: 'character_template_desc_fields', locals: {f: f} %>
+                  <div class="content bag_content">
+                    <%= f.simple_fields_for :bag_template do |ff| %>
+                        <%= ff.error_notification %>
+                        <%= render partial: 'bag_template_fields', locals: {f: ff} %>
+                    <% end %>
                   </div>
                 </div>
               </div>
