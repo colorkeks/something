@@ -5,7 +5,7 @@ class RewardTemplatesController < ApplicationController
 
 
   def index
-    @reward = RewardTemplate.all
+    @reward_templates = RewardTemplate.all
   end
 
   def show
@@ -19,33 +19,33 @@ class RewardTemplatesController < ApplicationController
   end
 
   def create
-    @reward = RewardTemplate.new(reward_template_params)
+    @reward_template = RewardTemplate.new(reward_template_params)
 
     respond_to do |format|
-      if  @reward.save
-        format.html { redirect_to  @reward, notice: 'RewardTemplate was successfully created.' }
-        format.json { render :show, status: :created, location:  @reward }
+      if  @reward_template.save
+        format.html { redirect_to @reward_template, notice: 'RewardTemplate was successfully created.' }
+        format.json { render :show, status: :created, location:  @reward_template }
       else
         format.html { render :new }
-        format.json { render json:  @reward.errors, status: :unprocessable_entity }
+        format.json { render json:  @reward_template.errors, status: :unprocessable_entity }
       end
     end
   end
 
   def update
     respond_to do |format|
-      if  @reward.update(reward_template_params)
-        format.html { redirect_to   @reward, notice: 'RewardTemplate was successfully updated.' }
-        format.json { render :show, status: :ok, location:  @reward }
+      if  @reward_template.update(reward_template_params)
+        format.html { redirect_to @reward_template, notice: 'RewardTemplate was successfully updated.' }
+        format.json { render :show, status: :ok, location:  @reward_template }
       else
         format.html { render :edit }
-        format.json { render json:  @reward.errors, status: :unprocessable_entity }
+        format.json { render json:  @reward_template.errors, status: :unprocessable_entity }
       end
     end
   end
 
   def destroy
-    @reward.destroy
+    @reward_template.destroy
     respond_to do |format|
       format.html { redirect_to reward_templates_url, notice: 'RewardTemplate was successfully destroyed.' }
       format.json { head :no_content }
@@ -56,7 +56,7 @@ class RewardTemplatesController < ApplicationController
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_reward_template
-    @reward = RewardTemplate.find(params[:id])
+    @reward_template = RewardTemplate.find(params[:id])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

@@ -13,7 +13,7 @@
   <div class="item_table_body">
       <% if params[:action] == 'edit' %>
           <%= f.simple_fields_for :item_templates do |ff| %>
-              <%= render partial: 'edit_item_template_fields', locals: {f: ff} %>
+              <%= render partial: 'item_templates/edit_item_template_fields', locals: {f: ff} %>
           <% end %>
       <% end %>
     <!--Сюда вставляем миниатюры-->

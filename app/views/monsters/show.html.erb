@@ -1,1 +1,105 @@
-<!--TODO СДЕЛАТЬ СТРАНИЦУ SHOW-->
+<!--TODO ПЕРЕДЕЛАТЬ-->
+
+<%- model_class = Monster -%>
+<div class="profile-panel bit-content orange-gray">
+
+  <div class="page-header">
+    <h1>Описание Монстра</h1>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <div style="width: 304px; border: 2px solid orange">
+        <%= (image_tag @monster.image.image_content.url(:large), size: '300x300') if !@monster.image.nil? %>
+      </div>
+      <dl class="dl-horizontal">
+        <dt>Name:</dt>
+        <dd><%= @monster.name %></dd>
+        <dt>Desc:</dt>
+        <dd><%= @monster.desc %></dd>
+        <dt><strong><%= model_class.human_attribute_name(:hp) %>:</strong></dt>
+        <dd><%= @monster.hp %></dd>
+      </dl>
+
+    </div>
+    <div class="col-md-8">
+      <ul class="nav nav-tabs">
+        <li class="active">
+          <a class="tab_images" href="#resists" data-toggle="tab"><%= image_tag('free_icons/tome.png', size: '90x90', title: 'character resists') %></a>
+        </li>
+        <li>
+          <a href="#attacks" data-toggle="tab"><%= image_tag('my_icons/attack.png', size: '90x90', title: 'attack_types') %></a>
+        </li>
+      </ul>
+
+      <div class="tab-content">
+        <div class="tab-pane active" id="resists">
+          <h4>Сопротивления</h4>
+          <% if !@monster.resist_template.nil? %>
+              <div class="content resist_content">
+                <div>
+                  <%= image_tag('my_icons/physical.png', size: '100x100', style: 'margin-bottom: 10px', title: 'physical resist') %>
+                  <%= @monster.resist_template.physical %>%
+                </div>
+                <div>
+                  <%= image_tag('my_icons/fire.png', size: '100x100', style: 'margin-bottom: 10px', title: 'fire resist') %>
+                  <%= @monster.resist_template.fire %>%
+                </div>
+                <div>
+                  <%= image_tag('my_icons/water.png', size: '100x100', style: 'margin-bottom: 10px', title: 'water resist') %>
+                  <%= @monster.resist_template.water %>%
+                </div>
+                <div>
+                  <%= image_tag('my_icons/earth.png', size: '100x100', style: 'margin-bottom: 10px', title: 'earth resist') %>
+                  <%= @monster.resist_template.earth %>%
+                </div>
+                <div>
+                  <%= image_tag('my_icons/holy.png', size: '100x100', style: 'margin-bottom: 10px', title: 'holy resist') %>
+                  <%= @monster.resist_template.holy %>%
+                </div>
+                <div>
+                  <%= image_tag('my_icons/necrotic.png', size: '100x100', style: 'margin-bottom: 10px', title: 'necrotic resist') %>
+                  <%= @monster.resist_template.necrotic %>%
+                </div>
+                <div>
+                  <%= image_tag('my_icons/nature.png', size: '100x100', style: 'margin-bottom: 10px', title: 'nature resist') %>
+                  <%= @monster.resist_template.nature %>%
+                </div>
+              </div>
+          <% end %>
+        </div>
+        <div class="tab-pane" id="attacks">
+          <% @monster.attack_type_templates.each do |attack| %>
+              <div><%= attack.name %></div>
+              <div><%= attack.desc %></div>
+              <div><%= attack.target %></div>
+              <div><%= attack.cost_type %></div>
+              <div><%= attack.cost %></div>
+              <div><%= attack.attack_type %></div>
+              <div><%= attack.attack %></div>
+              <div><%= attack.crit_rate %></div>
+              <div><%= attack.crit_chance %></div>
+          <% end %>
+        </div>
+      </div>
+
+
+    </div>
+
+  </div>
+
+
+  <div class="footer">
+    <%= link_to t('.back', :default => t("helpers.links.back")),
+                monsters_path, :class => 'btn btn-bit btn-lg outline' %>
+    <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                edit_monster_path(@monster), :class => 'btn btn-bit btn-lg outline' %>
+    <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+               monster_path(@monster),
+                :method => 'delete',
+                :data => {:confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?'))},
+                :class => 'btn btn-bit btn-lg red' %>
+  </div>
+
+
+</div>

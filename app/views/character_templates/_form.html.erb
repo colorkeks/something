@@ -98,7 +98,7 @@
                       <% if params[:action] == 'edit' %>
                           <%= f.simple_fields_for :attack_type_templates do |ff| %>
                               <%= ff.error_notification %>
-                              <%= render partial: 'attack_type_template_fields', locals: {f: ff} %>
+                              <%= render partial: 'attack_type_templates/attack_type_template_fields', locals: {f: ff} %>
                           <% end %>
                       <% end %>
                     </div>

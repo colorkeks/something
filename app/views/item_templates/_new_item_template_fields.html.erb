@@ -1,13 +1,11 @@
 <div class="fields item_fields" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
   <div class="dropdown">
     <div class='item_content avatar' data-toggle="dropdown">
-          <%= f.simple_fields_for :image do |ff| %>
-              <div class='preview img-wrapper' style="background: url(<%= ff.object.image_content.url%>) no-repeat center center"></div>
-          <% end %>
+          <div class='preview img-wrapper'></div>
     </div>
     <ul class="dropdown-menu" role="menu">
       <li role="presentation">
-        <a class="item_modal" data-toggle="modal" data-target="<%= params[:action] == 'edit' ? '#' + f.object.id.to_s : '' %>" role="menuitem" tabindex="-1" href="#">Предмет</a>
+        <a class="item_modal" data-toggle="modal" role="menuitem" tabindex="-1" href="#">Предмет</a>
       </li>
       <li role="presentation">
         <a role="menuitem" tabindex="-1" href="#"><%= link_to_remove_fields 'Удалить', f, '' %></a></li>
@@ -15,16 +13,16 @@
   </div>
 
 
-  <div class="modal fade" id="<%= params[:action] == 'edit' ? f.object.id : '' %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-body">
           <div class="content items_content">
             <div class="row">
               <div class="col-md-3">
-                    <%= f.simple_fields_for :image do |ff| %>
+                    <%= f.simple_fields_for :image, f.object.build_image do |ff| %>
                         <div class="avatar">
-                          <div class="preview img-wrapper" style="background: url(<%= ff.object.image_content.url %>) no-repeat center center"></div>
+                          <div class="preview img-wrapper"></div>
                           <%= render partial: 'images/image_fields', locals: {f: ff} %>
                         </div>
                     <% end %>
@@ -78,7 +76,7 @@
               <div class="col-md-12">
                 <h4>Сопротивления</h4>
                 <div class="content resist_content">
-                      <%= f.simple_fields_for :resist_template do |ff| %>
+                      <%= f.simple_fields_for :resist_template, f.object.build_resist_template do |ff| %>
                           <%= render partial: 'resist_templates/resist_template_fields', locals: {f: ff} %>
                       <% end %>
                 </div>
@@ -90,8 +88,8 @@
               <div class="col-md-12">
                 <h4>Параметры атаки</h4>
                 <div class="table attack_type_table">
-                      <%= f.simple_fields_for :attack_type_template do |ff| %>
-                          <%= render partial: 'attack_type_template_fields', locals: {f: ff} %>
+                      <%= f.simple_fields_for :attack_type_template, f.object.build_attack_type_template do |ff| %>
+                          <%= render partial: 'attack_type_templates/attack_type_template_fields', locals: {f: ff} %>
                       <% end %>
                 </div>
               </div>

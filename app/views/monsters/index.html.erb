@@ -7,9 +7,9 @@
     <thead>
     <tr>
       <th>Image</th>
-      <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:hp) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%= image_tag('my_icons/knight.png', size: '80x80', title: 'имя монстра') %></th>
+      <th><%= image_tag('my_icons/letter.png', size: '80x80', title: 'описание монстра') %></th>
+      <th><%= image_tag('my_icons/hp1.png', size: '80x80', title: 'здоровье') %></th>
       <th><%= t '.actions', :default => t("helpers.actions") %></th>
     </tr>
     </thead>
@@ -18,8 +18,8 @@
         <tr>
           <td><%= image_tag(monster.image.image_content.url()) if monster.image%></td>
           <td><%= monster.name %></td>
+          <td><%= monster.desc %></td>
           <td><%= monster.hp %></td>
-          <td><%= monster.created_at %></td>
           <td>
             <%= link_to t('.show', :default => t("helpers.links.show")),
                         monster_path(monster), :class => 'btn btn-bit btn-lg outline' %>

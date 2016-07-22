@@ -1,2 +1,31 @@
-<h1>RewardTemplates#new</h1>
-<p>Find me in app/views/reward_templates/new.html.erb</p>
+<div class="profile-panel bit-content orange-gray">
+  <%= simple_form_for @reward_template do |f| %>
+      <%= f.error_notification %>
+
+  <div class="item_modal_buttons item_table">
+    <div class="add_items_header">
+
+      <div class=" icons-group">
+        <%= image_tag('my_icons/gold.png', size: '128x128', title: 'Золото') %>
+        <%= f.input :gold, label: false, input_html: {min: '0', step: 'any', class: 'form-control'} %>
+      </div>
+      <div class=" icons-group">
+        <%= image_tag('my_icons/exp', size: '128x128', title: 'Опыт') %>
+        <%= f.input :gold, label: false, input_html: {min: '0', step: 'any', class: 'form-control'} %>
+      </div>
+      <div class=" icons-group" style="display: block; float: none">
+        <%= image_tag('my_icons/items.png', size: '128x128', title: 'добавить предмет') %>
+        <%= link_to_add_item_fields '<i class="glyphicon glyphicon-plus" aria-hidden="true"></i>', f, :item_templates, 'item_table_body', id: 'add-item-btn', class: 'btn btn-bit green' %>
+      </div>
+    </div>
+    <div class="item_table_body">
+      <% if params[:action] == 'edit' %>
+          <%= f.simple_fields_for :item_templates do |ff| %>
+              <%= render partial: 'item_templates/edit_item_template_fields', locals: {f: ff} %>
+          <% end %>
+      <% end %>
+      <!--Сюда вставляем миниатюры-->
+    </div>
+  </div>
+  <% end %>
+</div>
