@@ -4,7 +4,6 @@ class CreateMonsters < ActiveRecord::Migration
       t.string :name,                null: false
       t.text :desc
       t.integer :hp,                 null: false
-      t.integer :quest_template_id
 
       t.timestamps null: false
     end

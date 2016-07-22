@@ -11,7 +11,6 @@ class CreateItemTemplates < ActiveRecord::Migration
       t.integer :sell_cost,   default: 1
       t.integer :buy_cost
       t.integer :bag_template_id
-      t.integer :reward_template_id
 
       t.timestamps null: false
     end

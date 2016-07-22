@@ -46,7 +46,7 @@ class ImagesController < ApplicationController
   end
 
   def content_params
-    params.require(:image).permit(:image_content)
+    params.require(:image).permit(:id, :image_content, :type)
   end
 
 end

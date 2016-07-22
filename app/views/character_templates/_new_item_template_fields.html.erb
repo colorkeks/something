@@ -38,7 +38,7 @@
                 </div>
                 <div class=" icons-group">
                   <%= image_tag('my_icons/question.png', size: '128x128', title: 'item type') %>
-                  <%= f.input :item_type, label: 'Item_type', collection: %w(шлем плечи тело пояс ноги ботинки осн.рука втор.рука кольцо1 кольцо2), input_html: {class: 'form-control'} %>
+                  <%= f.input :item_type, label: 'Item_type', collection: ItemTemplate::ITEM_TYPES, input_html: {class: 'form-control'} %>
                 </div>
               </div>
               <div class="col-md-5">

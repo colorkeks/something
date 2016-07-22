@@ -286,6 +286,10 @@ body {
       margin: 0;
       width: 25%;
       min-height: 760px;
+
+      .btn, h3 {
+          font-size: 2vh;
+      }
     }
 
   }
@@ -299,7 +303,6 @@ body {
   }
 
   .tab-content, .bag_content, .nav-tabs, .hero_info {
-    min-width: 480px;
     min-width: 480px;
   }
 
@@ -683,9 +686,15 @@ body {
       }
 
       &.select {
-        width: 200px !important;
+        width: 180px !important;
       }
     }
+
+  .monster_table{
+    margin: 0;
+    border-bottom: none;
+  }
+
 
   .character_table, .monster_table {
 
@@ -716,11 +725,22 @@ body {
         &.select {
           width: 32% !important;
         }
+
+        &.string{
+          width: 30% !important;
+        }
       }
 
       .icons-group {
+        text-align: left;
         width: 100%;
-        margin: 0 !important;
+        margin: 0;
+
+
+        img{
+          margin: 4px;
+          margin-right: 0;
+        }
       }
     }
 
@@ -742,18 +762,30 @@ body {
 
   .monster_stats {
 
+    .input{
+      position: relative;
+      .text {
+        width: 100% !important;
+      }
+
+      &.text{
+        width: 100%;
+        height: 0;
+        margin: 0;
+      }
+
+      textarea{
+        height: 173px;
+      }
+    }
+
     .icons-group {
       position: relative;
       text-align: left;
       width: 100%;
       padding: 0;
 
-      .input{
-        position: relative;
-        .text{
-          width: 80% !important;
-        }
-      }
+
       img{
         margin-top: 0;
       }

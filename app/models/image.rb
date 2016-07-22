@@ -4,6 +4,11 @@ class Image < ActiveRecord::Base
                     styles: lambda { |a| a.instance.check_file_type}
   validates_attachment_content_type :image_content, :content_type => [/\Aimage\/.*\Z/]
 
+
+  # Типы Картинок, включая анимацию
+  # TODO Возможно стоит как-то разделить анимацию и аватар например шаблонами
+  IMGAE_TYPES = ['Аватар', 'Атака', 'Атака2', 'Попадание', 'Стойка', 'Защита', 'Бег']
+
   def check_file_type
     if is_image_type?
       {:small => "x128>", :medium => "x256>", :large => "x512>"}

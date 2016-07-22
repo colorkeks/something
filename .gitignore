@@ -18,4 +18,4 @@
 .idea
 .iml
 .lock
-.schema
+schema.rb

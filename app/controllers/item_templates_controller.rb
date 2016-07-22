@@ -71,9 +71,9 @@ class ItemTemplatesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_template_params
-      params.require(:item_template).permit(:name, :description, :item_type, :strength, :intellect, :agility, :sell_cost,:buy_cost,:purchasable, :bag_template_id, :reward_template_id,
-                                            image_attributes:[:image_content, :item_template_id],
-                                            resist_templates_attributes:[:physical, :fire, :water, :earth, :holy, :necrotic, :nature, :item_template_id],
-                                            attack_type_template_attributes:[:name, :attack, :attack_type, :crit_chance, :crit_rate, :item_template_id])
+      params.require(:item_template).permit(:id, :name, :description, :item_type, :strength, :intellect, :agility, :sell_cost,:buy_cost,:purchasable, :bag_template_id, :reward_template_id,
+                                            image_attributes:[:id, :image_content, :type],
+                                            resist_templates_attributes:[:id, :physical, :fire, :water, :earth, :holy, :necrotic, :nature, :item_template_id],
+                                            attack_type_template_attributes:[:id, :name, :attack, :attack_type, :crit_chance, :crit_rate, :item_template_id])
     end
 end

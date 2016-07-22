@@ -4,10 +4,10 @@
     <%= f.input :desc, label: 'Описание', input_html: {class: 'form-control'} %>
   </div>
   <div class="attack_column">
-    <%= f.input :target, as: :select, label: 'Цель', collection: %w(герой все все_противники все_союзники противник союзник), input_html: {class: 'form-control'} %>
-    <%= f.input :attack_type, as: :select, label: 'Тип_Атаки', collection: %w(heal physical fire water earth holy necrotic nature), input_html: {class: 'form-control'} %>
-    <%= f.input :cost_type, as: :select, label: 'Тип_Платы', collection: %w(none hp mp), input_html: {class: 'form-control'} %>
-    <%= f.input :crit_rate, as: :select, label: 'Крит.Множ.', collection: %w(1.25 1.5 1.75 2 2.25), input_html: {class: 'form-control'} %>
+    <%= f.input :target, as: :select, label: 'Цель', collection: AttackTypeTemplate::ATTACK_TARGET, input_html: {class: 'form-control'} %>
+    <%= f.input :attack_type, as: :select, label: 'Тип_Атаки', collection: AttackTypeTemplate::ATTACK_TYPE, input_html: {class: 'form-control'} %>
+    <%= f.input :cost_type, as: :select, label: 'Тип_Платы', collection: AttackTypeTemplate::COST_TYPE, input_html: {class: 'form-control'} %>
+    <%= f.input :crit_rate, as: :select, label: 'Крит.Множ.', collection: AttackTypeTemplate::CRIT_RATE, input_html: {class: 'form-control'} %>
   </div>
   <div class="attack_column">
     <%= f.input :attack, label: 'Атака', input_html: {class: 'form-control'} %>

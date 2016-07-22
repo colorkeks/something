@@ -14,7 +14,7 @@
                 <div class="image-container">
                   <div class="avatar">
                     <%= f.simple_fields_for :image do |ff| %>
-                        <div class="preview img-wrapper" style="background: url(<%= (params[:action] == 'edit') ? @character_template.image.image_content.url : '' %>) no-repeat center center; background-size: cover"></div>
+                        <div class="preview img-wrapper" style="background: url(<%= (params[:action] == 'edit') ? @monster.image.image_content.url : '' %>) no-repeat center center; background-size: cover"></div>
                         <%= render partial: 'images/image_fields', locals: {f: ff} %>
                     <% end %>
                   </div>
@@ -22,19 +22,14 @@
                 <div class="stats-container">
                   <div class="stats-header">
                     <div class=" icons-group">
-                      <%= image_tag('my_icons/knight.png', size: '40x40', title: 'имя героя') %>
+                      <%= image_tag('my_icons/knight.png', size: '50x50', title: 'имя героя') %>
                       <%= f.input :name, label: false, input_html: {class: 'form-control'} %>
-                    </div>
-                  </div>
-                  <div class="monster_stats">
-                    <div class=" icons-group">
                       <%= image_tag('my_icons/hp1.png', size: '50x50', title: 'здоровье') %>
                       <%= f.input :hp, label: false, input_html: {min: '1', step: 'any', class: 'form-control'} %>
-                    </div>
-                    <div class=" icons-group">
-                      <%= image_tag('my_icons/letter.png', size: '50x50', title: 'описание героя', class: 'text') %>
-                      <%= f.input :desc, label: false, input_html: {:cols => 19, :rows => 5, class: 'form-control'} %>
-                    </div>
+                     </div>
+                  </div>
+                  <div class="monster_stats">
+                      <%= f.input :desc, label: 'Описание', input_html: { class: 'form-control'} %>
                   </div>
                 </div>
               </div>

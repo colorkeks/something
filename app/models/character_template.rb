@@ -10,4 +10,7 @@ class CharacterTemplate < ActiveRecord::Base
   accepts_nested_attributes_for :bag_template
 
 
+  MAIN_PARAMS = ['Сила', 'Ловкость', 'Интеллект']
+  HERO_CLASS = ['Воин', 'Маг', 'Разбойник']
+
 end

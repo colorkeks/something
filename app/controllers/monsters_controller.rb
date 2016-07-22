@@ -65,7 +65,7 @@ class MonstersController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def monster_params
     params.require(:monster).permit(:id, :desc, :name,  :hp,
-                                               image_attributes:                [:id, :image_content],
+                                               image_attributes:                [:id, :image_content, :type],
                                                resist_template_attributes:      [:id, :physical, :fire, :water, :earth, :holy, :necrotic, :nature],
                                                attack_type_templates_attributes:[:id, :name, :desc, :target, :cost_type, :cost, :attack, :attack_type, :crit_chance, :crit_rate, :_destroy])
   end

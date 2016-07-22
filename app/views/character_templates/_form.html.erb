@@ -34,11 +34,11 @@
 
               <div class=" icons-group">
                 <%= image_tag('my_icons/main_param.png', size: '100x100', title: 'основной параметр') %>
-                <%= f.input :main_param, as: :select, label: 'Гл.параметр', collection: %w(agility strange intellect), input_html: {class: 'form-control right'} %>
+                <%= f.input :main_param, as: :select, label: 'Гл.параметр', collection: CharacterTemplate::MAIN_PARAMS, input_html: {class: 'form-control right'} %>
               </div>
               <div class=" icons-group">
                 <%= image_tag('my_icons/class.png', size: '100x100', title: 'класс') %>
-                <%= f.input :hero_class, label: 'Класс', collection: %w(warrior mage rogue), input_html: {min: '1', step: 'any', class: 'form-control'} %>
+                <%= f.input :hero_class, label: 'Класс', collection: CharacterTemplate::HERO_CLASS, input_html: {min: '1', step: 'any', class: 'form-control'} %>
               </div>
               <div class=" icons-group">
                 <%= image_tag('my_icons/letter.png', size: '100x100', title: 'описание героя', class: 'text') %>
